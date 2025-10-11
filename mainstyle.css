@@ -1,32 +1,104 @@
 @import url('https://fonts.googleapis.com/css2?family=Rethink+Sans:wght@400;500;600;700&display=swap');
 @import url('/sentient.css');
+@import url('https://fonts.googleapis.com/css2?family=Yarndings+20&display=swap');
 
+.yarndings-20-regular {
+  font-family: "Yarndings 20", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+*{
+    margin:5px 10px;
+    padding: 0px;
+}
 .header{
-    height: 80px;
-}
-.headL, h1{
-    font-family:'Sentient-Medium';
-    font-size: 28px;
+    height: 40px;
+    width:100%;
+    display: inline-flex;
+    justify-content: space-between;
+    margin:0px;
 }
 
-.headR, h1{
+.headL, #headC, .headR{
+    margin:0px;
+    display: inline-flex;
+}
+
+#headC{
+    position:absolute;
+    top:25px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+p.diamond{
+    padding-top: 7px;
+    margin:0px 2px; 
+    font-family: "Yarndings 20", system-ui;
+    font-size: 18px;
+}
+
+p.shu{
+    font-family:"Rethink Sans", sans-serif;
+    font-size: 18px;
+}
+
+h1.myName{
     font-family:'Sentient-Regular';
-    font-size: 28px;
+    font-size: 18px;
 }
-.about{
-    padding:32px;
-    height:fit-content;
 
+h1.nav{
+    font-family:'Sentient-Extralight';
+    font-size: 18px;
 }
-.bio, p{
+
+#about{
+    height:368px;
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.words{
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+p.greeting{
+    margin-left:-10px;
+    margin-bottom: 10px;
     font-family:"Rethink Sans", sans-serif;
 }
 
-.bio{
-    width:216px;
+p.bioParagraph{
+    margin-left:-10px;
+    font-family:"Rethink Sans", sans-serif;
 }
 
-#bioImageContainter{
+#links{
+    padding-top:31px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    font-family:"Rethink Sans", sans-serif;
+    max-height:80px;
+}
+a#links{
+    margin:0px;
+}
+p#links{
+    margin:0px;
+}
+#bio{
+    max-width:30%;
+    display:inline-block;
+}
+
+#bioImageContainer{
+    display:inline-block;
     width:463px;
     height:285px;
     overflow: hidden;

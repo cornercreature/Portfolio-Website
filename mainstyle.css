@@ -1,14 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Rethink+Sans:wght@400;500;600;700&display=swap');
-@import url('sentient.css');
+@import url('/sentient.css');
+
 .header{
     height: 80px;
+}
+.headL, h1{
+    font-family:'Sentient-Medium';
+    font-size: 28px;
+}
+
+.headR, h1{
+    font-family:'Sentient-Regular';
+    font-size: 28px;
 }
 .about{
     padding:32px;
     height:fit-content;
 
-    
 }
+.bio, p{
+    font-family:"Rethink Sans", sans-serif;
+}
+
+.bio{
+    width:216px;
+}
+
 #bioImageContainter{
     width:463px;
     height:285px;
@@ -16,7 +33,4 @@
 }
 .bioImage{
     max-width:463px;
-}
-.bio p{
-    font-family:"Rethink Sans";
 }

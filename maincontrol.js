@@ -161,6 +161,9 @@ function populateDetailView(workData) {
     }
 }
 
+// Track currently opened work ID
+let currentlyOpenWorkId = null;
+
 // Expand Work - Show Detail View
 function expandWork(workId) {
     const work = portfolioWorks.find(w => w.id === workId);
@@ -170,16 +173,26 @@ function expandWork(workId) {
         return;
     }
 
+    // If clicking on the same work that's already open, close it
+    if (currentlyOpenWorkId === workId && document.querySelector('.body').classList.contains('expanded')) {
+        collapseWork();
+        return;
+    }
+
     // Populate detail view with work data
     populateDetailView(work);
 
     // Add expanded class to body to trigger CSS transition
     document.querySelector('.body').classList.add('expanded');
+
+    // Update currently open work ID
+    currentlyOpenWorkId = workId;
 }
 
 // Collapse Work - Return to Grid View
 function collapseWork() {
     document.querySelector('.body').classList.remove('expanded');
+    currentlyOpenWorkId = null;
 }
 
 // Initialize Portfolio on Page Load

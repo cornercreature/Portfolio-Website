@@ -76,7 +76,7 @@ h1.nav{
 }
 
 #about{
-    height:368px;
+    height:290px;
     display: inline-flex;
     flex-direction: row;
     justify-content: space-between;

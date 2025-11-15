@@ -20,6 +20,7 @@ body {
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    max-width: 100%;
 }
 .header{
     height: 40px;

@@ -65,12 +65,13 @@ const portfolioWorks = [
 // Create Work Thumbnail Element
 function createWorkThumbnail(workData) {
     const workItem = document.createElement('div');
-    workItem.className = 'work-item';
+    // Add both 'work-item' class and position-specific class
+    workItem.className = `work-item work-item-${workData.position}`;
     workItem.dataset.workId = workData.id;
 
-    // Create thumbnail
+    // Create thumbnail with position-specific class
     const thumbnail = document.createElement('div');
-    thumbnail.className = 'work-thumbnail';
+    thumbnail.className = `work-thumbnail work-thumbnail-${workData.position}`;
 
     // Set height based on aspect ratio
     if (workData.aspectRatio === 'portrait') {

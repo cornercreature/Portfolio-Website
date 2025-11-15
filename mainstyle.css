@@ -76,7 +76,7 @@ h1.nav{
 }
 
 #about{
-    height:290px;
+    height:200px;
     display: inline-flex;
     flex-direction: row;
     justify-content: space-between;
@@ -93,14 +93,16 @@ h1.nav{
 }
 
 p.greeting{
-    margin-left:-10px;
+    margin-left:110px;
     margin-bottom: 10px;
     font-family:"Rethink Sans", sans-serif;
+    font-size: 24px;
 }
 
 p.bioParagraph{
-    margin-left:-10px;
+    margin-left:110px;
     font-family:"Rethink Sans", sans-serif;
+    font-size: 24px;
 }
 
 #links{
@@ -110,27 +112,51 @@ p.bioParagraph{
     justify-content: flex-start;
     font-family:"Rethink Sans", sans-serif;
     max-height:80px;
+    font-size: 24px;
 }
 a#links{
     margin:0px;
 }
+#im_at{
+    padding-top:31px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    font-family:"Rethink Sans", sans-serif;
+    max-height:80px;
+    margin-right: 120px;
+    font-size: 18px;
+}
+
+p#im_at{
+    margin:0px;
+    font-size: 24px;
+}
+
+a#im_at{
+    margin:0px;
+    font-size: 24px;
+}   
+
 p#links{
     margin:0px;
 }
 #bio{
-    max-width:30%;
-    display:inline-block;
+    max-width:670px;
+    margin-top: 20px;
 }
 
-#bioImageContainer{
-    display:inline-block;
-    width:463px;
+/* #bioImageContainer{
+    width:130px;
+    margin-right: 120px;
     height:285px;
     overflow: hidden;
-}
-.bioImage{
-    max-width:463px;
-}
+} */
+/* .bioImage{
+    margin-top:50px;
+    float:right;
+    max-width:150px;
+} */
 
 /* Portfolio Body Section */
 .body {
@@ -189,17 +215,38 @@ p#links{
     width: auto;
     max-width: 90%;
     cursor: pointer;
-    margin: 0 0 15px 0;
     box-sizing: border-box;
 }
 
+/* Left-specific work items */
+.work-item-left {
+    margin: 0 -90px 15px 0;
+    /* Add custom styles for left work items here */
+}
+
+/* Right-specific work items */
+.work-item-right {
+    margin: 0 0 15px -90px;
+    /* Add custom styles for right work items here */
+}
+
 .work-thumbnail {
-    width: 600px;
+    width: 580px;
     height: auto;
     display: block;
     background-color: #d3d3d3;
     min-height: 200px;
     box-sizing: border-box;
+}
+
+/* Left-specific thumbnails */
+.work-thumbnail-left {
+    /* Add custom styles for left thumbnails here */
+}
+
+/* Right-specific thumbnails */
+.work-thumbnail-right {
+    /* Add custom styles for right thumbnails here */
 }
 
 .body.expanded .work-thumbnail {

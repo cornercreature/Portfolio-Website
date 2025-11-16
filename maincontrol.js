@@ -196,6 +196,18 @@ function collapseWork() {
     currentlyOpenWorkId = null;
 }
 
+// Collapse About Section on Scroll
+function handleScroll() {
+    const aboutSection = document.getElementById('about');
+    aboutSection.classList.add('collapsed');
+}
+
+// Toggle About Section
+function toggleAbout() {
+    const aboutSection = document.getElementById('about');
+    aboutSection.classList.toggle('collapsed');
+}
+
 // Initialize Portfolio on Page Load
 document.addEventListener('DOMContentLoaded', () => {
     // Populate the gallery with portfolio works
@@ -204,6 +216,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add event listener to close button
     const closeButton = document.getElementById('closeDetail');
     closeButton.addEventListener('click', collapseWork);
+
+    // Add event listener to about toggle link
+    const aboutLink = document.getElementById('aboutLink');
+    aboutLink.addEventListener('click', (e) => {
+        e.preventDefault(); // Prevent default anchor behavior
+        toggleAbout();
+    });
+
+    // Add scroll event listeners to left and right spans
+    const leftSpan = document.getElementById('left');
+    const rightSpan = document.getElementById('right');
+
+    leftSpan.addEventListener('scroll', handleScroll, { once: true });
+    rightSpan.addEventListener('scroll', handleScroll, { once: true });
 
     console.log('Portfolio initialized with', portfolioWorks.length, 'works');
 });

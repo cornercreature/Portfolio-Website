@@ -6,6 +6,7 @@ const portfolioWorks = [
         category: "Interactive Design",
         thumbnailSrc: "", // Placeholder - will use CSS background
         fullImageSrc: "",
+        images: [], // Array of additional image sources for detail view
         description: "An interactive exploration of celestial bodies and their movements through space. This project combines data visualization with interactive storytelling to create an immersive experience.",
         position: "left",
         aspectRatio: "landscape"
@@ -137,28 +138,68 @@ function populateDetailView(workData) {
     document.getElementById('detailCategory').textContent = workData.category;
     document.getElementById('detailText').textContent = workData.description;
 
-    const detailImage = document.getElementById('detailMainImage');
+    const detailImagesContainer = document.getElementById('detailImages');
 
-    // Set placeholder styling
-    if (workData.aspectRatio === 'portrait') {
-        detailImage.style.minHeight = '600px';
-    } else if (workData.aspectRatio === 'landscape') {
-        detailImage.style.minHeight = '400px';
-    } else {
-        detailImage.style.minHeight = '500px';
-    }
+    // Clear existing images
+    detailImagesContainer.innerHTML = '';
 
     // Set placeholder color
     const colors = ['#c9d6df', '#dae5e8', '#b8c9d4', '#d4dfe5', '#a8bac7', '#cdd8de'];
-    detailImage.style.backgroundColor = colors[workData.id % colors.length];
+
+    // Create main image
+    const mainImage = document.createElement('img');
+    mainImage.id = 'detailMainImage';
+    mainImage.style.width = '100%';
+    mainImage.style.marginLeft = '0px';
+    mainImage.style.marginRight = '0px';
+    mainImage.style.marginBottom = '20px';
+    mainImage.style.height = 'auto';
+    mainImage.style.backgroundColor = colors[workData.id % colors.length];
+    mainImage.style.boxSizing = 'border-box';
+
+    // Set height based on aspect ratio
+    if (workData.aspectRatio === 'portrait') {
+        mainImage.style.minHeight = '600px';
+    } else if (workData.aspectRatio === 'landscape') {
+        mainImage.style.minHeight = '400px';
+    } else {
+        mainImage.style.minHeight = '500px';
+    }
 
     // If real image source exists, use it
     if (workData.fullImageSrc) {
-        detailImage.src = workData.fullImageSrc;
-        detailImage.alt = workData.title;
+        mainImage.src = workData.fullImageSrc;
+        mainImage.alt = workData.title;
     } else {
-        detailImage.src = '';
-        detailImage.alt = 'Placeholder';
+        mainImage.src = '';
+        mainImage.alt = 'Placeholder';
+    }
+
+    detailImagesContainer.appendChild(mainImage);
+
+    // Add additional images if they exist
+    if (workData.images && workData.images.length > 0) {
+        workData.images.forEach((imageSrc, index) => {
+            const additionalImage = document.createElement('img');
+            additionalImage.style.width = '100%';
+            additionalImage.style.marginLeft = '0px';
+            additionalImage.style.marginRight = '0px';
+            additionalImage.style.marginBottom = '20px';
+            additionalImage.style.height = 'auto';
+            additionalImage.style.backgroundColor = colors[(workData.id + index + 1) % colors.length];
+            additionalImage.style.minHeight = '400px';
+            additionalImage.style.boxSizing = 'border-box';
+
+            if (imageSrc) {
+                additionalImage.src = imageSrc;
+                additionalImage.alt = `${workData.title} - Image ${index + 2}`;
+            } else {
+                additionalImage.src = '';
+                additionalImage.alt = 'Placeholder';
+            }
+
+            detailImagesContainer.appendChild(additionalImage);
+        });
     }
 }
 
@@ -213,9 +254,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Populate the gallery with portfolio works
     populateGallery();
 
-    // Add event listener to close button
+    // Add event listener to close button (if it exists)
     const closeButton = document.getElementById('closeDetail');
-    closeButton.addEventListener('click', collapseWork);
+    if (closeButton) {
+        closeButton.addEventListener('click', collapseWork);
+    }
 
     // Add event listener to about toggle link
     const aboutLink = document.getElementById('aboutLink');
@@ -230,6 +273,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     leftSpan.addEventListener('scroll', handleScroll, { once: true });
     rightSpan.addEventListener('scroll', handleScroll, { once: true });
+
+    // Initialize marquee message
+    const messageContainer = document.querySelector('.messageContainer');
+    if (messageContainer) {
+        // Get existing text content
+        const textContent = messageContainer.textContent;
+        // Clear the container
+        messageContainer.innerHTML = '';
+        // Create marquee wrapper with duplicated content
+        const marqueeText = document.createElement('span');
+        marqueeText.className = 'marquee';
+        // Duplicate the text to create seamless loop
+        marqueeText.textContent = textContent + ' ' + textContent;
+        messageContainer.appendChild(marqueeText);
+    }
 
     console.log('Portfolio initialized with', portfolioWorks.length, 'works');
 });

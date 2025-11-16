@@ -8,7 +8,7 @@ const portfolioWorks = [
         fullImageSrc: "",
         description: "An interactive exploration of celestial bodies and their movements through space. This project combines data visualization with interactive storytelling to create an immersive experience.",
         position: "left",
-        aspectRatio: "portrait"
+        aspectRatio: "landscape"
     },
     {
         id: 2,
@@ -28,7 +28,7 @@ const portfolioWorks = [
         fullImageSrc: "",
         description: "Experimental typography that explores the relationship between letterforms and movement. This project investigates how motion can enhance typographic communication.",
         position: "left",
-        aspectRatio: "square"
+        aspectRatio: "landscape"
     },
     {
         id: 4,
@@ -38,7 +38,7 @@ const portfolioWorks = [
         fullImageSrc: "",
         description: "A data visualization project that transforms complex environmental data into an organic, garden-like interface. Users can explore climate patterns through an intuitive botanical metaphor.",
         position: "right",
-        aspectRatio: "portrait"
+        aspectRatio: "landscape"
     },
     {
         id: 5,
@@ -58,7 +58,7 @@ const portfolioWorks = [
         fullImageSrc: "",
         description: "An interactive sound visualization that explores the boundary between meaningful signal and random noise. Users can manipulate audio parameters to create unique visual compositions.",
         position: "right",
-        aspectRatio: "square"
+        aspectRatio: "landscape"
     }
 ];
 

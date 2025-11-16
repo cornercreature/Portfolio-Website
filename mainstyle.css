@@ -31,14 +31,14 @@ body {
     box-sizing: border-box;
 }
 .header{
-    height: 40px;
-    width:100%;
+    height: 50px;
     display: inline-flex;
     justify-content: space-between;
-    margin:0px;
+    margin:15px 20px 30px 20px;
     flex-shrink: 0;
     box-sizing: border-box;
     overflow-x: hidden;
+    border-bottom: #000 1px solid;
 }
 
 .headL, #headC, .headR{
@@ -48,7 +48,7 @@ body {
 
 #headC{
     position:absolute;
-    top:25px;
+    top:30px;
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -66,7 +66,7 @@ p.shu{
 }
 
 h1.myName{
-    font-family:'Sentient-Regular';
+    font-family:'Sentient-Extralight';
     font-size: 18px;
 }
 
@@ -76,20 +76,15 @@ h1.nav{
 }
 
 #about{
-    height:200px;
+    margin-top:-10px;
+    height:150px;
     display: inline-flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: left;
     flex-shrink: 0;
     width: 100%;
     box-sizing: border-box;
     overflow-x: hidden;
-}
-
-.words{
-    display: inline-flex;
-    flex-direction: row;
-    justify-content: space-between;
 }
 
 p.greeting{
@@ -98,27 +93,34 @@ p.greeting{
     font-family:"Rethink Sans", sans-serif;
     font-size: 24px;
 }
-
+.bioParagraph{
+    max-width: 480px;
+    line-height: 1.6;
+}
 p.bioParagraph{
     margin-left:110px;
+    margin-top:20px;
     font-family:"Rethink Sans", sans-serif;
-    font-size: 24px;
+    font-size: 18px;
 }
 
 #links{
-    padding-top:31px;
+    margin-left: 165px;
+    padding-top:37px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     font-family:"Rethink Sans", sans-serif;
     max-height:80px;
-    font-size: 24px;
+    font-size: 18px;
+    line-height: 19px;
 }
 a#links{
     margin:0px;
 }
-#im_at{
-    padding-top:31px;
+
+/* #im_at{
+    padding-top:66px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -136,7 +138,7 @@ p#im_at{
 a#im_at{
     margin:0px;
     font-size: 24px;
-}   
+}    */
 
 p#links{
     margin:0px;
@@ -146,17 +148,17 @@ p#links{
     margin-top: 20px;
 }
 
-/* #bioImageContainer{
-    width:130px;
-    margin-right: 120px;
+#bioImageContainer{
+    margin-left: 100px;
+    width:200px;
     height:285px;
     overflow: hidden;
-} */
-/* .bioImage{
-    margin-top:50px;
+} 
+.bioImage{
+    margin-top:25px;
     float:right;
-    max-width:150px;
-} */
+    max-width:190px;
+}
 
 /* Portfolio Body Section */
 .body {

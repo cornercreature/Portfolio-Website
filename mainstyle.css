@@ -45,6 +45,12 @@ body {
 .headL, #headC, .headR{
     margin:0px;
     display: inline-flex;
+    text-decoration: none;
+}
+
+#shelvesLink {
+    text-decoration: none;
+    color: inherit;
 }
 
 #headC{
@@ -105,6 +111,7 @@ h1.myName{
 h1.nav{
     font-family:'Sentient-Extralight';
     font-size: 18px;
+    text-decoration: none;
 }
 
 .nav-button {

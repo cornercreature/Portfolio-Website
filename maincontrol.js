@@ -76,11 +76,11 @@ function createWorkThumbnail(workData) {
 
     // Set height based on aspect ratio
     if (workData.aspectRatio === 'portrait') {
-        thumbnail.style.minHeight = '350px';
+        thumbnail.style.minHeight = '700px';
     } else if (workData.aspectRatio === 'landscape') {
-        thumbnail.style.minHeight = '200px';
+        thumbnail.style.minHeight = '400px';
     } else { // square
-        thumbnail.style.minHeight = '280px';
+        thumbnail.style.minHeight = '560px';
     }
 
     // Add placeholder color based on ID
@@ -249,6 +249,36 @@ function toggleCenterFull() {
     }
 }
 
+// Handle About Section Collapse/Expand on Scroll
+let lastScrollTop = { left: 0, right: 0 };
+let aboutCollapsed = false;
+
+function handleAboutScroll(element, side) {
+    const aboutSection = document.getElementById('about');
+    const scrollThreshold = 10;
+    const currentScrollTop = Math.max(0, element.scrollTop); // Prevent negative values
+    const previousScrollTop = lastScrollTop[side];
+
+    // Determine scroll direction
+    const scrollingDown = currentScrollTop > previousScrollTop;
+    const scrollingUp = currentScrollTop < previousScrollTop;
+
+    // Collapse when scrolling down past threshold
+    if (scrollingDown && currentScrollTop > scrollThreshold && !aboutCollapsed) {
+        aboutCollapsed = true;
+        aboutSection.classList.add('collapsed');
+    }
+
+    // Only expand when scrolling up AND at the very top
+    if (scrollingUp && currentScrollTop === 0 && aboutCollapsed) {
+        aboutCollapsed = false;
+        aboutSection.classList.remove('collapsed');
+    }
+
+    // Update last scroll position (clamp to 0 minimum)
+    lastScrollTop[side] = Math.max(0, currentScrollTop);
+}
+
 // Initialize Portfolio on Page Load
 document.addEventListener('DOMContentLoaded', () => {
     // Populate the gallery with portfolio works
@@ -264,6 +294,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const centerPanel = document.getElementById('center');
     if (centerPanel) {
         centerPanel.addEventListener('click', toggleCenterFull);
+    }
+
+    // Add scroll event listeners to left and right columns for about section
+    const leftSpan = document.getElementById('left');
+    const rightSpan = document.getElementById('right');
+
+    if (leftSpan) {
+        leftSpan.addEventListener('scroll', () => handleAboutScroll(leftSpan, 'left'));
+    }
+
+    if (rightSpan) {
+        rightSpan.addEventListener('scroll', () => handleAboutScroll(rightSpan, 'right'));
     }
 
     // Initialize marquee message

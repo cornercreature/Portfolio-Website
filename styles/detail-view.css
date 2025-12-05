@@ -1,0 +1,52 @@
+/* Detail View Styling */
+
+#detailDescription {
+    margin-bottom: 30px;
+    font-family: "Rethink Sans", sans-serif;
+}
+
+#detailTitle {
+    font-family: 'Sentient-Extralight';
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+#detailCategory {
+    font-style: italic;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+#detailText {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+#detailImages {
+    margin-bottom: 20px;
+}
+
+#detailMainImage {
+    width: 100%;
+    margin-left: 0px;
+    margin-right: 0px;
+    height: auto;
+    background-color: #d3d3d3;
+    min-height: 400px;
+}
+
+#closeDetail {
+    align-self: flex-start;
+    padding: 10px 20px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-family: "Rethink Sans", sans-serif;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+#closeDetail:hover {
+    background-color: #333;
+}

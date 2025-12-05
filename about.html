@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="mainstyle.css">
-    <title>Document</title>
+    <title>About - Nicole Sun</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap"
@@ -15,13 +15,11 @@
 <body>
     <div class="header">
         <span class="headL">
-            <h1 class="myName">Nicole Sun</h1>
-            <!-- make into about page link! -->
+            <h1 class="myName"><a href="main.html" style="text-decoration: none; color: inherit;">Nicole Sun</a></h1>
         </span>
         <span id="headC">
             <p class="shu">|</p>
             <p class="diamond">r</p>
-            <div class="messageContainer">🚪 | 🛋️ 🛏️ | 🚪 Welcome in! 🚪 | 🛋️ 🛏️ | 🚪 Please make yourself at home!</div>
             <p class="diamond">r</p>
             <p class="shu">|</p>
         </span>
@@ -33,25 +31,25 @@
         </span>
     </div>
 
-    <div class="body">
-        <span id="left">
+    <div id="about">
+        <span id="bio">
+            <p class="bioParagraph">
+                Nicole is a designer interested in systems and worlds. She is currently
+                pursuing her BFA in Graphic Design and Computation at the Rhode Island School of Design.
+            </p>
+        </span>
 
+        <span id="links">
+            <a>Email</a>
+            <a>LinkedIn</a>
+            <p>Resume</p>
         </span>
-        <span id="center">
-            <div id="detailDescription">
-                <h2 id="detailTitle"></h2>
-                <p id="detailCategory"></p>
-                <p id="detailText"></p>
-            </div>
-            <div id="detailImages">
-                <img id="detailMainImage" src="" alt="">
-            </div>
-            <!-- <button id="closeDetail">Close</button> -->
-        </span>
-        <span id="right">
 
-        </span>
+        <div id="bioImageContainer">
+             <img class="bioImage" src="/images/NicoleBio.jpg">
+        </div>
     </div>
+
     <script src="maincontrol.js"></script>
 </body>
 

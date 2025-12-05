@@ -3,7 +3,7 @@ const portfolioWorks = [
     {
         id: 1,
         title: "Celestial Navigation",
-        category: "Interactive Design",
+        category: "Interactive",
         thumbnailSrc: "", // Placeholder - will use CSS background
         fullImageSrc: "",
         images: [], // Array of additional image sources for detail view
@@ -14,7 +14,7 @@ const portfolioWorks = [
     {
         id: 2,
         title: "Urban Rhythms",
-        category: "Graphic Design",
+        category: "Graphic",
         thumbnailSrc: "",
         fullImageSrc: "",
         description: "A visual study of patterns and rhythms found in urban environments. Through systematic documentation and design exploration, this project reveals the hidden geometries of city life.",
@@ -24,7 +24,7 @@ const portfolioWorks = [
     {
         id: 3,
         title: "Type in Motion",
-        category: "Motion Graphics",
+        category: "Motion",
         thumbnailSrc: "",
         fullImageSrc: "",
         description: "Experimental typography that explores the relationship between letterforms and movement. This project investigates how motion can enhance typographic communication.",
@@ -34,7 +34,7 @@ const portfolioWorks = [
     {
         id: 4,
         title: "Data Garden",
-        category: "Information Design",
+        category: "Information",
         thumbnailSrc: "",
         fullImageSrc: "",
         description: "A data visualization project that transforms complex environmental data into an organic, garden-like interface. Users can explore climate patterns through an intuitive botanical metaphor.",
@@ -233,20 +233,20 @@ function expandWork(workId) {
 
 // Collapse Work - Return to Grid View
 function collapseWork() {
-    document.querySelector('.body').classList.remove('expanded');
+    const body = document.querySelector('.body');
+    body.classList.remove('expanded');
+    body.classList.remove('center-full');
     currentlyOpenWorkId = null;
 }
 
-// Collapse About Section on Scroll
-function handleScroll() {
-    const aboutSection = document.getElementById('about');
-    aboutSection.classList.add('collapsed');
-}
+// Toggle Center Full View
+function toggleCenterFull() {
+    const body = document.querySelector('.body');
 
-// Toggle About Section
-function toggleAbout() {
-    const aboutSection = document.getElementById('about');
-    aboutSection.classList.toggle('collapsed');
+    // Only toggle center-full if we're in expanded state
+    if (body.classList.contains('expanded')) {
+        body.classList.toggle('center-full');
+    }
 }
 
 // Initialize Portfolio on Page Load
@@ -260,19 +260,11 @@ document.addEventListener('DOMContentLoaded', () => {
         closeButton.addEventListener('click', collapseWork);
     }
 
-    // Add event listener to about toggle link
-    const aboutLink = document.getElementById('aboutLink');
-    aboutLink.addEventListener('click', (e) => {
-        e.preventDefault(); // Prevent default anchor behavior
-        toggleAbout();
-    });
-
-    // Add scroll event listeners to left and right spans
-    const leftSpan = document.getElementById('left');
-    const rightSpan = document.getElementById('right');
-
-    leftSpan.addEventListener('scroll', handleScroll, { once: true });
-    rightSpan.addEventListener('scroll', handleScroll, { once: true });
+    // Add click event listener to center panel for center-full toggle
+    const centerPanel = document.getElementById('center');
+    if (centerPanel) {
+        centerPanel.addEventListener('click', toggleCenterFull);
+    }
 
     // Initialize marquee message
     const messageContainer = document.querySelector('.messageContainer');

@@ -1,0 +1,16 @@
+/* Animations and Keyframes */
+
+.marquee {
+    display: inline-block;
+    animation: marquee 15s linear infinite;
+    padding-right: 20px;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}

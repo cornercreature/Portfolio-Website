@@ -91,11 +91,11 @@ function createWorkThumbnail(workData) {
     const workInfo = document.createElement('div');
     workInfo.className = 'work-info';
 
-    const title = document.createElement('span');
+    const title = document.createElement('h2');
     title.className = 'work-title';
     title.textContent = workData.title;
 
-    const category = document.createElement('span');
+    const category = document.createElement('h2');
     category.className = 'work-category';
     category.textContent = workData.category;
 

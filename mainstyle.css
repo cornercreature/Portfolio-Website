@@ -9,7 +9,7 @@
 }
 
 *{
-    margin:5px 10px;
+    margin:0px 0px;
     padding: 0px;
 }
 
@@ -308,16 +308,12 @@ p#links{
 
 /* Left-specific work items */
 .work-item-left {
-    margin: 0 40px 15px 0px;
-    padding-left:80px;
     width: 680px;
     /* Add custom styles for left work items here */
 }
 
 /* Right-specific work items */
 .work-item-right {
-    margin: 0 0px 15px 0px;
-    padding-right:80px;
     width: 680px;
     /* Add custom styles for right work items here */
 }
@@ -360,6 +356,7 @@ p#links{
     display: flex;
     justify-content: space-between;
     margin: 0px 0 0 0;
+    padding-right: 8px;
     font-family: "Rethink Sans", sans-serif;
     font-size: 18px;
     box-sizing: border-box;
@@ -367,6 +364,7 @@ p#links{
 
 .work-title {
     font-weight: 400;
+    text-align: right;
 }
 
 .work-category {

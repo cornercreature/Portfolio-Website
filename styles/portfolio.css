@@ -30,7 +30,8 @@ h2 {
     display: flex;
     flex-direction: column;
     gap: var(--gap-portfolio-items);
-    transition: width var(--transition-duration) var(--transition-easing);
+    transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     overflow-y: auto;
     overflow-x: hidden;
     box-sizing: border-box;
@@ -56,7 +57,8 @@ h2 {
     width: var(--width-detail-view);
     height: 100%;
     opacity: 0;
-    transition: opacity var(--transition-duration) var(--transition-easing);
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     flex-direction: column;
     padding: var(--padding-detail-view);

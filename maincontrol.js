@@ -224,8 +224,10 @@ function expandWork(workId) {
     // Populate detail view with work data
     populateDetailView(work);
 
-    // Add expanded class to portfolio-main to trigger CSS transition
-    document.querySelector('.portfolio-main').classList.add('expanded');
+    // Add slight pause before starting the transition
+    setTimeout(() => {
+        document.querySelector('.portfolio-main').classList.add('expanded');
+    }, 150);
 
     // Update currently open work ID
     currentlyOpenWorkId = workId;
@@ -234,7 +236,12 @@ function expandWork(workId) {
 // Collapse Work - Return to Grid View
 function collapseWork() {
     const portfolioMain = document.querySelector('.portfolio-main');
-    portfolioMain.classList.remove('expanded');
+
+    // Add slight pause before starting the transition
+    setTimeout(() => {
+        portfolioMain.classList.remove('expanded');
+    }, 150);
+
     currentlyOpenWorkId = null;
 }
 
@@ -341,30 +348,28 @@ function setupSwipeGestures() {
     }, { passive: false });
 
     function updateSwipeVisuals(swipeDistance) {
-        // Use requestAnimationFrame for smooth 60fps updates
-        requestAnimationFrame(() => {
-            // Clamp swipe distance to max of 300px for visual effect
-            const clampedDistance = Math.min(Math.max(swipeDistance, 0), 300);
-            const progress = clampedDistance / 300; // 0 to 1
+        // No clamping - let swipe distance directly control progress
+        const normalizedDistance = Math.max(swipeDistance, 0);
+        // Use a larger divisor for smoother, more gradual opening
+        const progress = Math.min(normalizedDistance / 600, 1); // Cap at 1 (100%)
 
-            // Apply easing for more natural feel (ease-out curve)
-            const easedProgress = 1 - Math.pow(1 - progress, 3);
+        // Apply subtle easing for more natural feel
+        const easedProgress = 1 - Math.pow(1 - progress, 2);
 
-            // Detail view fades out as you swipe
-            portfolioDetail.style.opacity = 1 - (easedProgress * 0.3);
+        // Detail view fades out as you swipe
+        portfolioDetail.style.opacity = 1 - (easedProgress * 0.3);
 
-            // Columns slide in from their respective sides with easing
-            const leftProgress = easedProgress * 50; // 0 to 50
-            leftColumn.style.width = `${leftProgress}%`;
-            leftColumn.style.opacity = easedProgress;
+        // Columns slide in from their respective sides with easing
+        const leftProgress = easedProgress * 50; // 0 to 50
+        leftColumn.style.width = `${leftProgress}%`;
+        leftColumn.style.opacity = easedProgress;
 
-            // Right column comes from right
-            rightColumn.style.width = `${leftProgress}%`;
-            rightColumn.style.opacity = easedProgress;
+        // Right column comes from right
+        rightColumn.style.width = `${leftProgress}%`;
+        rightColumn.style.opacity = easedProgress;
 
-            // Detail view shrinks from center
-            portfolioDetail.style.width = `${100 - (leftProgress * 2)}%`;
-        });
+        // Detail view shrinks from center
+        portfolioDetail.style.width = `${100 - (leftProgress * 2)}%`;
     }
 
     function resetSwipe() {

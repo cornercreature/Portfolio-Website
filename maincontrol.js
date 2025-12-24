@@ -235,17 +235,195 @@ function expandWork(workId) {
 function collapseWork() {
     const portfolioMain = document.querySelector('.portfolio-main');
     portfolioMain.classList.remove('expanded');
-    portfolioMain.classList.remove('center-full');
     currentlyOpenWorkId = null;
 }
 
-// Toggle Center Full View
-function toggleCenterFull() {
-    const portfolioMain = document.querySelector('.portfolio-main');
+// Handle Swipe Gestures (Two-finger swipe for mobile and trackpad)
+function setupSwipeGestures() {
+    let twoFingerSwipe = false;
+    let startX = 0;
+    let startY = 0;
+    let endX = 0;
+    let endY = 0;
+    let swipeAccumulator = 0;
+    let isSwiping = false;
 
-    // Only toggle center-full if we're in expanded state
-    if (portfolioMain.classList.contains('expanded')) {
-        portfolioMain.classList.toggle('center-full');
+    const portfolioDetail = document.querySelector('.portfolio-detail');
+    const leftColumn = document.querySelector('.portfolio-column-left');
+    const rightColumn = document.querySelector('.portfolio-column-right');
+
+    // Touch events for mobile - TWO FINGER SWIPE
+    document.addEventListener('touchstart', (e) => {
+        const portfolioMain = document.querySelector('.portfolio-main');
+        if (!portfolioMain || !portfolioMain.classList.contains('expanded')) return;
+
+        // Check if it's a two-finger touch
+        if (e.touches.length === 2) {
+            twoFingerSwipe = true;
+            isSwiping = true;
+            // Use the midpoint between the two fingers
+            startX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+            startY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+
+            // Disable CSS transitions for live tracking
+            portfolioDetail.style.transition = 'none';
+            leftColumn.style.transition = 'none';
+            rightColumn.style.transition = 'none';
+        } else {
+            twoFingerSwipe = false;
+        }
+    }, { passive: true });
+
+    document.addEventListener('touchmove', (e) => {
+        const portfolioMain = document.querySelector('.portfolio-main');
+        if (!portfolioMain || !portfolioMain.classList.contains('expanded')) return;
+        if (!twoFingerSwipe) return;
+
+        // Track movement with two fingers
+        if (e.touches.length === 2) {
+            endX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+            endY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+
+            // Update visual feedback in real-time
+            updateSwipeVisuals(endX - startX);
+        }
+    }, { passive: true });
+
+    document.addEventListener('touchend', (e) => {
+        const portfolioMain = document.querySelector('.portfolio-main');
+        if (!portfolioMain || !portfolioMain.classList.contains('expanded')) return;
+
+        if (twoFingerSwipe) {
+            handleTouchSwipe();
+        }
+        twoFingerSwipe = false;
+        isSwiping = false;
+    }, { passive: true });
+
+    // Trackpad/wheel events for desktop - TWO FINGER TRACKPAD SWIPE
+    document.addEventListener('wheel', (e) => {
+        const portfolioMain = document.querySelector('.portfolio-main');
+        if (!portfolioMain || !portfolioMain.classList.contains('expanded')) return;
+
+        // Check if it's a horizontal swipe (deltaX is significant)
+        if (Math.abs(e.deltaX) > Math.abs(e.deltaY) && !e.ctrlKey) {
+            e.preventDefault();
+
+            if (!isSwiping) {
+                isSwiping = true;
+                // Disable CSS transitions for live tracking
+                portfolioDetail.style.transition = 'none';
+                leftColumn.style.transition = 'none';
+                rightColumn.style.transition = 'none';
+            }
+
+            // Accumulate horizontal scroll delta
+            swipeAccumulator += e.deltaX;
+
+            // Update visual feedback in real-time
+            updateSwipeVisuals(-swipeAccumulator);
+
+            // Swipe right = negative deltaX (content moves left)
+            if (swipeAccumulator < -50) {
+                finishSwipe();
+            }
+
+            // Reset accumulator after a short delay if no more swipes
+            clearTimeout(window.swipeResetTimer);
+            window.swipeResetTimer = setTimeout(() => {
+                if (Math.abs(swipeAccumulator) < 50) {
+                    resetSwipe();
+                }
+                swipeAccumulator = 0;
+                isSwiping = false;
+            }, 200);
+        }
+    }, { passive: false });
+
+    function updateSwipeVisuals(swipeDistance) {
+        // Use requestAnimationFrame for smooth 60fps updates
+        requestAnimationFrame(() => {
+            // Clamp swipe distance to max of 300px for visual effect
+            const clampedDistance = Math.min(Math.max(swipeDistance, 0), 300);
+            const progress = clampedDistance / 300; // 0 to 1
+
+            // Apply easing for more natural feel (ease-out curve)
+            const easedProgress = 1 - Math.pow(1 - progress, 3);
+
+            // Detail view fades out as you swipe
+            portfolioDetail.style.opacity = 1 - (easedProgress * 0.3);
+
+            // Columns slide in from their respective sides with easing
+            const leftProgress = easedProgress * 50; // 0 to 50
+            leftColumn.style.width = `${leftProgress}%`;
+            leftColumn.style.opacity = easedProgress;
+
+            // Right column comes from right
+            rightColumn.style.width = `${leftProgress}%`;
+            rightColumn.style.opacity = easedProgress;
+
+            // Detail view shrinks from center
+            portfolioDetail.style.width = `${100 - (leftProgress * 2)}%`;
+        });
+    }
+
+    function resetSwipe() {
+        // Re-enable transitions for smooth snap back with custom easing
+        const springTransition = 'all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)';
+        portfolioDetail.style.transition = springTransition;
+        leftColumn.style.transition = springTransition;
+        rightColumn.style.transition = springTransition;
+
+        // Reset to expanded state
+        portfolioDetail.style.opacity = '';
+        portfolioDetail.style.width = '';
+        leftColumn.style.width = '';
+        leftColumn.style.opacity = '';
+        rightColumn.style.width = '';
+        rightColumn.style.opacity = '';
+
+        // Clear transitions after animation completes
+        setTimeout(() => {
+            portfolioDetail.style.transition = '';
+            leftColumn.style.transition = '';
+            rightColumn.style.transition = '';
+        }, 400);
+    }
+
+    function finishSwipe() {
+        // Smooth completion with ease-out
+        const easeTransition = 'all 0.5s cubic-bezier(0.22, 1, 0.36, 1)';
+        portfolioDetail.style.transition = easeTransition;
+        leftColumn.style.transition = easeTransition;
+        rightColumn.style.transition = easeTransition;
+
+        // Close the detail view
+        collapseWork();
+
+        // Reset inline styles after transition
+        setTimeout(() => {
+            portfolioDetail.style.opacity = '';
+            portfolioDetail.style.width = '';
+            portfolioDetail.style.transition = '';
+            leftColumn.style.width = '';
+            leftColumn.style.opacity = '';
+            leftColumn.style.transition = '';
+            rightColumn.style.width = '';
+            rightColumn.style.opacity = '';
+            rightColumn.style.transition = '';
+        }, 500);
+    }
+
+    function handleTouchSwipe() {
+        const swipeDistanceX = endX - startX;
+        const swipeThreshold = 50; // Increased threshold for better feel
+
+        // Swipe RIGHT with two fingers
+        if (swipeDistanceX > swipeThreshold) {
+            finishSwipe();
+        } else {
+            resetSwipe();
+        }
     }
 }
 
@@ -284,28 +462,46 @@ document.addEventListener('DOMContentLoaded', () => {
     // Populate the gallery with portfolio works
     populateGallery();
 
+    // Setup swipe gestures for detail view
+    setupSwipeGestures();
+
     // Add event listener to close button (if it exists)
     const closeButton = document.getElementById('closeDetail');
     if (closeButton) {
         closeButton.addEventListener('click', collapseWork);
     }
 
-    // Add click event listener to center panel for center-full toggle
-    const centerPanel = document.getElementById('center');
-    if (centerPanel) {
-        centerPanel.addEventListener('click', toggleCenterFull);
-    }
-
     // Add scroll event listeners to left and right columns for about section
     const leftSpan = document.getElementById('left');
     const rightSpan = document.getElementById('right');
 
+    // Track which column is being scrolled to prevent feedback loop
+    let isScrolling = false;
+
     if (leftSpan) {
-        leftSpan.addEventListener('scroll', () => handleAboutScroll(leftSpan, 'left'));
+        leftSpan.addEventListener('scroll', () => {
+            handleAboutScroll(leftSpan, 'left');
+
+            // Sync scroll position to right column
+            if (!isScrolling && rightSpan) {
+                isScrolling = true;
+                rightSpan.scrollTop = leftSpan.scrollTop;
+                setTimeout(() => { isScrolling = false; }, 10);
+            }
+        });
     }
 
     if (rightSpan) {
-        rightSpan.addEventListener('scroll', () => handleAboutScroll(rightSpan, 'right'));
+        rightSpan.addEventListener('scroll', () => {
+            handleAboutScroll(rightSpan, 'right');
+
+            // Sync scroll position to left column
+            if (!isScrolling && leftSpan) {
+                isScrolling = true;
+                leftSpan.scrollTop = rightSpan.scrollTop;
+                setTimeout(() => { isScrolling = false; }, 10);
+            }
+        });
     }
 
     // Initialize marquee message

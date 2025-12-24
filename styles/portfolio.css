@@ -66,39 +66,21 @@ h2 {
     overflow-x: hidden;
 }
 
-/* Expanded State - Detail View */
+/* Expanded State - Detail View (Columns Part, Center Full Screen) */
 .portfolio-main.expanded .portfolio-column-left {
-    width: calc((100% - var(--width-detail-view)) / 2);
+    width: 0;
+    opacity: 0;
 }
 
 .portfolio-main.expanded .portfolio-column-right {
-    width: calc((100% - var(--width-detail-view)) / 2);
+    width: 0;
+    opacity: 0;
 }
 
 .portfolio-main.expanded .portfolio-detail {
-    opacity: 1;
-}
-
-.portfolio-main.expanded h2 {
-    font-size: var(--font-size-h2-collapsed);
-}
-
-/* Center-Full State - Left and Right Hidden */
-.portfolio-main.center-full .portfolio-column-left {
-    width: 0;
-    opacity: 0;
-}
-
-.portfolio-main.center-full .portfolio-column-right {
-    width: 0;
-    opacity: 0;
-}
-
-.portfolio-main.center-full .portfolio-detail {
     width: 100%;
     padding: 0 var(--padding-center-full);
     opacity: 1;
-    cursor: pointer;
 }
 
 /* Work Thumbnail Styling */

@@ -1,0 +1,67 @@
+// ============================================================================
+// PORTFOLIO WORKS DATA
+// ============================================================================
+
+export const portfolioWorks = [
+    {
+        id: 1,
+        title: "Celestial Navigation",
+        category: "Interactive",
+        thumbnailSrc: "", // Placeholder - will use CSS background
+        fullImageSrc: "",
+        images: [], // Array of additional image sources for detail view
+        description: "An interactive exploration of celestial bodies and their movements through space. This project combines data visualization with interactive storytelling to create an immersive experience.",
+        position: "left",
+        aspectRatio: "landscape"
+    },
+    {
+        id: 2,
+        title: "Urban Rhythms",
+        category: "Graphic",
+        thumbnailSrc: "",
+        fullImageSrc: "",
+        description: "A visual study of patterns and rhythms found in urban environments. Through systematic documentation and design exploration, this project reveals the hidden geometries of city life.",
+        position: "right",
+        aspectRatio: "landscape"
+    },
+    {
+        id: 3,
+        title: "Type in Motion",
+        category: "Motion",
+        thumbnailSrc: "",
+        fullImageSrc: "",
+        description: "Experimental typography that explores the relationship between letterforms and movement. This project investigates how motion can enhance typographic communication.",
+        position: "left",
+        aspectRatio: "landscape"
+    },
+    {
+        id: 4,
+        title: "Data Garden",
+        category: "Information",
+        thumbnailSrc: "",
+        fullImageSrc: "",
+        description: "A data visualization project that transforms complex environmental data into an organic, garden-like interface. Users can explore climate patterns through an intuitive botanical metaphor.",
+        position: "right",
+        aspectRatio: "landscape"
+    },
+    {
+        id: 5,
+        title: "Computational Weaving",
+        category: "Generative Art",
+        thumbnailSrc: "",
+        fullImageSrc: "",
+        description: "Exploring the intersection of traditional weaving patterns and computational design. This project generates unique textile patterns using algorithmic processes inspired by historical craft techniques.",
+        position: "left",
+        aspectRatio: "landscape"
+    },
+    {
+        id: 6,
+        title: "Signal & Noise",
+        category: "Interactive Media",
+        thumbnailSrc: "",
+        fullImageSrc: "",
+        description: "An interactive sound visualization that explores the boundary between meaningful signal and random noise. Users can manipulate audio parameters to create unique visual compositions.",
+        position: "right",
+        aspectRatio: "landscape"
+    }
+];

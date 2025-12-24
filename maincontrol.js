@@ -1,4 +1,7 @@
-// Portfolio Works Data
+// ============================================================================
+// PORTFOLIO WORKS DATA
+// ============================================================================
+
 const portfolioWorks = [
     {
         id: 1,
@@ -63,29 +66,58 @@ const portfolioWorks = [
     }
 ];
 
-// Create Work Thumbnail Element
+
+// ============================================================================
+// CONSTANTS & CONFIGURATION
+// ============================================================================
+
+const PLACEHOLDER_COLORS = ['#c9d6df', '#dae5e8', '#b8c9d4', '#d4dfe5', '#a8bac7', '#cdd8de'];
+
+const ASPECT_RATIO_HEIGHTS = {
+    portrait: { thumbnail: '700px', detail: '600px' },
+    landscape: { thumbnail: '400px', detail: '400px' },
+    square: { thumbnail: '560px', detail: '500px' }
+};
+
+const SWIPE_CONFIG = {
+    threshold: 50,
+    divisor: 600,
+    resetDelay: 200,
+    transitionDelay: 150
+};
+
+
+// ============================================================================
+// STATE MANAGEMENT
+// ============================================================================
+
+let currentlyOpenWorkId = null;
+
+
+// ============================================================================
+// GALLERY RENDERING
+// ============================================================================
+
+/**
+ * Creates a work thumbnail element with all associated UI components
+ * @param {Object} workData - The work data object
+ * @returns {HTMLElement} The complete work item element
+ */
 function createWorkThumbnail(workData) {
     const workItem = document.createElement('div');
-    // Add both 'work-item' class and position-specific class
     workItem.className = `work-item work-item-${workData.position}`;
     workItem.dataset.workId = workData.id;
 
-    // Create thumbnail with position-specific class
+    // Create thumbnail
     const thumbnail = document.createElement('div');
     thumbnail.className = `work-thumbnail work-thumbnail-${workData.position}`;
 
     // Set height based on aspect ratio
-    if (workData.aspectRatio === 'portrait') {
-        thumbnail.style.minHeight = '700px';
-    } else if (workData.aspectRatio === 'landscape') {
-        thumbnail.style.minHeight = '400px';
-    } else { // square
-        thumbnail.style.minHeight = '560px';
-    }
+    const aspectConfig = ASPECT_RATIO_HEIGHTS[workData.aspectRatio] || ASPECT_RATIO_HEIGHTS.landscape;
+    thumbnail.style.minHeight = aspectConfig.thumbnail;
 
-    // Add placeholder color based on ID
-    const colors = ['#c9d6df', '#dae5e8', '#b8c9d4', '#d4dfe5', '#a8bac7', '#cdd8de'];
-    thumbnail.style.backgroundColor = colors[workData.id % colors.length];
+    // Add placeholder color
+    thumbnail.style.backgroundColor = PLACEHOLDER_COLORS[workData.id % PLACEHOLDER_COLORS.length];
 
     // Create info section
     const workInfo = document.createElement('div');
@@ -111,102 +143,104 @@ function createWorkThumbnail(workData) {
     return workItem;
 }
 
-// Populate Gallery with Works
+/**
+ * Populates the gallery with all portfolio works, distributing them to left and right columns
+ */
 function populateGallery() {
-    const leftSpan = document.getElementById('left');
-    const rightSpan = document.getElementById('right');
+    const leftColumn = document.getElementById('left');
+    const rightColumn = document.getElementById('right');
 
     // Clear existing content
-    leftSpan.innerHTML = '';
-    rightSpan.innerHTML = '';
+    leftColumn.innerHTML = '';
+    rightColumn.innerHTML = '';
 
-    // Distribute works to left and right columns
+    // Distribute works to columns
     portfolioWorks.forEach(work => {
         const thumbnail = createWorkThumbnail(work);
-
-        if (work.position === 'left') {
-            leftSpan.appendChild(thumbnail);
-        } else {
-            rightSpan.appendChild(thumbnail);
-        }
+        const targetColumn = work.position === 'left' ? leftColumn : rightColumn;
+        targetColumn.appendChild(thumbnail);
     });
 }
 
-// Populate Detail View with Work Data
+
+// ============================================================================
+// DETAIL VIEW MANAGEMENT
+// ============================================================================
+
+/**
+ * Creates an image element with proper styling and placeholder
+ * @param {Object} workData - The work data object
+ * @param {string} imageSrc - The image source URL (optional)
+ * @param {number} imageIndex - Index for additional images (0 for main image)
+ * @returns {HTMLElement} The configured image element
+ */
+function createDetailImage(workData, imageSrc = '', imageIndex = 0) {
+    const image = document.createElement('img');
+    image.style.width = '100%';
+    image.style.marginLeft = '0px';
+    image.style.marginRight = '0px';
+    image.style.marginBottom = '20px';
+    image.style.height = 'auto';
+    image.style.boxSizing = 'border-box';
+
+    // Set placeholder color
+    const colorIndex = (workData.id + imageIndex) % PLACEHOLDER_COLORS.length;
+    image.style.backgroundColor = PLACEHOLDER_COLORS[colorIndex];
+
+    // Set height based on aspect ratio
+    const aspectConfig = ASPECT_RATIO_HEIGHTS[workData.aspectRatio] || ASPECT_RATIO_HEIGHTS.landscape;
+    image.style.minHeight = imageIndex === 0 ? aspectConfig.detail : ASPECT_RATIO_HEIGHTS.landscape.detail;
+
+    // Set image source
+    if (imageSrc) {
+        image.src = imageSrc;
+        image.alt = imageIndex === 0 ? workData.title : `${workData.title} - Image ${imageIndex + 1}`;
+    } else {
+        image.src = '';
+        image.alt = 'Placeholder';
+    }
+
+    if (imageIndex === 0) {
+        image.className = 'detail-main-image';
+    }
+
+    return image;
+}
+
+/**
+ * Populates the detail view with work data including title, category, description, and images
+ * @param {Object} workData - The work data object to display
+ */
 function populateDetailView(workData) {
     document.querySelector('.detail-title').textContent = workData.title;
     document.querySelector('.detail-category').textContent = workData.category;
     document.querySelector('.detail-text').textContent = workData.description;
 
     const detailImagesContainer = document.querySelector('.detail-images');
-
-    // Clear existing images
     detailImagesContainer.innerHTML = '';
 
-    // Set placeholder color
-    const colors = ['#c9d6df', '#dae5e8', '#b8c9d4', '#d4dfe5', '#a8bac7', '#cdd8de'];
-
     // Create main image
-    const mainImage = document.createElement('img');
-    mainImage.className = 'detail-main-image';
-    mainImage.style.width = '100%';
-    mainImage.style.marginLeft = '0px';
-    mainImage.style.marginRight = '0px';
-    mainImage.style.marginBottom = '20px';
-    mainImage.style.height = 'auto';
-    mainImage.style.backgroundColor = colors[workData.id % colors.length];
-    mainImage.style.boxSizing = 'border-box';
-
-    // Set height based on aspect ratio
-    if (workData.aspectRatio === 'portrait') {
-        mainImage.style.minHeight = '600px';
-    } else if (workData.aspectRatio === 'landscape') {
-        mainImage.style.minHeight = '400px';
-    } else {
-        mainImage.style.minHeight = '500px';
-    }
-
-    // If real image source exists, use it
-    if (workData.fullImageSrc) {
-        mainImage.src = workData.fullImageSrc;
-        mainImage.alt = workData.title;
-    } else {
-        mainImage.src = '';
-        mainImage.alt = 'Placeholder';
-    }
-
+    const mainImage = createDetailImage(workData, workData.fullImageSrc, 0);
     detailImagesContainer.appendChild(mainImage);
 
     // Add additional images if they exist
     if (workData.images && workData.images.length > 0) {
         workData.images.forEach((imageSrc, index) => {
-            const additionalImage = document.createElement('img');
-            additionalImage.style.width = '100%';
-            additionalImage.style.marginLeft = '0px';
-            additionalImage.style.marginRight = '0px';
-            additionalImage.style.marginBottom = '20px';
-            additionalImage.style.height = 'auto';
-            additionalImage.style.backgroundColor = colors[(workData.id + index + 1) % colors.length];
-            additionalImage.style.minHeight = '400px';
-            additionalImage.style.boxSizing = 'border-box';
-
-            if (imageSrc) {
-                additionalImage.src = imageSrc;
-                additionalImage.alt = `${workData.title} - Image ${index + 2}`;
-            } else {
-                additionalImage.src = '';
-                additionalImage.alt = 'Placeholder';
-            }
-
+            const additionalImage = createDetailImage(workData, imageSrc, index + 1);
             detailImagesContainer.appendChild(additionalImage);
         });
     }
 }
 
-// Track currently opened work ID
-let currentlyOpenWorkId = null;
 
-// Expand Work - Show Detail View
+// ============================================================================
+// VIEW TRANSITIONS
+// ============================================================================
+
+/**
+ * Expands a work item to show its detail view
+ * @param {number} workId - The ID of the work to expand
+ */
 function expandWork(workId) {
     const work = portfolioWorks.find(w => w.id === workId);
 
@@ -233,13 +267,15 @@ function expandWork(workId) {
     // Add slight pause before starting the transition
     setTimeout(() => {
         document.querySelector('.portfolio-main').classList.add('expanded');
-    }, 150);
+    }, SWIPE_CONFIG.transitionDelay);
 
     // Update currently open work ID
     currentlyOpenWorkId = workId;
 }
 
-// Collapse Work - Return to Grid View
+/**
+ * Collapses the detail view and returns to the grid view
+ */
 function collapseWork() {
     const portfolioMain = document.querySelector('.portfolio-main');
 
@@ -252,118 +288,43 @@ function collapseWork() {
     // Add slight pause before starting the transition
     setTimeout(() => {
         portfolioMain.classList.remove('expanded');
-    }, 150);
+    }, SWIPE_CONFIG.transitionDelay);
 
     currentlyOpenWorkId = null;
 }
 
-// Handle Swipe Gestures (Two-finger swipe for mobile and trackpad)
-function setupSwipeGestures() {
-    let twoFingerSwipe = false;
-    let startX = 0;
-    let startY = 0;
-    let endX = 0;
-    let endY = 0;
-    let swipeAccumulator = 0;
-    let isSwiping = false;
 
+// ============================================================================
+// SWIPE GESTURE HANDLING
+// ============================================================================
+
+/**
+ * Sets up swipe gesture handlers for both touch and trackpad input
+ */
+function setupSwipeGestures() {
+    // Get DOM elements
     const portfolioDetail = document.querySelector('.portfolio-detail');
     const leftColumn = document.querySelector('.portfolio-column-left');
     const rightColumn = document.querySelector('.portfolio-column-right');
 
-    // Touch events for mobile - TWO FINGER SWIPE
-    document.addEventListener('touchstart', (e) => {
-        const portfolioMain = document.querySelector('.portfolio-main');
-        if (!portfolioMain || !portfolioMain.classList.contains('expanded')) return;
+    // Swipe state
+    let isSwiping = false;
+    let swipeAccumulator = 0;
 
-        // Check if it's a two-finger touch
-        if (e.touches.length === 2) {
-            twoFingerSwipe = true;
-            isSwiping = true;
-            // Use the midpoint between the two fingers
-            startX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
-            startY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+    // Touch event handlers
+    let startX = 0;
+    let startY = 0;
+    let endX = 0;
 
-            // Disable CSS transitions for live tracking
-            portfolioDetail.style.transition = 'none';
-            leftColumn.style.transition = 'none';
-            rightColumn.style.transition = 'none';
-        } else {
-            twoFingerSwipe = false;
-        }
-    }, { passive: true });
-
-    document.addEventListener('touchmove', (e) => {
-        const portfolioMain = document.querySelector('.portfolio-main');
-        if (!portfolioMain || !portfolioMain.classList.contains('expanded')) return;
-        if (!twoFingerSwipe) return;
-
-        // Track movement with two fingers
-        if (e.touches.length === 2) {
-            endX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
-            endY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
-
-            // Update visual feedback in real-time
-            updateSwipeVisuals(endX - startX);
-        }
-    }, { passive: true });
-
-    document.addEventListener('touchend', (e) => {
-        const portfolioMain = document.querySelector('.portfolio-main');
-        if (!portfolioMain || !portfolioMain.classList.contains('expanded')) return;
-
-        if (twoFingerSwipe) {
-            handleTouchSwipe();
-        }
-        twoFingerSwipe = false;
-        isSwiping = false;
-    }, { passive: true });
-
-    // Trackpad/wheel events for desktop - TWO FINGER TRACKPAD SWIPE
-    document.addEventListener('wheel', (e) => {
-        const portfolioMain = document.querySelector('.portfolio-main');
-        if (!portfolioMain || !portfolioMain.classList.contains('expanded')) return;
-
-        // Check if it's a horizontal swipe (deltaX is significant)
-        if (Math.abs(e.deltaX) > Math.abs(e.deltaY) && !e.ctrlKey) {
-            e.preventDefault();
-
-            if (!isSwiping) {
-                isSwiping = true;
-                // Disable CSS transitions for live tracking
-                portfolioDetail.style.transition = 'none';
-                leftColumn.style.transition = 'none';
-                rightColumn.style.transition = 'none';
-            }
-
-            // Accumulate horizontal scroll delta
-            swipeAccumulator += e.deltaX;
-
-            // Update visual feedback in real-time
-            updateSwipeVisuals(-swipeAccumulator);
-
-            // Swipe right = negative deltaX (content moves left)
-            if (swipeAccumulator < -50) {
-                finishSwipe();
-            }
-
-            // Reset accumulator after a short delay if no more swipes
-            clearTimeout(window.swipeResetTimer);
-            window.swipeResetTimer = setTimeout(() => {
-                if (Math.abs(swipeAccumulator) < 50) {
-                    resetSwipe();
-                }
-                swipeAccumulator = 0;
-                isSwiping = false;
-            }, 200);
-        }
-    }, { passive: false });
-
+    /**
+     * Updates the visual feedback during swipe gesture
+     * @param {number} swipeDistance - The current swipe distance
+     */
     function updateSwipeVisuals(swipeDistance) {
         // No clamping - let swipe distance directly control progress
         const normalizedDistance = Math.max(swipeDistance, 0);
         // Use a larger divisor for smoother, more gradual opening
-        const progress = Math.min(normalizedDistance / 600, 1); // Cap at 1 (100%)
+        const progress = Math.min(normalizedDistance / SWIPE_CONFIG.divisor, 1); // Cap at 1 (100%)
 
         // Apply subtle easing for more natural feel
         const easedProgress = 1 - Math.pow(1 - progress, 2);
@@ -379,6 +340,9 @@ function setupSwipeGestures() {
         portfolioDetail.style.width = `${100 - (leftProgress * 2)}%`;
     }
 
+    /**
+     * Resets the swipe state and returns to detail view
+     */
     function resetSwipe() {
         // Re-enable transitions for smooth snap back with custom easing
         const springTransition = 'all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)';
@@ -399,6 +363,9 @@ function setupSwipeGestures() {
         }, 400);
     }
 
+    /**
+     * Completes the swipe gesture and closes the detail view
+     */
     function finishSwipe() {
         // Smooth completion with ease-out
         const easeTransition = 'all 0.5s cubic-bezier(0.22, 1, 0.36, 1)';
@@ -420,110 +387,160 @@ function setupSwipeGestures() {
         }, 500);
     }
 
+    /**
+     * Handles the completion of a touch swipe gesture
+     */
     function handleTouchSwipe() {
         const swipeDistanceX = endX - startX;
-        const swipeThreshold = 50; // Increased threshold for better feel
+        const threshold = SWIPE_CONFIG.threshold;
 
-        // Swipe RIGHT with two fingers
-        if (swipeDistanceX > swipeThreshold) {
+        // Check if swipe distance exceeds threshold (swipe right)
+        if (swipeDistanceX > threshold) {
             finishSwipe();
         } else {
             resetSwipe();
         }
     }
+
+    // ========================================
+    // Touch Events (Mobile)
+    // ========================================
+
+    document.addEventListener('touchstart', (e) => {
+        const portfolioMain = document.querySelector('.portfolio-main');
+        if (!portfolioMain || !portfolioMain.classList.contains('expanded')) return;
+
+        // Only handle two-finger swipes
+        if (e.touches.length === 2) {
+            isSwiping = true;
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
+
+            // Disable transitions for smooth tracking
+            portfolioDetail.style.transition = 'none';
+            leftColumn.style.transition = 'none';
+            rightColumn.style.transition = 'none';
+        }
+    }, { passive: true });
+
+    document.addEventListener('touchmove', (e) => {
+        if (!isSwiping) return;
+
+        if (e.touches.length === 2) {
+            endX = e.touches[0].clientX;
+            const swipeDistance = endX - startX;
+            updateSwipeVisuals(swipeDistance);
+        }
+    }, { passive: true });
+
+    document.addEventListener('touchend', (e) => {
+        if (!isSwiping) return;
+
+        if (e.touches.length === 0) {
+            handleTouchSwipe();
+            isSwiping = false;
+            swipeAccumulator = 0;
+        }
+    }, { passive: true });
+
+    // ========================================
+    // Trackpad Events (Desktop)
+    // ========================================
+
+    document.addEventListener('wheel', (e) => {
+        const portfolioMain = document.querySelector('.portfolio-main');
+        if (!portfolioMain || !portfolioMain.classList.contains('expanded')) return;
+
+        // Detect horizontal swipe (two-finger trackpad swipe)
+        if (Math.abs(e.deltaX) > Math.abs(e.deltaY) && !e.ctrlKey) {
+            e.preventDefault();
+
+            if (!isSwiping) {
+                isSwiping = true;
+                portfolioDetail.style.transition = 'none';
+                leftColumn.style.transition = 'none';
+                rightColumn.style.transition = 'none';
+            }
+
+            swipeAccumulator += e.deltaX;
+            updateSwipeVisuals(-swipeAccumulator);
+
+            // Check if swipe exceeds threshold (swipe right)
+            if (swipeAccumulator < -SWIPE_CONFIG.threshold) {
+                finishSwipe();
+            }
+
+            // Reset timer for incomplete swipes
+            clearTimeout(window.swipeResetTimer);
+            window.swipeResetTimer = setTimeout(() => {
+                if (Math.abs(swipeAccumulator) < SWIPE_CONFIG.threshold) {
+                    resetSwipe();
+                }
+                swipeAccumulator = 0;
+                isSwiping = false;
+            }, SWIPE_CONFIG.resetDelay);
+        }
+    }, { passive: false });
 }
 
-// Handle About Section Collapse/Expand on Scroll
-let lastScrollTop = { left: 0, right: 0 };
-let aboutCollapsed = false;
 
-function handleAboutScroll(element, side) {
-    const aboutSection = document.querySelector('.about-section');
-    const scrollThreshold = 10;
-    const currentScrollTop = Math.max(0, element.scrollTop); // Prevent negative values
-    const previousScrollTop = lastScrollTop[side];
+// ============================================================================
+// SYNCHRONIZED SCROLLING
+// ============================================================================
 
-    // Determine scroll direction
-    const scrollingDown = currentScrollTop > previousScrollTop;
-    const scrollingUp = currentScrollTop < previousScrollTop;
+/**
+ * Sets up synchronized scrolling between left and right columns
+ */
+function setupSynchronizedScrolling() {
+    const leftColumn = document.querySelector('.portfolio-column-left');
+    const rightColumn = document.querySelector('.portfolio-column-right');
 
-    // Collapse when scrolling down past threshold
-    if (scrollingDown && currentScrollTop > scrollThreshold && !aboutCollapsed) {
-        aboutCollapsed = true;
-        aboutSection.classList.add('collapsed');
-    }
-
-    // Only expand when scrolling up AND at the very top
-    if (scrollingUp && currentScrollTop === 0 && aboutCollapsed) {
-        aboutCollapsed = false;
-        aboutSection.classList.remove('collapsed');
-    }
-
-    // Update last scroll position (clamp to 0 minimum)
-    lastScrollTop[side] = Math.max(0, currentScrollTop);
-}
-
-// Initialize Portfolio on Page Load
-document.addEventListener('DOMContentLoaded', () => {
-    // Populate the gallery with portfolio works
-    populateGallery();
-
-    // Setup swipe gestures for detail view
-    setupSwipeGestures();
-
-    // Add event listener to close button (if it exists)
-    const closeButton = document.getElementById('closeDetail');
-    if (closeButton) {
-        closeButton.addEventListener('click', collapseWork);
-    }
-
-    // Add scroll event listeners to left and right columns for about section
-    const leftSpan = document.getElementById('left');
-    const rightSpan = document.getElementById('right');
-
-    // Track which column is being scrolled to prevent feedback loop
     let isScrolling = false;
 
-    if (leftSpan) {
-        leftSpan.addEventListener('scroll', () => {
-            handleAboutScroll(leftSpan, 'left');
+    /**
+     * Synchronizes scroll position from source column to target column
+     * @param {HTMLElement} sourceColumn - The column being scrolled
+     * @param {HTMLElement} targetColumn - The column to synchronize
+     */
+    function syncScroll(sourceColumn, targetColumn) {
+        if (isScrolling) return;
 
-            // Sync scroll position to right column
-            if (!isScrolling && rightSpan) {
-                isScrolling = true;
-                rightSpan.scrollTop = leftSpan.scrollTop;
-                setTimeout(() => { isScrolling = false; }, 10);
-            }
+        isScrolling = true;
+        targetColumn.scrollTop = sourceColumn.scrollTop;
+
+        requestAnimationFrame(() => {
+            isScrolling = false;
         });
     }
 
-    if (rightSpan) {
-        rightSpan.addEventListener('scroll', () => {
-            handleAboutScroll(rightSpan, 'right');
+    // Sync right column when left column scrolls
+    leftColumn.addEventListener('scroll', () => {
+        syncScroll(leftColumn, rightColumn);
+    });
 
-            // Sync scroll position to left column
-            if (!isScrolling && leftSpan) {
-                isScrolling = true;
-                leftSpan.scrollTop = rightSpan.scrollTop;
-                setTimeout(() => { isScrolling = false; }, 10);
-            }
-        });
-    }
+    // Sync left column when right column scrolls
+    rightColumn.addEventListener('scroll', () => {
+        syncScroll(rightColumn, leftColumn);
+    });
+}
 
-    // Initialize marquee message
-    const messageContainer = document.querySelector('.message-container');
-    if (messageContainer) {
-        // Get existing text content
-        const textContent = messageContainer.textContent;
-        // Clear the container
-        messageContainer.innerHTML = '';
-        // Create marquee wrapper with duplicated content
-        const marqueeText = document.createElement('span');
-        marqueeText.className = 'marquee';
-        // Duplicate the text to create seamless loop
-        marqueeText.textContent = textContent + ' ' + textContent;
-        messageContainer.appendChild(marqueeText);
-    }
 
-    console.log('Portfolio initialized with', portfolioWorks.length, 'works');
-});
+// ============================================================================
+// INITIALIZATION
+// ============================================================================
+
+/**
+ * Initializes the portfolio on page load
+ */
+function initPortfolio() {
+    populateGallery();
+    setupSwipeGestures();
+    setupSynchronizedScrolling();
+}
+
+// Run initialization when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPortfolio);
+} else {
+    initPortfolio();
+}

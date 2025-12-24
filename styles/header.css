@@ -1,76 +1,79 @@
 /* Header and Navigation Styles */
 
-.header{
-    height: 50px;
+.site-header {
+    height: var(--height-header);
     display: inline-flex;
     justify-content: space-between;
-    margin:20px 0px 0px 0px;
-    padding:0px 50px 0px 50px;
+    margin: var(--margin-header-top) 0 0 0;
+    padding: 0 var(--padding-header);
     flex-shrink: 0;
     box-sizing: border-box;
     overflow-x: hidden;
-    border-bottom: #000 1px solid;
+    border-bottom: var(--color-border) var(--border-width) var(--border-style);
 }
 
 a {
     text-decoration: none;
-    color: black;
+    color: var(--color-text);
 }
-.headL, #headC, .headR{
-    margin:0px;
+
+.header-left,
+.header-center,
+.header-nav {
+    margin: 0;
     display: inline-flex;
     text-decoration: none;
 }
 
-#headC{
-    position:absolute;
-    top:30px;
+.header-center {
+    position: absolute;
+    top: 30px;
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
     align-items: center;
-    gap: 0px;
+    gap: var(--gap-header-center);
 }
 
-.messageContainer {
-    width: 0px;
+.message-container {
+    width: var(--message-container-width);
     overflow: hidden;
-    transition: width 0.6s ease;
+    transition: width var(--transition-duration) var(--transition-easing);
     white-space: nowrap;
-    font-family: "Rethink Sans", sans-serif;
-    font-size: 18px;
+    font-family: var(--font-primary);
+    font-size: var(--font-size-base);
 }
 
-body:has(.body.expanded) .messageContainer {
-    width: 150px;
+body:has(.portfolio-main.expanded) .message-container {
+    width: var(--message-container-width-expanded);
 }
 
-p.diamond{
-    padding-top: 7px;
-    margin:0px 2px;
-    font-family: "Yarndings 20", system-ui;
-    font-size: 18px;
+.diamond {
+    padding-top: var(--padding-diamond-top);
+    margin: 0 var(--spacing-diamond-margin);
+    font-family: var(--font-icon);
+    font-size: var(--font-size-base);
 }
 
-p.shu{
-    font-family:"Rethink Sans", sans-serif;
-    font-size: 18px;
+.shu {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-base);
 }
 
-h1.myName{
-    font-family:'Sentient-Extralight';
-    font-size: 18px;
+.site-title {
+    font-family: var(--font-display);
+    font-size: var(--font-size-base);
 }
 
-h1.nav{
-    font-family:'Sentient-Extralight';
-    font-size: 18px;
+.header-nav {
+    font-family: var(--font-display);
+    font-size: var(--font-size-base);
     text-decoration: none;
 }
 
 .nav-button {
-    font-family:'Sentient-Extralight';
-    font-size: 18px;
+    font-family: var(--font-display);
+    font-size: var(--font-size-base);
     background: none;
     border: none;
     padding: 0;

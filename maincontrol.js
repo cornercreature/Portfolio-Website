@@ -134,11 +134,11 @@ function populateGallery() {
 
 // Populate Detail View with Work Data
 function populateDetailView(workData) {
-    document.getElementById('detailTitle').textContent = workData.title;
-    document.getElementById('detailCategory').textContent = workData.category;
-    document.getElementById('detailText').textContent = workData.description;
+    document.querySelector('.detail-title').textContent = workData.title;
+    document.querySelector('.detail-category').textContent = workData.category;
+    document.querySelector('.detail-text').textContent = workData.description;
 
-    const detailImagesContainer = document.getElementById('detailImages');
+    const detailImagesContainer = document.querySelector('.detail-images');
 
     // Clear existing images
     detailImagesContainer.innerHTML = '';
@@ -148,7 +148,7 @@ function populateDetailView(workData) {
 
     // Create main image
     const mainImage = document.createElement('img');
-    mainImage.id = 'detailMainImage';
+    mainImage.className = 'detail-main-image';
     mainImage.style.width = '100%';
     mainImage.style.marginLeft = '0px';
     mainImage.style.marginRight = '0px';
@@ -216,7 +216,7 @@ function expandWork(workId) {
     }
 
     // If clicking on the same work that's already open, close it
-    if (currentlyOpenWorkId === workId && document.querySelector('.body').classList.contains('expanded')) {
+    if (currentlyOpenWorkId === workId && document.querySelector('.portfolio-main').classList.contains('expanded')) {
         collapseWork();
         return;
     }
@@ -224,8 +224,8 @@ function expandWork(workId) {
     // Populate detail view with work data
     populateDetailView(work);
 
-    // Add expanded class to body to trigger CSS transition
-    document.querySelector('.body').classList.add('expanded');
+    // Add expanded class to portfolio-main to trigger CSS transition
+    document.querySelector('.portfolio-main').classList.add('expanded');
 
     // Update currently open work ID
     currentlyOpenWorkId = workId;
@@ -233,19 +233,19 @@ function expandWork(workId) {
 
 // Collapse Work - Return to Grid View
 function collapseWork() {
-    const body = document.querySelector('.body');
-    body.classList.remove('expanded');
-    body.classList.remove('center-full');
+    const portfolioMain = document.querySelector('.portfolio-main');
+    portfolioMain.classList.remove('expanded');
+    portfolioMain.classList.remove('center-full');
     currentlyOpenWorkId = null;
 }
 
 // Toggle Center Full View
 function toggleCenterFull() {
-    const body = document.querySelector('.body');
+    const portfolioMain = document.querySelector('.portfolio-main');
 
     // Only toggle center-full if we're in expanded state
-    if (body.classList.contains('expanded')) {
-        body.classList.toggle('center-full');
+    if (portfolioMain.classList.contains('expanded')) {
+        portfolioMain.classList.toggle('center-full');
     }
 }
 
@@ -254,7 +254,7 @@ let lastScrollTop = { left: 0, right: 0 };
 let aboutCollapsed = false;
 
 function handleAboutScroll(element, side) {
-    const aboutSection = document.getElementById('about');
+    const aboutSection = document.querySelector('.about-section');
     const scrollThreshold = 10;
     const currentScrollTop = Math.max(0, element.scrollTop); // Prevent negative values
     const previousScrollTop = lastScrollTop[side];
@@ -309,7 +309,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Initialize marquee message
-    const messageContainer = document.querySelector('.messageContainer');
+    const messageContainer = document.querySelector('.message-container');
     if (messageContainer) {
         // Get existing text content
         const textContent = messageContainer.textContent;

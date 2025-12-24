@@ -1,0 +1,113 @@
+/* CSS Variables - Design Tokens */
+
+:root {
+    /* Colors */
+    --color-text: #000;
+    --color-bg: #ffffff;
+    --color-border: #000;
+    --color-placeholder-1: #c9d6df;
+    --color-placeholder-2: #dae5e8;
+    --color-placeholder-3: #b8c9d4;
+    --color-placeholder-4: #d4dfe5;
+    --color-placeholder-5: #a8bac7;
+    --color-placeholder-6: #cdd8de;
+    --color-placeholder-fallback: #d3d3d3;
+    --color-button-bg: #000;
+    --color-button-text: #fff;
+    --color-button-hover: #333;
+
+    /* Typography */
+    --font-primary: "Rethink Sans", sans-serif;
+    --font-display: 'Sentient-Extralight';
+    --font-icon: "Yarndings 20", system-ui;
+
+    --font-size-base: 18px;
+    --font-size-small: 14px;
+    --font-size-medium: 16px;
+    --font-size-large: 24px;
+    --font-size-title: 32px;
+    --font-size-h2: 20px;
+    --font-size-h2-collapsed: 12px;
+
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+
+    --line-height-base: 1.6;
+    --line-height-tight: 19px;
+    --line-height-medium: 28px;
+
+    /* Layout - Widths */
+    --width-work-item: 680px;
+    --width-work-item-collapsed: 244px;
+    --width-work-thumbnail-collapsed: 223.5px;
+    --width-detail-view: 871px;
+    --width-bio-max: 670px;
+    --width-bio-paragraph: 465px;
+    --width-bio-image-container: 200px;
+    --width-bio-image: 190px;
+
+    /* Layout - Heights */
+    --height-header: 50px;
+    --height-about: 150px;
+    --height-about-links: 80px;
+    --height-bio-image-container: 285px;
+    --height-thumbnail-landscape: 400px;
+    --height-thumbnail-portrait: 700px;
+    --height-thumbnail-square: 560px;
+    --height-detail-image-landscape: 400px;
+    --height-detail-image-portrait: 600px;
+    --height-detail-image-square: 500px;
+
+    /* Spacing - Margins */
+    --margin-header-top: 20px;
+    --margin-about-top: 30px;
+    --margin-bio-top: 20px;
+    --margin-links-top: 20px;
+    --margin-links-right: 118px;
+    --margin-bio-image-container-left: 100px;
+    --margin-bio-image-top: 25px;
+    --margin-h2-bottom: 30px;
+    --margin-detail-title: 10px;
+    --margin-detail-category: 15px;
+    --margin-detail-description: 30px;
+    --margin-detail-images: 20px;
+    --margin-detail-image: 20px;
+    --margin-work-item-collapsed: 15px;
+
+    /* Spacing - Padding */
+    --padding-header: 50px;
+    --padding-about: 40px;
+    --padding-detail-view: 20px;
+    --padding-center-full: 40px;
+    --padding-work-info: 8px;
+    --padding-button: 10px 20px;
+    --padding-diamond-top: 7px;
+
+    /* Spacing - Gaps */
+    --gap-portfolio-items: 20px;
+    --gap-header-center: 0px;
+
+    /* Spacing - Misc */
+    --spacing-column-top: 20px;
+    --spacing-diamond-margin: 2px;
+
+    /* Transitions */
+    --transition-duration: 0.6s;
+    --transition-duration-fast: 0.3s;
+    --transition-easing: ease;
+    --transition-easing-linear: linear;
+
+    /* Animation */
+    --animation-marquee-duration: 15s;
+
+    /* Borders */
+    --border-width: 1px;
+    --border-style: solid;
+
+    /* Other */
+    --scroll-threshold: 10px;
+    --message-container-width: 0px;
+    --message-container-width-expanded: 150px;
+}

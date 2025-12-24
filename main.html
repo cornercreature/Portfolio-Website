@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="mainstyle.css">
-    <title>Document</title>
+    <title>Nicole Sun - Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap"
@@ -13,60 +13,58 @@
 </head>
 
 <body>
-    <div class="header">
-        <span class="headL">
-            <h1 class="myName">Nicole Sun</h1>
+    <header class="site-header">
+        <div class="header-left">
+            <h1 class="site-title">Nicole Sun</h1>
             <!-- make into about page link! -->
-        </span>
-        <span id="headC">
+        </div>
+        <div class="header-center">
             <p class="shu">|</p>
             <p class="diamond">r</p>
-            <div class="messageContainer">🚪 | 🛋️ 🛏️ | 🚪 Welcome in! 🚪 | 🛋️ 🛏️ | 🚪 Please make yourself at home!</div>
+            <div class="message-container">🚪 | 🛋️ 🛏️ | 🚪 Welcome in! 🚪 | 🛋️ 🛏️ | 🚪 Please make yourself at home!</div>
             <p class="diamond">r</p>
             <p class="shu">|</p>
-        </span>
-        <span class="headR">
-            <h1 class="nav">
-                <a href="about.html">About</a> /
-                <a id="shelvesLink" href="shelves.html">The Shelves</a>
-            </h1>
-        </span>
-    </div>
+        </div>
+        <nav class="header-nav" aria-label="Main navigation">
+            <a href="about.html">About</a> /
+            <a href="shelves.html">The Shelves</a>
+        </nav>
+    </header>
 
-    <div id="about">
-        <span id="bio">
-            <p class="bioParagraph">
-                Nicole is a designer interested in systems and worlds. She is currently
+    <section id="about" class="about-section">
+        <div class="about-bio">
+            <p class="bio-paragraph">
+                Nicole is a designer and student of systems and worlds. She is currently
                 pursuing her BFA in Graphic Design and Computation at the Rhode Island School of Design.
             </p>
-        </span>
+        </div>
 
-        <span id="links">
+        <div class="about-links">
             <a>Email</a>
             <a>LinkedIn</a>
             <p>Resume</p>
-        </span>
-    </div>
+        </div>
+    </section>
 
-    <div class="body">
-        <span id="left">
+    <main class="portfolio-main">
+        <div class="portfolio-column portfolio-column-left" id="left">
 
-        </span>
-        <span id="center">
-            <div id="detailDescription">
-                <h2 id="detailTitle"></h2>
-                <p id="detailCategory"></p>
-                <p id="detailText"></p>
+        </div>
+        <div class="portfolio-detail" id="center">
+            <div class="detail-description">
+                <h2 class="detail-title"></h2>
+                <p class="detail-category"></p>
+                <p class="detail-text"></p>
             </div>
-            <div id="detailImages">
-                <img id="detailMainImage" src="" alt="">
+            <div class="detail-images">
+                <img class="detail-main-image" src="" alt="">
             </div>
             <!-- <button id="closeDetail">Close</button> -->
-        </span>
-        <span id="right">
+        </div>
+        <div class="portfolio-column portfolio-column-right" id="right">
 
-        </span>
-    </div>
+        </div>
+    </main>
     <script src="maincontrol.js"></script>
 </body>
 

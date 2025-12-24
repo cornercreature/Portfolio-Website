@@ -1,52 +1,52 @@
 /* Detail View Styling */
 
-#detailDescription {
-    margin-bottom: 30px;
-    font-family: "Rethink Sans", sans-serif;
+.detail-description {
+    margin-bottom: var(--margin-detail-description);
+    font-family: var(--font-primary);
 }
 
-#detailTitle {
-    font-family: 'Sentient-Extralight';
-    font-size: 32px;
-    margin-bottom: 10px;
+.detail-title {
+    font-family: var(--font-display);
+    font-size: var(--font-size-title);
+    margin-bottom: var(--margin-detail-title);
 }
 
-#detailCategory {
+.detail-category {
     font-style: italic;
-    font-size: 16px;
-    margin-bottom: 15px;
+    font-size: var(--font-size-medium);
+    margin-bottom: var(--margin-detail-category);
 }
 
-#detailText {
-    font-size: 16px;
-    line-height: 1.6;
+.detail-text {
+    font-size: var(--font-size-medium);
+    line-height: var(--line-height-base);
 }
 
-#detailImages {
-    margin-bottom: 20px;
+.detail-images {
+    margin-bottom: var(--margin-detail-images);
 }
 
-#detailMainImage {
+.detail-main-image {
     width: 100%;
-    margin-left: 0px;
-    margin-right: 0px;
+    margin-left: 0;
+    margin-right: 0;
     height: auto;
-    background-color: #d3d3d3;
-    min-height: 400px;
+    background-color: var(--color-placeholder-fallback);
+    min-height: var(--height-detail-image-landscape);
 }
 
-#closeDetail {
+.close-detail {
     align-self: flex-start;
-    padding: 10px 20px;
-    background-color: #000;
-    color: #fff;
+    padding: var(--padding-button);
+    background-color: var(--color-button-bg);
+    color: var(--color-button-text);
     border: none;
     cursor: pointer;
-    font-family: "Rethink Sans", sans-serif;
-    font-size: 14px;
-    transition: background-color 0.3s ease;
+    font-family: var(--font-primary);
+    font-size: var(--font-size-small);
+    transition: background-color var(--transition-duration-fast) var(--transition-easing);
 }
 
-#closeDetail:hover {
-    background-color: #333;
+.close-detail:hover {
+    background-color: var(--color-button-hover);
 }

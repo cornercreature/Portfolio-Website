@@ -8,6 +8,7 @@
 export function setupSynchronizedScrolling() {
     const leftColumn = document.querySelector('.portfolio-column-left');
     const rightColumn = document.querySelector('.portfolio-column-right');
+    const aboutSection = document.querySelector('.about-section');
 
     let isScrolling = false;
 
@@ -21,6 +22,11 @@ export function setupSynchronizedScrolling() {
 
         isScrolling = true;
         targetColumn.scrollTop = sourceColumn.scrollTop;
+
+        // Collapse about section when scrolling
+        if (aboutSection && !aboutSection.classList.contains('collapsed')) {
+            aboutSection.classList.add('collapsed');
+        }
 
         requestAnimationFrame(() => {
             isScrolling = false;

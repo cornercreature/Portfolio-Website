@@ -10,6 +10,7 @@
     width: 100%;
     box-sizing: border-box;
     overflow: hidden;
+    height:110px;
     transition: height var(--transition-duration) var(--transition-easing),
                 opacity var(--transition-duration) var(--transition-easing),
                 margin var(--transition-duration) var(--transition-easing);
@@ -57,6 +58,7 @@
 .about-bio {
     max-width: var(--width-bio-max);
     margin-top: var(--margin-bio-top);
+    height:80px;
 }
 
 

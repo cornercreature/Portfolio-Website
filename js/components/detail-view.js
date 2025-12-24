@@ -45,12 +45,14 @@ export function createDetailImage(workData, imageSrc = '', imageIndex = 0) {
 }
 
 /**
- * Populates the detail view with work data including title, category, description, and images
+ * Populates the detail view with work data including title, category, year, collaborators, description, and images
  * @param {Object} workData - The work data object to display
  */
 export function populateDetailView(workData) {
     document.querySelector('.detail-title').textContent = workData.title;
     document.querySelector('.detail-category').textContent = workData.category;
+    document.querySelector('.year').textContent = workData.year;
+    document.querySelector('.collaborators').textContent = workData.collaborators;
     document.querySelector('.detail-text').textContent = workData.description;
 
     const detailImagesContainer = document.querySelector('.detail-images');

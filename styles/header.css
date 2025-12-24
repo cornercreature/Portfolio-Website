@@ -69,6 +69,7 @@ body:has(.portfolio-main.expanded) .message-container {
     font-family: var(--font-display);
     font-size: var(--font-size-base);
     text-decoration: none;
+    gap:35px;
 }
 
 .nav-button {

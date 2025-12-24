@@ -62,7 +62,7 @@
 
     /* Spacing - Margins */
     --margin-header-top: 20px;
-    --margin-about-top: 30px;
+    --margin-about-top: 6px;
     --margin-bio-top: 20px;
     --margin-links-top: 20px;
     --margin-links-right: 118px;
@@ -77,7 +77,7 @@
     --margin-work-item-collapsed: 15px;
 
     /* Spacing - Padding */
-    --padding-header: 50px;
+    --padding-header: 40px;
     --padding-about: 40px;
     --padding-detail-view: 20px;
     --padding-center-full: 40px;

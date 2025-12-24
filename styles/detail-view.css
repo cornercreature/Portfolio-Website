@@ -1,24 +1,32 @@
 /* Detail View Styling */
 
 .detail-description {
+    margin-top:30px;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
     margin-bottom: var(--margin-detail-description);
     font-family: var(--font-primary);
 }
 
 .detail-title {
     font-family: var(--font-display);
-    font-size: var(--font-size-title);
+    justify-content: flex-start;
+    font-size: var(--font-size-base);
     margin-bottom: var(--margin-detail-title);
 }
-
+.unitL{
+    width:50%;
+}
+.description-unit {
+}
 .detail-category {
-    font-style: italic;
-    font-size: var(--font-size-medium);
+    font-size: var(--font-size-base);
     margin-bottom: var(--margin-detail-category);
 }
 
 .detail-text {
-    font-size: var(--font-size-medium);
+    font-size: var(--font-size-base);
     line-height: var(--line-height-base);
 }
 

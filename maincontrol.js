@@ -224,6 +224,12 @@ function expandWork(workId) {
     // Populate detail view with work data
     populateDetailView(work);
 
+    // Hide about section
+    const aboutSection = document.querySelector('.about-section');
+    if (aboutSection) {
+        aboutSection.classList.add('collapsed');
+    }
+
     // Add slight pause before starting the transition
     setTimeout(() => {
         document.querySelector('.portfolio-main').classList.add('expanded');
@@ -236,6 +242,12 @@ function expandWork(workId) {
 // Collapse Work - Return to Grid View
 function collapseWork() {
     const portfolioMain = document.querySelector('.portfolio-main');
+
+    // Show about section
+    const aboutSection = document.querySelector('.about-section');
+    if (aboutSection) {
+        aboutSection.classList.remove('collapsed');
+    }
 
     // Add slight pause before starting the transition
     setTimeout(() => {
@@ -356,17 +368,12 @@ function setupSwipeGestures() {
         // Apply subtle easing for more natural feel
         const easedProgress = 1 - Math.pow(1 - progress, 2);
 
-        // Detail view fades out as you swipe
-        portfolioDetail.style.opacity = 1 - (easedProgress * 0.3);
-
         // Columns slide in from their respective sides with easing
         const leftProgress = easedProgress * 50; // 0 to 50
         leftColumn.style.width = `${leftProgress}%`;
-        leftColumn.style.opacity = easedProgress;
 
         // Right column comes from right
         rightColumn.style.width = `${leftProgress}%`;
-        rightColumn.style.opacity = easedProgress;
 
         // Detail view shrinks from center
         portfolioDetail.style.width = `${100 - (leftProgress * 2)}%`;
@@ -380,12 +387,9 @@ function setupSwipeGestures() {
         rightColumn.style.transition = springTransition;
 
         // Reset to expanded state
-        portfolioDetail.style.opacity = '';
         portfolioDetail.style.width = '';
         leftColumn.style.width = '';
-        leftColumn.style.opacity = '';
         rightColumn.style.width = '';
-        rightColumn.style.opacity = '';
 
         // Clear transitions after animation completes
         setTimeout(() => {
@@ -407,14 +411,11 @@ function setupSwipeGestures() {
 
         // Reset inline styles after transition
         setTimeout(() => {
-            portfolioDetail.style.opacity = '';
             portfolioDetail.style.width = '';
             portfolioDetail.style.transition = '';
             leftColumn.style.width = '';
-            leftColumn.style.opacity = '';
             leftColumn.style.transition = '';
             rightColumn.style.width = '';
-            rightColumn.style.opacity = '';
             rightColumn.style.transition = '';
         }, 500);
     }

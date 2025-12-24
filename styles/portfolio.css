@@ -30,8 +30,7 @@ h2 {
     display: flex;
     flex-direction: column;
     gap: var(--gap-portfolio-items);
-    transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1),
-                opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     overflow-y: auto;
     overflow-x: hidden;
     box-sizing: border-box;
@@ -42,6 +41,12 @@ h2 {
 .portfolio-column-left {
     left: 0;
     align-items: center;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+.portfolio-column-left::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
 }
 
 .portfolio-column-right {
@@ -71,12 +76,10 @@ h2 {
 /* Expanded State - Detail View (Columns Part, Center Full Screen) */
 .portfolio-main.expanded .portfolio-column-left {
     width: 0;
-    opacity: 0;
 }
 
 .portfolio-main.expanded .portfolio-column-right {
     width: 0;
-    opacity: 0;
 }
 
 .portfolio-main.expanded .portfolio-detail {

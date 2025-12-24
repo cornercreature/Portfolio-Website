@@ -23,9 +23,15 @@ export function setupSynchronizedScrolling() {
         isScrolling = true;
         targetColumn.scrollTop = sourceColumn.scrollTop;
 
-        // Collapse about section when scrolling
-        if (aboutSection && !aboutSection.classList.contains('collapsed')) {
-            aboutSection.classList.add('collapsed');
+        // Show/hide about section based on scroll position
+        if (aboutSection) {
+            if (sourceColumn.scrollTop === 0) {
+                // At top - show about section
+                aboutSection.classList.remove('collapsed');
+            } else if (!aboutSection.classList.contains('collapsed')) {
+                // Scrolled down - hide about section
+                aboutSection.classList.add('collapsed');
+            }
         }
 
         requestAnimationFrame(() => {

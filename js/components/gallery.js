@@ -58,6 +58,9 @@ export function populateGallery() {
     const leftColumn = document.getElementById('left');
     const rightColumn = document.getElementById('right');
 
+    // Only populate if columns exist (i.e., we're on the portfolio page)
+    if (!leftColumn || !rightColumn) return;
+
     // Clear existing content
     leftColumn.innerHTML = '';
     rightColumn.innerHTML = '';

@@ -18,6 +18,11 @@ function createHeader() {
         ? 'message-container shelves-message'
         : 'message-container';
 
+    // For shelves page, wrap content in marquee div directly
+    const messageHTML = isShelvesPage
+        ? `<div class="marquee">${messageContent} ${messageContent}</div>`
+        : messageContent;
+
     header.innerHTML = `
         <div class="header-left">
             <h1 class="site-title">Nicole Sun</h1>
@@ -25,7 +30,7 @@ function createHeader() {
         <div class="header-center">
             <p class="shu">|</p>
             <p class="diamond">r</p>
-            <div class="${messageClass}">${messageContent}</div>
+            <div class="${messageClass}">${messageHTML}</div>
             <p class="diamond">r</p>
             <p class="shu">|</p>
         </div>

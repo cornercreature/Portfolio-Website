@@ -10,6 +10,9 @@ export function setupMarquee() {
 
     if (!messageContainer) return;
 
+    // Skip if marquee already exists (e.g., on shelves page)
+    if (messageContainer.querySelector('.marquee')) return;
+
     const messageText = messageContainer.textContent.trim();
 
     if (!messageText) return;

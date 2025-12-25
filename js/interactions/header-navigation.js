@@ -15,6 +15,7 @@ export function setupHeaderNavigation() {
         siteTitle.style.cursor = 'pointer';
 
         siteTitle.addEventListener('click', () => {
+            const currentPage = window.location.pathname;
             const portfolioMain = document.querySelector('.portfolio-main');
 
             // If in detail view, collapse it
@@ -23,6 +24,9 @@ export function setupHeaderNavigation() {
             } else if (portfolioMain) {
                 // On portfolio page but not in detail view - do nothing
                 return;
+            } else if (currentPage.includes('about.html') || currentPage.includes('shelves.html')) {
+                // On about or shelves page - navigate to main.html
+                window.location.href = 'main.html';
             } else {
                 // On other pages - navigate to main.html
                 window.location.href = 'main.html';

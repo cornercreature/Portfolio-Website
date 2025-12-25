@@ -14,10 +14,10 @@ import { setupMarquee } from './components/marquee.js';
  */
 function initPortfolio() {
     initHeader();
+    setupHeaderNavigation(); // Move after header is created
     populateGallery();
     setupSwipeGestures();
     setupSynchronizedScrolling();
-    setupHeaderNavigation();
     setupMarquee();
 }
 

@@ -48,6 +48,10 @@ body:has(.portfolio-main.expanded) .message-container {
     width: var(--message-container-width-expanded);
 }
 
+.message-container.shelves-message {
+    width: var(--message-container-width-expanded);
+}
+
 .message-container .marquee {
     white-space: nowrap;
 }
@@ -56,7 +60,9 @@ body:has(.portfolio-main.expanded) .message-container {
     padding-top: var(--padding-diamond-top);
     margin: 0 var(--spacing-diamond-margin);
     font-family: var(--font-icon);
-    font-size: var(--font-size-base);
+    font-size: var(--font-size-icon);
+    position: relative;
+    top: -4px;
 }
 
 .shu {
@@ -90,4 +96,13 @@ body:has(.portfolio-main.expanded) .message-container {
 
 .nav-button:hover {
     text-decoration: underline;
+}
+
+.nav-icon {
+    font-family: var(--font-icon);
+    font-size: var(--font-size-icon);
+    margin-right: 3px;
+    position: relative;
+    top: 2px;
+    display: none;
 }

@@ -13,19 +13,21 @@ function createHeader() {
     // Determine message class based on current page
     const currentPage = window.location.pathname;
     const isShelvesPage = currentPage.includes('shelves.html');
+    const isAboutPage = currentPage.includes('about.html');
+    const isAlwaysOpenPage = isShelvesPage || isAboutPage;
     const messageContent = '🚪 | 🛋️ 🛏️ | 🚪 Please make yourself at home!';
-    const messageClass = isShelvesPage
+    const messageClass = isAlwaysOpenPage
         ? 'message-container shelves-message'
         : 'message-container';
 
-    // For shelves page, wrap content in marquee div directly
-    const messageHTML = isShelvesPage
+    // For shelves and about pages, wrap content in marquee div directly
+    const messageHTML = isAlwaysOpenPage
         ? `<div class="marquee">${messageContent} ${messageContent}</div>`
         : messageContent;
 
     header.innerHTML = `
         <div class="header-left">
-            <h1 class="site-title">Nicole Sun</h1>
+            <p class="site-title">Nicole Sun</p>
         </div>
         <div class="header-center">
             <p class="shu">|</p>
@@ -35,9 +37,9 @@ function createHeader() {
             <p class="shu">|</p>
         </div>
         <nav class="header-nav" aria-label="Main navigation">
-            <a href="main.html">Portfolio</a>
-            <a href="about.html">About</a>
-            <a href="shelves.html">The Shelves</a>
+            <a href="main.html"><span class="nav-icon">,</span>Portfolio</a>
+            <a href="about.html"><span class="nav-icon">,</span>About</a>
+            <a href="shelves.html"><span class="nav-icon">,</span>The Shelves</a>
         </nav>
     `;
 

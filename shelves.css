@@ -91,6 +91,8 @@ a {
     margin: 0 2px;
     font-family: "Yarndings 20", system-ui;
     font-size: 18px;
+    position: relative;
+    top: -4px;
 }
 
 .shu {
@@ -124,4 +126,13 @@ a {
 
 .nav-button:hover {
     text-decoration: underline;
+}
+
+.nav-icon {
+    font-family: var(--font-icon);
+    font-size: var(--font-size-icon);
+    margin-right: 3px;
+    position: relative;
+    top: 2px;
+    display: none;
 }

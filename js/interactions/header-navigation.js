@@ -17,9 +17,15 @@ export function setupHeaderNavigation() {
         siteTitle.addEventListener('click', () => {
             const portfolioMain = document.querySelector('.portfolio-main');
 
-            // Only collapse if we're in detail view
+            // If in detail view, collapse it
             if (portfolioMain && portfolioMain.classList.contains('expanded')) {
                 collapseWork();
+            } else if (portfolioMain) {
+                // On portfolio page but not in detail view - do nothing
+                return;
+            } else {
+                // On other pages - navigate to main.html
+                window.location.href = 'main.html';
             }
         });
     }

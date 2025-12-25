@@ -10,7 +10,9 @@ export function setupMarquee() {
 
     if (!messageContainer) return;
 
-    const messageText = messageContainer.textContent;
+    const messageText = messageContainer.textContent.trim();
+
+    if (!messageText) return;
 
     // Create marquee wrapper
     const marqueeWrapper = document.createElement('div');

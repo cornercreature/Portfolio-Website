@@ -4,6 +4,7 @@
     display: inline-block;
     animation: marquee var(--animation-marquee-duration) var(--transition-easing-linear) infinite;
     padding-right: var(--gap-portfolio-items);
+    will-change: transform;
 }
 
 @keyframes marquee {

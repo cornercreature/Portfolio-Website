@@ -48,6 +48,10 @@ body:has(.portfolio-main.expanded) .message-container {
     width: var(--message-container-width-expanded);
 }
 
+.message-container .marquee {
+    white-space: nowrap;
+}
+
 .diamond {
     padding-top: var(--padding-diamond-top);
     margin: 0 var(--spacing-diamond-margin);

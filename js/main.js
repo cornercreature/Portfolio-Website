@@ -2,6 +2,7 @@
 // MAIN APPLICATION ENTRY POINT
 // ============================================================================
 
+import { initHeader } from './components/header.js';
 import { populateGallery } from './components/gallery.js';
 import { setupSwipeGestures } from './interactions/swipe-gestures.js';
 import { setupSynchronizedScrolling } from './interactions/synchronized-scroll.js';
@@ -12,6 +13,7 @@ import { setupMarquee } from './components/marquee.js';
  * Initializes the portfolio on page load
  */
 function initPortfolio() {
+    initHeader();
     populateGallery();
     setupSwipeGestures();
     setupSynchronizedScrolling();

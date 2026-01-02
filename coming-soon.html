@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="mainstyle.css">
-    <title>About - Nicole Sun</title>
+    <link rel="stylesheet" href="styles/coming-soon.css">
+    <title>Nicole Sun</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap"
@@ -13,22 +14,18 @@
 </head>
 
 <body>
-    <div id="about">
-        <span id="bio">
-            <p class="bioParagraph">
-                Nicole is a designer interested in systems and worlds. She is currently
-                pursuing her BFA in Graphic Design and Computation at the Rhode Island School of Design.
-            </p>
-        </span>
+    <!-- Blurred preview of the site structure -->
+    <div class="site-preview">
+        <div id="header-container"></div>
+    </div>
 
-        <span id="links">
-            <a>Email</a>
-            <a>LinkedIn</a>
-            <p>Resume</p>
-        </span>
-
-        <div id="bioImageContainer">
-             <img class="bioImage" src="/assets/NicoleBio.jpg">
+    <!-- Overlay message -->
+    <div class="overlay-container">
+        <div class="overlay-message">
+            <video autoplay loop muted playsinline>
+                <source src="/assets/comingsoon.mp4" type="video/mp4">
+            </video>
+            <p>oops! Nicole is busy rebuilding right now. Please come back soon</p>
         </div>
     </div>
 

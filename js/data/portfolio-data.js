@@ -5,10 +5,10 @@
 export const portfolioWorks = [
     {
         id: 1,
-        title: "Celestial Navigation",
-        category: "Interactive",
+        title: "Grounding: A Nature Data Walk",
+        category: "Data Visualization, Website",
         year: "2025",
-        collaborators: "",
+        collaborators: "with Run Ping Mao Wei and Susan He for DS III",
         thumbnailSrc: "", // Placeholder - will use CSS background
         fullImageSrc: "",
         images: [], // Array of additional image sources for detail view

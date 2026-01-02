@@ -54,3 +54,54 @@
     pointer-events: none;
     z-index: 1;
 }
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+    .overlay-video {
+        top: 20%;
+    }
+
+    .overlay-video video {
+        width: 80vw;
+        max-width: 350px;
+    }
+
+    .overlay-text1 {
+        top: 10%;
+        font-size: var(--font-size-base, 18px);
+        padding: 20px;
+        max-width: 90vw;
+    }
+
+    .overlay-text {
+        top: 65%;
+        font-size: var(--font-size-base, 18px);
+        padding: 20px;
+        max-width: 90vw;
+    }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+    .overlay-video {
+        top: 22%;
+    }
+
+    .overlay-video video {
+        width: 85vw;
+        max-width: 300px;
+    }
+
+    .overlay-text1 {
+        top: 8%;
+        font-size: 16px;
+        padding: 15px;
+    }
+
+    .overlay-text {
+        top: 68%;
+        font-size: 16px;
+        padding: 15px;
+        line-height: 1.4;
+    }
+}

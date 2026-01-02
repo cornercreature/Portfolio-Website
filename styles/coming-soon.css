@@ -11,25 +11,36 @@
     z-index: 9999;
 }
 
-.overlay-message {
-    text-align: center;
-    font-family: var(--font-primary, 'Rethink Sans', sans-serif);
-    font-size: var(--font-size-large, 24px);
-    padding: 40px;
-    max-width: 600px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
+.overlay-video {
+    position: absolute;
+    top: 15%;
     z-index: 10000;
-    margin-top: -200px;
 }
 
-.overlay-message video {
-    position: absolute;
-    top: 16%;
+.overlay-video video {
     width: 40vw;
     height: auto;
+}
+.overlay-text1 {
+    position: absolute;
+    text-align: center;
+    font-family: var(--font-primary, 'Rethink Sans', sans-serif);
+    font-size: var(--font-size-medium, 20px);
+    padding: 40px;
+    top:12%;
+    max-width: 600px;
+    z-index: 10001;
+}
+.overlay-text {
+    position: absolute;
+    text-align: center;
+    font-family: var(--font-primary, 'Rethink Sans', sans-serif);
+    font-size: var(--font-size-medium, 20px);
+    padding: 40px;
+    top:60%;
+    max-width: 600px;
+    z-index: 10001;
+    line-height: 1.5;
 }
 
 .site-preview {

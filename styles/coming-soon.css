@@ -13,7 +13,7 @@
 
 .overlay-video {
     position: absolute;
-    top: 19%;
+    top: 20%;
     z-index: 10000;
 }
 
@@ -27,7 +27,7 @@
     font-family: var(--font-primary, 'Rethink Sans', sans-serif);
     font-size: var(--font-size-medium, 20px);
     padding: 40px;
-    top:12%;
+    top:16%;
     max-width: 600px;
     z-index: 10001;
 }
@@ -37,7 +37,7 @@
     font-family: var(--font-primary, 'Rethink Sans', sans-serif);
     font-size: var(--font-size-medium, 20px);
     padding: 40px;
-    top:60%;
+    top:56%;
     max-width: 600px;
     z-index: 10001;
     line-height: 1.5;

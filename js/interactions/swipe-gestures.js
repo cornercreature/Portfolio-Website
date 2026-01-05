@@ -9,17 +9,19 @@ import { collapseWork } from '../views/transitions.js';
  * Sets up swipe gesture handlers for both touch and trackpad input
  */
 export function setupSwipeGestures() {
-    // Get DOM elements
+    // Get DOM elements - cache all elements once
     const portfolioDetail = document.querySelector('.portfolio-detail');
     const leftColumn = document.querySelector('.portfolio-column-left');
     const rightColumn = document.querySelector('.portfolio-column-right');
+    const portfolioMain = document.querySelector('.portfolio-main');
 
     // Only set up if portfolio elements exist
-    if (!portfolioDetail || !leftColumn || !rightColumn) return;
+    if (!portfolioDetail || !leftColumn || !rightColumn || !portfolioMain) return;
 
     // Swipe state
     let isSwiping = false;
     let swipeAccumulator = 0;
+    let swipeResetTimer = null;
 
     // Touch event handlers
     let startX = 0;
@@ -116,9 +118,8 @@ export function setupSwipeGestures() {
     // Touch Events (Mobile)
     // ========================================
 
-    document.addEventListener('touchstart', (e) => {
-        const portfolioMain = document.querySelector('.portfolio-main');
-        if (!portfolioMain || !portfolioMain.classList.contains('expanded')) return;
+    portfolioMain.addEventListener('touchstart', (e) => {
+        if (!portfolioMain.classList.contains('expanded')) return;
 
         // Only handle two-finger swipes
         if (e.touches.length === 2) {
@@ -133,7 +134,7 @@ export function setupSwipeGestures() {
         }
     }, { passive: true });
 
-    document.addEventListener('touchmove', (e) => {
+    portfolioMain.addEventListener('touchmove', (e) => {
         if (!isSwiping) return;
 
         if (e.touches.length === 2) {
@@ -143,7 +144,7 @@ export function setupSwipeGestures() {
         }
     }, { passive: true });
 
-    document.addEventListener('touchend', (e) => {
+    portfolioMain.addEventListener('touchend', (e) => {
         if (!isSwiping) return;
 
         if (e.touches.length === 0) {
@@ -157,9 +158,8 @@ export function setupSwipeGestures() {
     // Trackpad Events (Desktop)
     // ========================================
 
-    document.addEventListener('wheel', (e) => {
-        const portfolioMain = document.querySelector('.portfolio-main');
-        if (!portfolioMain || !portfolioMain.classList.contains('expanded')) return;
+    portfolioMain.addEventListener('wheel', (e) => {
+        if (!portfolioMain.classList.contains('expanded')) return;
 
         // Detect horizontal swipe (two-finger trackpad swipe)
         if (Math.abs(e.deltaX) > Math.abs(e.deltaY) && !e.ctrlKey) {
@@ -181,8 +181,8 @@ export function setupSwipeGestures() {
             }
 
             // Reset timer for incomplete swipes
-            clearTimeout(window.swipeResetTimer);
-            window.swipeResetTimer = setTimeout(() => {
+            clearTimeout(swipeResetTimer);
+            swipeResetTimer = setTimeout(() => {
                 if (Math.abs(swipeAccumulator) < SWIPE_CONFIG.threshold) {
                     resetSwipe();
                 }

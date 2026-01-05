@@ -13,18 +13,14 @@ import { PLACEHOLDER_COLORS, ASPECT_RATIO_HEIGHTS } from '../config/constants.js
  */
 export function createDetailImage(workData, imageSrc = '', imageIndex = 0) {
     const image = document.createElement('img');
-    image.style.width = '100%';
-    image.style.marginLeft = '0px';
-    image.style.marginRight = '0px';
-    image.style.marginBottom = '20px';
-    image.style.height = 'auto';
-    image.style.boxSizing = 'border-box';
 
-    // Set placeholder color
+    // Apply CSS class instead of inline styles
+    image.className = imageIndex === 0 ? 'detail-image detail-main-image' : 'detail-image';
+
+    // Set placeholder color and height (dynamic values that can't be in CSS)
     const colorIndex = (workData.id + imageIndex) % PLACEHOLDER_COLORS.length;
     image.style.backgroundColor = PLACEHOLDER_COLORS[colorIndex];
 
-    // Set height based on aspect ratio
     const aspectConfig = ASPECT_RATIO_HEIGHTS[workData.aspectRatio] || ASPECT_RATIO_HEIGHTS.landscape;
     image.style.minHeight = imageIndex === 0 ? aspectConfig.detail : ASPECT_RATIO_HEIGHTS.landscape.detail;
 
@@ -36,10 +32,6 @@ export function createDetailImage(workData, imageSrc = '', imageIndex = 0) {
     } else {
         image.src = '';
         image.alt = 'Placeholder';
-    }
-
-    if (imageIndex === 0) {
-        image.className = 'detail-main-image';
     }
 
     return image;

@@ -3,6 +3,23 @@
 // ============================================================================
 
 /**
+ * Throttles a function to only execute once per specified delay
+ * @param {Function} func - The function to throttle
+ * @param {number} delay - Minimum time between executions in milliseconds
+ * @returns {Function} Throttled function
+ */
+function throttle(func, delay) {
+    let lastCall = 0;
+    return function(...args) {
+        const now = Date.now();
+        if (now - lastCall >= delay) {
+            lastCall = now;
+            func.apply(this, args);
+        }
+    };
+}
+
+/**
  * Sets up synchronized scrolling between left and right columns
  */
 export function setupSynchronizedScrolling() {
@@ -24,14 +41,15 @@ export function setupSynchronizedScrolling() {
         if (isScrolling) return;
 
         isScrolling = true;
-        targetColumn.scrollTop = sourceColumn.scrollTop;
+        const scrollPosition = sourceColumn.scrollTop;
+        targetColumn.scrollTop = scrollPosition;
 
         // Show/hide about section based on scroll position
         if (aboutSection) {
-            if (sourceColumn.scrollTop === 0) {
+            if (scrollPosition === 0) {
                 // At top - show about section
                 aboutSection.classList.remove('collapsed');
-            } else if (!aboutSection.classList.contains('collapsed')) {
+            } else {
                 // Scrolled down - hide about section
                 aboutSection.classList.add('collapsed');
             }
@@ -42,13 +60,13 @@ export function setupSynchronizedScrolling() {
         });
     }
 
+    // Throttle scroll events to fire at most every 16ms (~60fps)
+    const throttledSyncLeft = throttle(() => syncScroll(leftColumn, rightColumn), 16);
+    const throttledSyncRight = throttle(() => syncScroll(rightColumn, leftColumn), 16);
+
     // Sync right column when left column scrolls
-    leftColumn.addEventListener('scroll', () => {
-        syncScroll(leftColumn, rightColumn);
-    });
+    leftColumn.addEventListener('scroll', throttledSyncLeft);
 
     // Sync left column when right column scrolls
-    rightColumn.addEventListener('scroll', () => {
-        syncScroll(rightColumn, leftColumn);
-    });
+    rightColumn.addEventListener('scroll', throttledSyncRight);
 }

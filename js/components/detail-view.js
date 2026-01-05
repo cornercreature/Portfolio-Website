@@ -31,6 +31,7 @@ export function createDetailImage(workData, imageSrc = '', imageIndex = 0) {
     // Set image source
     if (imageSrc) {
         image.src = imageSrc;
+        image.loading = 'lazy';
         image.alt = imageIndex === 0 ? workData.title : `${workData.title} - Image ${imageIndex + 1}`;
     } else {
         image.src = '';

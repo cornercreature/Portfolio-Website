@@ -17,6 +17,7 @@
     z-index: 10000;
 }
 
+.overlay-video img,
 .overlay-video video {
     width: 500px;
     height: auto;
@@ -61,6 +62,7 @@
         top: 20%;
     }
 
+    .overlay-video img,
     .overlay-video video {
         width: 80vw;
         max-width: 350px;
@@ -87,6 +89,7 @@
         top: 22%;
     }
 
+    .overlay-video img,
     .overlay-video video {
         width: 85vw;
         max-width: 300px;

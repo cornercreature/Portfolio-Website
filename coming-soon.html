@@ -36,6 +36,15 @@
     </div>
 
     <script type="module" src="js/main.js"></script>
+    <script>
+        // Workaround for GitHub Pages 416 error with video files
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.querySelector('.overlay-video video');
+            if (video) {
+                video.load();
+            }
+        });
+    </script>
 </body>
 
 </html>

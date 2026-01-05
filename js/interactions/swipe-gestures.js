@@ -14,6 +14,9 @@ export function setupSwipeGestures() {
     const leftColumn = document.querySelector('.portfolio-column-left');
     const rightColumn = document.querySelector('.portfolio-column-right');
 
+    // Only set up if portfolio elements exist
+    if (!portfolioDetail || !leftColumn || !rightColumn) return;
+
     // Swipe state
     let isSwiping = false;
     let swipeAccumulator = 0;

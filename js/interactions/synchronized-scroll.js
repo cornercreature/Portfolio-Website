@@ -10,6 +10,9 @@ export function setupSynchronizedScrolling() {
     const rightColumn = document.querySelector('.portfolio-column-right');
     const aboutSection = document.querySelector('.about-section');
 
+    // Only set up if portfolio columns exist
+    if (!leftColumn || !rightColumn) return;
+
     let isScrolling = false;
 
     /**

@@ -1,0 +1,279 @@
+PORTFOLIO WEBSITE - SETUP & DNS INSTRUCTIONS
+=============================================
+
+SITE INFORMATION
+----------------
+Domain: nicolesun.space
+GitHub Repo: https://github.com/cornercreature/Portfolio-Website
+Hosting: GitHub Pages
+
+=====================================
+DNS SETUP FOR GITHUB PAGES
+=====================================
+
+WHERE TO ADD DNS RECORDS:
+-------------------------
+Log into your domain registrar (where you bought nicolesun.space)
+Examples: Namecheap, GoDaddy, Google Domains, Cloudflare, etc.
+Look for "DNS Settings", "DNS Management", or "Name Servers"
+
+REQUIRED DNS RECORDS:
+---------------------
+Add these records at your domain registrar:
+
+1. A Records (for root domain):
+   Type: A
+   Host: @ (or leave blank for root)
+   Value: 185.199.108.153
+
+   Type: A
+   Host: @
+   Value: 185.199.109.153
+
+   Type: A
+   Host: @
+   Value: 185.199.110.153
+
+   Type: A
+   Host: @
+   Value: 185.199.111.153
+
+2. CNAME Record (for www):
+   Type: CNAME
+   Host: www
+   Value: cornercreature.github.io
+
+3. Wait 24-48 hours for DNS propagation (usually faster)
+
+VERIFY GITHUB PAGES SETUP:
+--------------------------
+1. Go to: https://github.com/cornercreature/Portfolio-Website/settings/pages
+2. Under "Custom domain", enter: nicolesun.space
+3. Check "Enforce HTTPS" (after DNS propagates)
+4. CNAME file in repo should contain: nicolesun.space (already done ✓)
+
+=====================================
+GOOGLE SEARCH CONSOLE VERIFICATION
+=====================================
+
+IF YOU WANT YOUR SITE INDEXED BY GOOGLE:
+
+METHOD 1 - DNS TXT Record (Recommended):
+-----------------------------------------
+1. Go to: https://search.google.com/search-console
+2. Add property: nicolesun.space
+3. Choose "DNS record" verification method
+4. Google will give you a TXT record like:
+   Type: TXT
+   Host: @ (or nicolesun.space)
+   Value: google-site-verification=XXXXXXXXXXXXX
+
+5. Add this to your domain registrar's DNS settings
+6. Return to Search Console and click "Verify"
+
+METHOD 2 - HTML File:
+---------------------
+1. Google gives you an HTML file to download
+2. Upload it to your website root directory
+3. Commit and push to GitHub
+4. Verify in Search Console
+
+METHOD 3 - Meta Tag:
+--------------------
+1. Add meta tag to <head> of index.html
+2. Commit and push changes
+3. Verify in Search Console
+
+=====================================
+EMAIL SETUP (OPTIONAL)
+=====================================
+
+IF YOU WANT email@nicolesun.space:
+
+Options:
+--------
+1. Google Workspace (paid) - Professional email
+2. Zoho Mail (free tier available)
+3. Email forwarding to existing email
+
+Each service provides specific DNS records (MX, TXT, CNAME)
+Follow their setup wizard after signing up
+
+=====================================
+WEBSITE STRUCTURE
+=====================================
+
+FILES:
+------
+index.html          - Landing page (redirects to coming-soon.html)
+main.html           - Main content page
+about.html          - About page
+shelves.html        - Projects/gallery page
+coming-soon.html    - Temporary placeholder page
+
+STYLING:
+--------
+mainstyle.css       - Main stylesheet
+sentient.css        - Additional styles
+shelves.css         - Gallery page styles
+styles/             - Additional stylesheets
+
+SCRIPTS:
+--------
+shelves.js          - Gallery functionality
+js/                 - JavaScript files
+
+ASSETS:
+-------
+assets/             - Images and media
+Typefaces/          - Custom fonts
+
+=====================================
+LOCAL DEVELOPMENT
+=====================================
+
+1. Clone repository:
+   git clone https://github.com/cornercreature/Portfolio-Website.git
+
+2. Open in browser:
+   - Open index.html directly, OR
+   - Use local server (recommended):
+     python3 -m http.server 8000
+     OR
+     npx live-server
+
+3. Make changes and test locally
+
+4. Commit and push:
+   git add .
+   git commit -m "Description of changes"
+   git push origin main
+
+=====================================
+TROUBLESHOOTING
+=====================================
+
+DNS APPEARS TO BE WORKING - IF SITE STILL NOT LOADING:
+-------------------------------------------------------
+
+YOUR DNS IS CORRECTLY CONFIGURED! All records are propagated.
+If you still can't access nicolesun.space, try these fixes:
+
+1. CLEAR BROWSER CACHE:
+   Chrome: Ctrl+Shift+Delete / Cmd+Shift+Delete
+   Firefox: Ctrl+Shift+Delete / Cmd+Shift+Delete
+   Safari: Cmd+Option+E
+
+2. FLUSH DNS CACHE ON YOUR COMPUTER:
+   Mac:
+   sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder
+
+   Windows:
+   ipconfig /flushdns
+
+   Linux:
+   sudo systemd-resolve --flush-caches
+
+3. TRY INCOGNITO/PRIVATE BROWSING:
+   This bypasses cache completely
+
+4. TEST FROM DIFFERENT DEVICE/NETWORK:
+   Try your phone on cellular data (not WiFi)
+
+5. CHECK GITHUB PAGES SETTINGS:
+   Go to: https://github.com/cornercreature/Portfolio-Website/settings/pages
+   Verify:
+   - Source: Deploy from main branch
+   - Custom domain: nicolesun.space
+   - "Enforce HTTPS" is checked
+   - Shows green checkmark: "DNS check successful"
+
+6. WAIT FOR SSL CERTIFICATE:
+   If you see SSL errors, wait 24 hours after adding domain
+   GitHub needs time to provision SSL certificate
+
+VERIFICATION AS OF 2026-01-07:
+-------------------------------
+✓ DNS A records: All 4 GitHub IPs responding
+✓ CNAME record: Points to cornercreature.github.io
+✓ Nameservers: GoDaddy (domaincontrol.com)
+✓ HTTPS response: Returns HTTP 200 (working!)
+✓ CNAME file in repo: Contains nicolesun.space
+
+Other Troubleshooting:
+----------------------
+
+DNS Issues:
+-----------
+- Check propagation: https://dnschecker.org
+- Enter nicolesun.space and check A records
+- Use: dig nicolesun.space (should show 4 IPs)
+
+GitHub Pages Issues:
+--------------------
+- Check repo is public
+- Check Pages is enabled in Settings > Pages
+- Verify CNAME file contains correct domain
+- Check for deployment errors in Actions tab
+- Repository must be named correctly OR have Pages enabled
+
+SSL Certificate Issues:
+-----------------------
+- Wait 24 hours after DNS setup
+- Enable "Enforce HTTPS" in Pages settings
+- Check certificate status at: https://www.ssllabs.com/ssltest/
+
+Site Not Loading:
+-----------------
+- Clear browser cache (most common fix!)
+- Try incognito/private browsing
+- Try different device/network
+- Check GitHub Pages status: https://www.githubstatus.com
+
+=====================================
+VERIFICATION CHECKLIST
+=====================================
+
+☐ DNS A records added to domain registrar
+☐ DNS CNAME record for www added
+☐ Custom domain configured in GitHub Pages settings
+☐ CNAME file exists in repository
+☐ DNS propagation complete (check dnschecker.org)
+☐ HTTPS enabled in GitHub Pages
+☐ Site loads at nicolesun.space
+☐ Site loads at www.nicolesun.space
+☐ (Optional) Google Search Console verified
+☐ (Optional) Email configured
+
+=====================================
+USEFUL LINKS
+=====================================
+
+GitHub Pages Docs:
+https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site
+
+DNS Checker:
+https://dnschecker.org
+
+Google Search Console:
+https://search.google.com/search-console
+
+SSL Test:
+https://www.ssllabs.com/ssltest/
+
+GitHub Status:
+https://www.githubstatus.com
+
+=====================================
+QUESTIONS?
+=====================================
+
+Common scenarios covered:
+✓ Setting up custom domain
+✓ DNS configuration
+✓ Google verification
+✓ Email setup options
+✓ Local development
+✓ Troubleshooting
+
+For more help, check GitHub Pages documentation or domain registrar support.

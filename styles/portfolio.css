@@ -153,22 +153,26 @@ h2 {
 .work-info {
     display: flex;
     justify-content: space-between;
-    margin: 6px 0 0 0;
-    padding-right: var(--padding-work-info);
+    margin: 10px 0 0 0; 
     font-family: var(--font-primary);
-    font-size: var(--font-size-base);
+    padding: 12px 18px 0px 10px;
     box-sizing: border-box;
+    border: 1px solid black;
+    vertical-align: middle;
+    height: 50px;
 }
 
 .work-title {
+    font-size: var(--font-size-base);
     font-weight: var(--font-weight-normal);
     text-align: right;
 }
 
 .work-category {
+    font-size: var(--font-size-base);
     margin-right: -10px;
     font-weight: var(--font-weight-normal);
-    color:gray;
+    color:black;
 }
 
 .portfolio-main.expanded .work-info {

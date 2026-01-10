@@ -62,6 +62,7 @@ export function createDetailImage(workData, mediaSrc = '', imageIndex = 0) {
             media.loop = true;
             media.muted = true;
             media.playsInline = true;
+            media.autoplay = true;
             media.preload = 'auto'; // Load full video
             media.style.width = '100%';
             media.style.objectFit = 'contain';

@@ -105,7 +105,7 @@ export function populateDetailView(workData) {
     if (workData.images && workData.images.length > 0) {
         let imageIndex = 0;
         workData.images.forEach((item) => {
-            // Check if item is an array (group) or a single string
+            // Check if item is an array (group) or a single item
             if (Array.isArray(item)) {
                 // Create a flex container for the group
                 const flexGroup = document.createElement('div');
@@ -115,22 +115,35 @@ export function populateDetailView(workData) {
                 flexGroup.style.maxWidth = '100%';
                 flexGroup.style.overflow = 'hidden';
 
-                item.forEach((imageSrc) => {
+                item.forEach((mediaItem) => {
                     imageIndex++;
-                    const groupedImage = createDetailImage(workData, imageSrc, imageIndex);
-                    groupedImage.style.flex = '1';
-                    groupedImage.style.minWidth = '0';
-                    groupedImage.style.objectFit = 'contain';
-                    groupedImage.style.maxWidth = '100%';
-                    flexGroup.appendChild(groupedImage);
+                    let element;
+
+                    // Check if it's a Vimeo object
+                    if (typeof mediaItem === 'object' && mediaItem.vimeoId) {
+                        element = createVimeoEmbed(mediaItem.vimeoId, workData.title);
+                    } else {
+                        element = createDetailImage(workData, mediaItem, imageIndex);
+                    }
+
+                    element.style.flex = '1';
+                    element.style.minWidth = '0';
+                    flexGroup.appendChild(element);
                 });
 
                 detailImagesContainer.appendChild(flexGroup);
             } else {
-                // Single image
+                // Single item - check if it's a Vimeo object or string
                 imageIndex++;
-                const additionalImage = createDetailImage(workData, item, imageIndex);
-                detailImagesContainer.appendChild(additionalImage);
+                let element;
+
+                if (typeof item === 'object' && item.vimeoId) {
+                    element = createVimeoEmbed(item.vimeoId, workData.title);
+                } else {
+                    element = createDetailImage(workData, item, imageIndex);
+                }
+
+                detailImagesContainer.appendChild(element);
             }
         });
     }

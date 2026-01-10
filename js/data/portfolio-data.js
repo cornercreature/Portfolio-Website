@@ -11,13 +11,13 @@ export const portfolioWorks = [
         collaborators: "with Run Ping Mao Wei and Susan He for DS III",
         thumbnailSrc: "assets/grounded/cover.png",
         hoverVideoSrc: "assets/grounded/finalcovervid.mp4",
-        heroVimeoId: "1153215490",
-        heroImageSrc: "",
+        heroImageSrc: "assets/grounded/flash.mp4",
         images: [
             ["assets/grounded/main.mp4", "assets/grounded/density.mp4"],
             ["assets/grounded/sightsound.mp4", "assets/grounded/invaders.mp4"],
             ["assets/grounded/erosionn.mp4", "assets/grounded/lost.mp4"],
             "assets/grounded/multihandout.png",
+            {vimeoId: "1153215490"},
         ], // Array of images - strings for single items, arrays for inline-flex groups
         description: "An interactive exploration of celestial bodies and their movements through space. This project combines data visualization with interactive storytelling to create an immersive experience.",
         position: "left",

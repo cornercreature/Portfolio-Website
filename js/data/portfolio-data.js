@@ -11,8 +11,14 @@ export const portfolioWorks = [
         collaborators: "with Run Ping Mao Wei and Susan He for DS III",
         thumbnailSrc: "assets/grounded/cover.png",
         hoverVideoSrc: "assets/grounded/finalcovervid.mp4",
-        fullImageSrc: "assets/grounded/cover.png",
-        images: [], // Array of additional image sources for detail view
+        heroVimeoId: "1153215490",
+        heroImageSrc: "",
+        images: [
+            ["assets/grounded/main.mp4", "assets/grounded/density.mp4"],
+            ["assets/grounded/sightsound.mp4", "assets/grounded/invaders.mp4"],
+            ["assets/grounded/erosionn.mp4", "assets/grounded/lost.mp4"],
+            "assets/grounded/multihandout.png",
+        ], // Array of images - strings for single items, arrays for inline-flex groups
         description: "An interactive exploration of celestial bodies and their movements through space. This project combines data visualization with interactive storytelling to create an immersive experience.",
         position: "left",
         aspectRatio: "landscape"
@@ -24,7 +30,7 @@ export const portfolioWorks = [
         year: "",
         collaborators: "",
         thumbnailSrc: "",
-        fullImageSrc: "",
+        heroImageSrc: "",
         description: "A visual study of patterns and rhythms found in urban environments. Through systematic documentation and design exploration, this project reveals the hidden geometries of city life.",
         position: "right",
         aspectRatio: "landscape"
@@ -36,7 +42,7 @@ export const portfolioWorks = [
         year: "",
         collaborators: "",
         thumbnailSrc: "",
-        fullImageSrc: "",
+        heroImageSrc: "",
         description: "Experimental typography that explores the relationship between letterforms and movement. This project investigates how motion can enhance typographic communication.",
         position: "left",
         aspectRatio: "landscape"
@@ -48,7 +54,7 @@ export const portfolioWorks = [
         year: "",
         collaborators: "",
         thumbnailSrc: "",
-        fullImageSrc: "",
+        heroImageSrc: "",
         description: "A data visualization project that transforms complex environmental data into an organic, garden-like interface. Users can explore climate patterns through an intuitive botanical metaphor.",
         position: "right",
         aspectRatio: "landscape"
@@ -60,7 +66,7 @@ export const portfolioWorks = [
         year: "",
         collaborators: "",
         thumbnailSrc: "",
-        fullImageSrc: "",
+        heroImageSrc: "",
         description: "Exploring the intersection of traditional weaving patterns and computational design. This project generates unique textile patterns using algorithmic processes inspired by historical craft techniques.",
         position: "left",
         aspectRatio: "landscape"
@@ -72,7 +78,7 @@ export const portfolioWorks = [
         year: "",
         collaborators: "",
         thumbnailSrc: "",
-        fullImageSrc: "",
+        heroImageSrc: "",
         description: "An interactive sound visualization that explores the boundary between meaningful signal and random noise. Users can manipulate audio parameters to create unique visual compositions.",
         position: "right",
         aspectRatio: "landscape"

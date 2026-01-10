@@ -8,6 +8,7 @@ import { setupSwipeGestures } from './interactions/swipe-gestures.js';
 import { setupSynchronizedScrolling } from './interactions/synchronized-scroll.js';
 import { setupHeaderNavigation } from './interactions/header-navigation.js';
 import { setupMarquee } from './components/marquee.js';
+import { restoreFromUrl } from './views/transitions.js';
 
 /**
  * Initializes the portfolio on page load
@@ -19,6 +20,7 @@ function initPortfolio() {
     setupSwipeGestures();
     setupSynchronizedScrolling();
     setupMarquee();
+    restoreFromUrl(); // Restore detail view from URL if present
 }
 
 // Run initialization when DOM is ready

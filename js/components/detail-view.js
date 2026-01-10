@@ -5,36 +5,77 @@
 import { PLACEHOLDER_COLORS, ASPECT_RATIO_HEIGHTS } from '../config/constants.js';
 
 /**
- * Creates an image element with proper styling and placeholder
- * @param {Object} workData - The work data object
- * @param {string} imageSrc - The image source URL (optional)
- * @param {number} imageIndex - Index for additional images (0 for main image)
- * @returns {HTMLElement} The configured image element
+ * Creates a Vimeo embed container
+ * @param {string} vimeoId - The Vimeo video ID
+ * @param {string} title - The video title
+ * @returns {HTMLElement} The Vimeo embed container
  */
-export function createDetailImage(workData, imageSrc = '', imageIndex = 0) {
-    const image = document.createElement('img');
+function createVimeoEmbed(vimeoId, title) {
+    const container = document.createElement('div');
+    container.style.padding = '62.55% 0 0 0';
+    container.style.position = 'relative';
+
+    const iframe = document.createElement('iframe');
+    iframe.src = `https://player.vimeo.com/video/${vimeoId}?badge=0&autopause=0&player_id=0&app_id=58479`;
+    iframe.frameBorder = '0';
+    iframe.allow = 'autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share';
+    iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+    iframe.style.position = 'absolute';
+    iframe.style.top = '0';
+    iframe.style.left = '0';
+    iframe.style.width = '100%';
+    iframe.style.height = '100%';
+    iframe.title = title;
+
+    container.appendChild(iframe);
+    return container;
+}
+
+/**
+ * Creates an image or video element with proper styling and placeholder
+ * @param {Object} workData - The work data object
+ * @param {string} mediaSrc - The media source URL (optional)
+ * @param {number} imageIndex - Index for additional images (0 for main image)
+ * @returns {HTMLElement} The configured media element
+ */
+export function createDetailImage(workData, mediaSrc = '', imageIndex = 0) {
+    // Check if it's a video file
+    const isVideo = mediaSrc.match(/\.(mp4|webm|mov)$/i);
+
+    const media = document.createElement(isVideo ? 'video' : 'img');
 
     // Apply CSS class instead of inline styles
-    image.className = imageIndex === 0 ? 'detail-image detail-main-image' : 'detail-image';
+    media.className = imageIndex === 0 ? 'detail-image detail-main-image' : 'detail-image';
 
     // Set placeholder color and height (dynamic values that can't be in CSS)
     const colorIndex = (workData.id + imageIndex) % PLACEHOLDER_COLORS.length;
-    image.style.backgroundColor = PLACEHOLDER_COLORS[colorIndex];
+    media.style.backgroundColor = PLACEHOLDER_COLORS[colorIndex];
 
     const aspectConfig = ASPECT_RATIO_HEIGHTS[workData.aspectRatio] || ASPECT_RATIO_HEIGHTS.landscape;
-    image.style.minHeight = imageIndex === 0 ? aspectConfig.detail : ASPECT_RATIO_HEIGHTS.landscape.detail;
+    media.style.minHeight = imageIndex === 0 ? aspectConfig.detail : ASPECT_RATIO_HEIGHTS.landscape.detail;
 
-    // Set image source
-    if (imageSrc) {
-        image.src = imageSrc;
-        image.loading = 'lazy';
-        image.alt = imageIndex === 0 ? workData.title : `${workData.title} - Image ${imageIndex + 1}`;
+    // Set media source and attributes
+    if (mediaSrc) {
+        if (isVideo) {
+            media.src = mediaSrc;
+            media.controls = true;
+            media.loop = true;
+            media.muted = true;
+            media.playsInline = true;
+            media.preload = 'auto'; // Load full video
+            media.style.width = '100%';
+            media.style.objectFit = 'contain';
+        } else {
+            media.src = mediaSrc;
+            media.loading = 'lazy';
+        }
+        media.alt = imageIndex === 0 ? workData.title : `${workData.title} - Media ${imageIndex + 1}`;
     } else {
-        image.src = '';
-        image.alt = 'Placeholder';
+        media.src = '';
+        media.alt = 'Placeholder';
     }
 
-    return image;
+    return media;
 }
 
 /**
@@ -51,15 +92,46 @@ export function populateDetailView(workData) {
     const detailImagesContainer = document.querySelector('.detail-images');
     detailImagesContainer.innerHTML = '';
 
-    // Create main image
-    const mainImage = createDetailImage(workData, workData.fullImageSrc, 0);
-    detailImagesContainer.appendChild(mainImage);
+    // Create main image or Vimeo embed
+    if (workData.heroVimeoId) {
+        const vimeoEmbed = createVimeoEmbed(workData.heroVimeoId, workData.title);
+        detailImagesContainer.appendChild(vimeoEmbed);
+    } else {
+        const mainImage = createDetailImage(workData, workData.heroImageSrc, 0);
+        detailImagesContainer.appendChild(mainImage);
+    }
 
     // Add additional images if they exist
     if (workData.images && workData.images.length > 0) {
-        workData.images.forEach((imageSrc, index) => {
-            const additionalImage = createDetailImage(workData, imageSrc, index + 1);
-            detailImagesContainer.appendChild(additionalImage);
+        let imageIndex = 0;
+        workData.images.forEach((item) => {
+            // Check if item is an array (group) or a single string
+            if (Array.isArray(item)) {
+                // Create a flex container for the group
+                const flexGroup = document.createElement('div');
+                flexGroup.style.display = 'inline-flex';
+                flexGroup.style.gap = '10px';
+                flexGroup.style.width = '100%';
+                flexGroup.style.maxWidth = '100%';
+                flexGroup.style.overflow = 'hidden';
+
+                item.forEach((imageSrc) => {
+                    imageIndex++;
+                    const groupedImage = createDetailImage(workData, imageSrc, imageIndex);
+                    groupedImage.style.flex = '1';
+                    groupedImage.style.minWidth = '0';
+                    groupedImage.style.objectFit = 'contain';
+                    groupedImage.style.maxWidth = '100%';
+                    flexGroup.appendChild(groupedImage);
+                });
+
+                detailImagesContainer.appendChild(flexGroup);
+            } else {
+                // Single image
+                imageIndex++;
+                const additionalImage = createDetailImage(workData, item, imageIndex);
+                detailImagesContainer.appendChild(additionalImage);
+            }
         });
     }
 }

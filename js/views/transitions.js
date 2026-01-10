@@ -41,6 +41,9 @@ export function expandWork(workId) {
 
     // Update currently open work ID
     setCurrentlyOpenWorkId(workId);
+
+    // Update URL hash
+    window.history.pushState(null, '', `#work-${workId}`);
 }
 
 /**
@@ -61,4 +64,20 @@ export function collapseWork() {
     }, SWIPE_CONFIG.transitionDelay);
 
     setCurrentlyOpenWorkId(null);
+
+    // Clear URL hash
+    window.history.pushState(null, '', window.location.pathname);
+}
+
+/**
+ * Restores the detail view from URL hash on page load
+ */
+export function restoreFromUrl() {
+    const hash = window.location.hash;
+    if (hash && hash.startsWith('#work-')) {
+        const workId = parseInt(hash.replace('#work-', ''));
+        if (!isNaN(workId)) {
+            expandWork(workId);
+        }
+    }
 }

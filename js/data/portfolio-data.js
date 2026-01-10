@@ -12,7 +12,7 @@ export const portfolioWorks = [
         for:"Design Studio III",
         deliverables:"Interactive Website, Informational Keychain",
         thumbnailSrc: "assets/grounded/cover.png",
-        hoverVideoSrc: "assets/grounded/finalcovervid.mp4",
+        hoverSrc: "assets/grounded/finalcovervid.mp4",
         heroImageSrc: "assets/grounded/flash.mp4",
         images: [
             ["assets/grounded/main.mp4", "assets/grounded/density.mp4"],
@@ -30,14 +30,15 @@ export const portfolioWorks = [
 
     {
         id: 2,
-        title: "Urban Rhythms",
-        category: "Graphic",
-        year: "",
-        collaborators: "",
-        for:"",
-        deliverables:"",
-        thumbnailSrc: "",
-        heroImageSrc: "",
+        title: "RISD YEARBOOK 2025",
+        category: "Publication",
+        year: "Spring 2025",
+        collaborators: "With Andrew Liu, Annabel Gillespie, Ash Ma, Hannah Jeong, Hyunmin Kim, Jyot Thind, Kay Kim, Li Huang, Minah Kim, Maggie Xian, Nadine Macapagal, Neat Rodanant, Punch Kulphisanrat, & Ryan Yan @ RISD Design Guild",
+        for:"Rhode Island School of Design",
+        deliverables:"Swissbound Yearbook",
+        thumbnailSrc: "assets/YB25/one.jpg",
+        hoverSrc: "assets/YB25/two.jpg",
+        heroImageSrc: "assets/YB25/three.jpg",
         description: "A visual study of patterns and rhythms found in urban environments. Through systematic documentation and design exploration, this project reveals the hidden geometries of city life.",
         position: "right",
         aspectRatio: "landscape"

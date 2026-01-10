@@ -21,9 +21,7 @@ export const portfolioWorks = [
             "assets/grounded/multihandout.png",
             {vimeoId: "1153215490"},
         ], // Array of images - strings for single items, arrays for inline-flex groups
-        description: "GROUNDING is a Providence, Rhode Island based simulation of human interaction of nature. Based off of our experiences on a walk on a trail in Blackstone Park Conservancy, we included data that both shows the beauty of being in nature, as well as the powerful effect human activity can have on nature. We hope that through this experience, you realize the weight of your presence in nature, as well as the responsibility in preserving." 
-        +
-        "Wondering what you can do to protect the green spaces around you? While in nature you should leave no trace and take nothing but pictures, you should take from us a tips keepsake for additional guidance!",
+        description: "GROUNDING is a Providence, Rhode Island based simulation of human interaction of nature. Based off of our experiences on a walk on a trail in Blackstone Park Conservancy, we included data that both shows the beauty of being in nature, as well as the powerful effect human activity can have on nature. We hope that through this experience, you realize the weight of your presence in nature, as well as the responsibility in preserving. \n \n Wondering what you can do to protect the green spaces around you? While in nature you should leave no trace and take nothing but pictures, you should take from us a tips keepsake for additional guidance!",
         position: "left",
         aspectRatio: "landscape"
     },
@@ -32,14 +30,14 @@ export const portfolioWorks = [
         id: 2,
         title: "RISD YEARBOOK 2025",
         category: "Publication",
-        year: "Spring 2025",
-        collaborators: "With Andrew Liu, Annabel Gillespie, Ash Ma, Hannah Jeong, Hyunmin Kim, Jyot Thind, Kay Kim, Li Huang, Minah Kim, Maggie Xian, Nadine Macapagal, Neat Rodanant, Punch Kulphisanrat, & Ryan Yan @ RISD Design Guild",
-        for:"Rhode Island School of Design",
-        deliverables:"Swissbound Yearbook",
+        year: "TIME Spring 2025",
+        collaborators: "WITH Andrew Liu, Annabel Gillespie, Ash Ma, Hannah Jeong, Hyunmin Kim, Jyot Thind, Kay Kim, Li Huang, Minah Kim, Maggie Xian, Nadine Macapagal, Neat Rodanant, Punch Kulphisanrat, & Ryan Yan @ RISD Design Guild",
+        for:"FOR Rhode Island School of Design",
+        deliverables:"DELIVERABLES Swissbound Yearbook",
         thumbnailSrc: "assets/YB25/one.jpg",
         hoverSrc: "assets/YB25/two.jpg",
         heroImageSrc: "assets/YB25/three.jpg",
-        description: "A visual study of patterns and rhythms found in urban environments. Through systematic documentation and design exploration, this project reveals the hidden geometries of city life.",
+        description: "The 2025 yearbook is a celebration of what we carry with us and the moments we hold close. Each student page is personalized — decorated and curated like a proud, well-loved fridge door. We dedicate this yearbook as a keepsake for the graduating class of 2025. What’s yours? 💭✨ \n \n Edition of 400, printed and bound by Meridian Printing in East Greenwich, RI. Typeset in Autos Grotesk by our very own Andrew Liu and Herbik generously provided by Counter Forms.",
         position: "right",
         aspectRatio: "landscape"
     },

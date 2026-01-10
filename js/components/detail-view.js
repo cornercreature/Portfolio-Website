@@ -90,7 +90,7 @@ export function populateDetailView(workData) {
     document.querySelector('.collaborators').textContent = workData.collaborators;
     document.querySelector('.for').textContent = workData.for;
     document.querySelector('.deliverables').textContent = workData.deliverables;
-    document.querySelector('.detail-text').textContent = workData.description;
+    document.querySelector('.detail-text').innerHTML = workData.description.replace(/\n/g, '<br>');
 
     const detailImagesContainer = document.querySelector('.detail-images');
     detailImagesContainer.innerHTML = '';

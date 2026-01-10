@@ -26,6 +26,7 @@
     --font-size-medium: 20px;
     --font-size-large: 24px;
     --font-size-title: 32px;
+    --font-size-body:14px;
     --font-size-h2: 20px;
     --font-size-h2-collapsed: 12px;
     --font-size-icon: 18px;
@@ -35,6 +36,7 @@
     --font-weight-semibold: 400;
     --font-weight-bold: 400;
 
+    --line-height-body: 1.4;
     --line-height-base: 1.6;
     --line-height-tight: 19px;
     --line-height-medium: 28px;

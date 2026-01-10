@@ -24,8 +24,47 @@ export function createWorkThumbnail(workData) {
     const aspectConfig = ASPECT_RATIO_HEIGHTS[workData.aspectRatio] || ASPECT_RATIO_HEIGHTS.landscape;
     thumbnail.style.minHeight = aspectConfig.thumbnail;
 
-    // Add placeholder color
-    thumbnail.style.backgroundColor = PLACEHOLDER_COLORS[workData.id % PLACEHOLDER_COLORS.length];
+    // Add thumbnail image or placeholder color
+    if (workData.thumbnailSrc) {
+        thumbnail.style.backgroundImage = `url('${workData.thumbnailSrc}')`;
+        thumbnail.style.backgroundSize = 'cover';
+        thumbnail.style.backgroundPosition = 'center';
+    } else {
+        thumbnail.style.backgroundColor = PLACEHOLDER_COLORS[workData.id % PLACEHOLDER_COLORS.length];
+    }
+
+    // Add hover video if provided
+    if (workData.hoverVideoSrc) {
+        const video = document.createElement('video');
+        video.src = workData.hoverVideoSrc;
+        video.loop = true;
+        video.muted = true;
+        video.playsInline = true;
+        video.style.width = '100%';
+        video.style.height = '100%';
+        video.style.objectFit = 'cover';
+        video.style.position = 'absolute';
+        video.style.top = '0';
+        video.style.left = '0';
+        video.style.opacity = '0';
+        video.style.transition = 'opacity 0.3s ease';
+
+        thumbnail.style.position = 'relative';
+        thumbnail.appendChild(video);
+
+        // Play video on hover
+        workItem.addEventListener('mouseenter', () => {
+            video.style.opacity = '1';
+            video.play();
+        });
+
+        // Stop video and hide on mouse leave
+        workItem.addEventListener('mouseleave', () => {
+            video.style.opacity = '0';
+            video.pause();
+            video.currentTime = 0;
+        });
+    }
 
     // Create info section
     const workInfo = document.createElement('div');

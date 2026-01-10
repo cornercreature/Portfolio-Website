@@ -168,6 +168,7 @@ h2 {
 .work-category {
     margin-right: -10px;
     font-weight: var(--font-weight-normal);
+    color:gray;
 }
 
 .portfolio-main.expanded .work-info {

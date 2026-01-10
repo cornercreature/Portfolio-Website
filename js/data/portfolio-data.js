@@ -9,8 +9,9 @@ export const portfolioWorks = [
         category: "Data Visualization, Website",
         year: "2025",
         collaborators: "with Run Ping Mao Wei and Susan He for DS III",
-        thumbnailSrc: "", // Placeholder - will use CSS background
-        fullImageSrc: "",
+        thumbnailSrc: "assets/grounded/cover.png",
+        hoverVideoSrc: "assets/grounded/finalcovervid.mp4",
+        fullImageSrc: "assets/grounded/cover.png",
         images: [], // Array of additional image sources for detail view
         description: "An interactive exploration of celestial bodies and their movements through space. This project combines data visualization with interactive storytelling to create an immersive experience.",
         position: "left",

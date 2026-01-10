@@ -87,6 +87,8 @@ export function populateDetailView(workData) {
     document.querySelector('.detail-category').textContent = workData.category;
     document.querySelector('.year').textContent = workData.year;
     document.querySelector('.collaborators').textContent = workData.collaborators;
+    document.querySelector('.for').textContent = workData.for;
+    document.querySelector('.deliverables').textContent = workData.deliverables;
     document.querySelector('.detail-text').textContent = workData.description;
 
     const detailImagesContainer = document.querySelector('.detail-images');

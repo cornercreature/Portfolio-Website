@@ -18,6 +18,10 @@
 .unitL{
     width:50%;
 }
+.left-info {
+    display: inline-flex;
+    gap: 40px;
+}
 .description-unit {
 }
 .detail-category {

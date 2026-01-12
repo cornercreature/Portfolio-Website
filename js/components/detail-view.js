@@ -32,6 +32,38 @@ function createVimeoEmbed(vimeoId, title) {
 }
 
 /**
+ * Creates a custom iframe embed container
+ * @param {string} url - The URL to embed
+ * @param {string} title - The iframe title
+ * @param {string} aspectRatio - Optional aspect ratio (default: '16:9')
+ * @returns {HTMLElement} The iframe embed container
+ */
+function createIframeEmbed(url, title, aspectRatio = '16:9') {
+    const container = document.createElement('div');
+    container.style.position = 'relative';
+
+    // Calculate padding based on aspect ratio
+    const [width, height] = aspectRatio.split(':').map(Number);
+    const paddingPercent = (height / width) * 100;
+    container.style.padding = `${paddingPercent}% 0 0 0`;
+
+    const iframe = document.createElement('iframe');
+    iframe.src = url;
+    iframe.frameBorder = '0';
+    iframe.allow = 'autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share';
+    iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+    iframe.style.position = 'absolute';
+    iframe.style.top = '0';
+    iframe.style.left = '0';
+    iframe.style.width = '100%';
+    iframe.style.height = '100%';
+    iframe.title = title;
+
+    container.appendChild(iframe);
+    return container;
+}
+
+/**
  * Creates an image or video element with proper styling and placeholder
  * @param {Object} workData - The work data object
  * @param {string} mediaSrc - The media source URL (optional)
@@ -122,9 +154,11 @@ export function populateDetailView(workData) {
                     imageIndex++;
                     let element;
 
-                    // Check if it's a Vimeo object
+                    // Check if it's a Vimeo object, iframe object, or regular media
                     if (typeof mediaItem === 'object' && mediaItem.vimeoId) {
                         element = createVimeoEmbed(mediaItem.vimeoId, workData.title);
+                    } else if (typeof mediaItem === 'object' && mediaItem.iframeUrl) {
+                        element = createIframeEmbed(mediaItem.iframeUrl, workData.title, mediaItem.aspectRatio);
                     } else {
                         element = createDetailImage(workData, mediaItem, imageIndex);
                     }
@@ -136,12 +170,14 @@ export function populateDetailView(workData) {
 
                 detailImagesContainer.appendChild(flexGroup);
             } else {
-                // Single item - check if it's a Vimeo object or string
+                // Single item - check if it's a Vimeo object, iframe object, or string
                 imageIndex++;
                 let element;
 
                 if (typeof item === 'object' && item.vimeoId) {
                     element = createVimeoEmbed(item.vimeoId, workData.title);
+                } else if (typeof item === 'object' && item.iframeUrl) {
+                    element = createIframeEmbed(item.iframeUrl, workData.title, item.aspectRatio);
                 } else {
                     element = createDetailImage(workData, item, imageIndex);
                 }

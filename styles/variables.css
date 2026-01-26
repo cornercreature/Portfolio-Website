@@ -94,6 +94,7 @@
 
     /* Spacing - Misc */
     --spacing-column-top: 40px;
+    --spacing-column-bottom: 80px;
     --spacing-diamond-margin: 2px;
 
     /* Transitions */

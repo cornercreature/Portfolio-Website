@@ -8,6 +8,7 @@ import { setupSwipeGestures } from './interactions/swipe-gestures.js';
 import { setupHeaderNavigation } from './interactions/header-navigation.js';
 import { setupMarquee } from './components/marquee.js';
 import { restoreFromUrl } from './views/transitions.js';
+import { setupAboutCollapse } from './interactions/about-collapse.js';
 
 /**
  * Initializes the portfolio on page load
@@ -17,7 +18,7 @@ function initPortfolio() {
     setupHeaderNavigation(); // Move after header is created
     populateGallery();
     setupSwipeGestures();
-    // setupSynchronizedScrolling(); // Disabled for independent scrolling
+    setupAboutCollapse(); // Collapse about section on scroll
     setupMarquee();
     restoreFromUrl(); // Restore detail view from URL if present
 }

@@ -5,7 +5,6 @@
 import { initHeader } from './components/header.js';
 import { populateGallery } from './components/gallery.js';
 import { setupSwipeGestures } from './interactions/swipe-gestures.js';
-import { setupSynchronizedScrolling } from './interactions/synchronized-scroll.js';
 import { setupHeaderNavigation } from './interactions/header-navigation.js';
 import { setupMarquee } from './components/marquee.js';
 import { restoreFromUrl } from './views/transitions.js';
@@ -18,7 +17,7 @@ function initPortfolio() {
     setupHeaderNavigation(); // Move after header is created
     populateGallery();
     setupSwipeGestures();
-    setupSynchronizedScrolling();
+    // setupSynchronizedScrolling(); // Disabled for independent scrolling
     setupMarquee();
     restoreFromUrl(); // Restore detail view from URL if present
 }

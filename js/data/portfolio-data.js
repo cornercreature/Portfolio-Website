@@ -3,8 +3,23 @@
 // ============================================================================
 
 export const portfolioWorks = [
-    {
+{
         id: 1,
+        title: "YOUR INTERNET",
+        category: "Identity & Campaign",
+        year: "TIME Fall 2025",
+        collaborators: "",
+        for:"FOR DS III with Paul Soulellis",
+        deliverables:" Social Media Graphics, Motion Graphics, Posters, Branding Guidelines, Phone and Computer Compatible Platform",
+        thumbnailSrc: "assets/YourInternet/cover.png",
+        hoverSrc: "assets/YourInternet/video.mp4",
+        heroImageSrc: "",
+        description: "A data visualization project that transforms complex environmental data into an organic, garden-like interface. Users can explore climate patterns through an intuitive botanical metaphor.",
+        position: "left",
+        aspectRatio: "landscape"
+    },
+    {
+        id: 2,
         title: "GROUNDING",
         category: "Information, Web",
         year: "Fall 2025", 
@@ -27,7 +42,7 @@ export const portfolioWorks = [
     },
 
     {
-        id: 2,
+        id: 3,
         title: "RISD YEARBOOK 2025",
         category: "Publication",
         year: "TIME Spring 2025",
@@ -52,7 +67,7 @@ export const portfolioWorks = [
         aspectRatio: "landscape"
     },
     {
-        id: 3,
+        id: 4,
         title: "HAPPY RISD NEW YEAR",
         category: "Motion",
         year: "TIME 2025 Winter",
@@ -69,29 +84,15 @@ export const portfolioWorks = [
         aspectRatio: "landscape"
     },
     {
-        id: 4,
-        title: "YOUR INTERNET",
-        category: "Identity & Campaign",
-        year: "TIME Fall 2025",
-        collaborators: "",
-        for:"FOR DS III with Paul Soulellis",
-        deliverables:" Social Media Graphics, Motion Graphics, Posters, Branding Guidelines, Phone and Computer Compatible Platform",
-        thumbnailSrc: "assets/YourInternet/cover.png",
-        hoverSrc: "assets/YourInternet/video.mp4",
-        heroImageSrc: "",
-        description: "A data visualization project that transforms complex environmental data into an organic, garden-like interface. Users can explore climate patterns through an intuitive botanical metaphor.",
-        position: "left",
-        aspectRatio: "landscape"
-    },
-    {
         id: 5,
-        title: "Computational Weaving",
-        category: "Generative Art",
-        year: "",
+        title: "TAIWAN VIDEO CLUB",
+        category: "Publication",
+        year: "Fall 2025",
         collaborators: "",
-        for:"",
-        deliverables:"",
-        thumbnailSrc: "",
+        for:"FOR Type III with Pouya Ahmadi",
+        deliverables:"Artist Book",
+        thumbnailSrc: "assets/TVC/cover.png",
+        hoverSrc: "assets/TVC/fullvideo.mp4",
         heroImageSrc: "",
         description: "Exploring the intersection of traditional weaving patterns and computational design. This project generates unique textile patterns using algorithmic processes inspired by historical craft techniques.",
         position: "left",
@@ -99,7 +100,35 @@ export const portfolioWorks = [
     },
     {
         id: 6,
-        title: "Signal & Noise",
+        title: "NO GOOD GOODS TEA TOWEL SETS",
+        category: "Product & Packaging",
+        year: "TIME Spring 2025",
+        collaborators: "",
+        for:"COLOR AND SURFACE with Nancy Skolos",
+        deliverables:"Tea Towels, Packaging",
+        thumbnailSrc: "",
+        heroImageSrc: "",
+        description: "An interactive sound visualization that explores the boundary between meaningful signal and random noise. Users can manipulate audio parameters to create unique visual compositions.",
+        position: "right",
+        aspectRatio: "landscape"
+    },
+    {
+        id: 7,
+        title: "COMPLICATED",
+        category: "Motion Graphic",
+        year: "",
+        collaborators: "",
+        for:"",
+        deliverables:"",
+        thumbnailSrc: "",
+        heroImageSrc: "",
+        description: "An interactive sound visualization that explores the boundary between meaningful signal and random noise. Users can manipulate audio parameters to create unique visual compositions.",
+        position: "left",
+        aspectRatio: "landscape"
+    },
+    {
+        id: 8,
+        title: "SEEING SITES",
         category: "Interactive Media",
         year: "",
         collaborators: "",

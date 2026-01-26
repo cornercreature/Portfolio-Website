@@ -52,6 +52,12 @@ h2 {
 .portfolio-column-right {
     right: 0;
     align-items: center;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+.portfolio-column-right::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
 }
 
 .portfolio-detail {

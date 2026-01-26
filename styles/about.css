@@ -3,14 +3,13 @@
 .about-section {
     margin-top: var(--margin-about-top);
     padding: 0 var(--padding-about);
-    height: var(--height-about);
+    min-height: 6.875rem;
     display: inline-flex;
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
     box-sizing: border-box;
-    overflow: hidden;
-    height:110px;
+    overflow: visible;
     transition: height var(--transition-duration) var(--transition-easing),
                 opacity var(--transition-duration) var(--transition-easing),
                 margin var(--transition-duration) var(--transition-easing);
@@ -26,7 +25,7 @@
 }
 
 .greeting {
-    margin-bottom: 10px;
+    margin-bottom: 0.625rem;
     font-family: var(--font-primary);
     font-size: var(--font-size-large);
 }
@@ -40,12 +39,11 @@
 
 .about-links {
     margin-top: var(--margin-links-top);
-    margin-right: var(--margin-links-right);
+    margin-right: 6.4rem;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     font-family: var(--font-primary);
-    max-height: var(--height-about-links);
     font-size: var(--font-size-base);
     line-height: var(--line-height-medium);
 }
@@ -58,7 +56,7 @@
 .about-bio {
     max-width: var(--width-bio-max);
     margin-top: var(--margin-bio-top);
-    height:80px;
+    height: 5rem;
 }
 
 

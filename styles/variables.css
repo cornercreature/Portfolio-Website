@@ -21,15 +21,15 @@
     --font-display: "Rethink Sans", sans-serif;
     --font-icon: "Yarndings 20", system-ui;
 
-    --font-size-base: 18px;
-    --font-size-small: 14px;
-    --font-size-medium: 20px;
-    --font-size-large: 24px;
-    --font-size-title: 32px;
-    --font-size-body:14px;
-    --font-size-h2: 20px;
-    --font-size-h2-collapsed: 12px;
-    --font-size-icon: 18px;
+    --font-size-base: 1.125rem;
+    --font-size-small: 0.875rem;
+    --font-size-medium: 1.25rem;
+    --font-size-large: 1.5rem;
+    --font-size-title: 2rem;
+    --font-size-body: 0.875rem;
+    --font-size-h2: 1.25rem;
+    --font-size-h2-collapsed: 0.75rem;
+    --font-size-icon: 1.125rem;
 
     --font-weight-normal: 400;
     --font-weight-medium: 400;
@@ -38,64 +38,64 @@
 
     --line-height-body: 1.4;
     --line-height-base: 1.6;
-    --line-height-tight: 19px;
-    --line-height-medium: 28px;
+    --line-height-tight: 1.1875rem;
+    --line-height-medium: 1.75rem;
 
     /* Layout - Widths */
-    --width-work-item: 680px;
-    --width-work-item-collapsed: 244px;
-    --width-work-thumbnail-collapsed: 223.5px;
-    --width-detail-view: 871px;
-    --width-bio-max: 670px;
-    --width-bio-paragraph: 465px;
-    --width-bio-image-container: 200px;
-    --width-bio-image: 190px;
+    --width-work-item: 42.5rem;
+    --width-work-item-collapsed: 15.25rem;
+    --width-work-thumbnail-collapsed: 13.96875rem;
+    --width-detail-view: 54.4375rem;
+    --width-bio-max: 41.875rem;
+    --width-bio-paragraph: 29.0625rem;
+    --width-bio-image-container: 12.5rem;
+    --width-bio-image: 11.875rem;
 
     /* Layout - Heights */
-    --height-header: 50px;
-    --height-about: 150px;
-    --height-about-links: 80px;
-    --height-bio-image-container: 285px;
-    --height-thumbnail-landscape: 400px;
-    --height-thumbnail-portrait: 700px;
-    --height-thumbnail-square: 560px;
-    --height-detail-image-landscape: 400px;
-    --height-detail-image-portrait: 600px;
-    --height-detail-image-square: 500px;
+    --height-header: 3.125rem;
+    --height-about: 9.375rem;
+    --height-about-links: 7.5rem;
+    --height-bio-image-container: 17.8125rem;
+    --height-thumbnail-landscape: 25rem;
+    --height-thumbnail-portrait: 43.75rem;
+    --height-thumbnail-square: 35rem;
+    --height-detail-image-landscape: 25rem;
+    --height-detail-image-portrait: 37.5rem;
+    --height-detail-image-square: 31.25rem;
 
     /* Spacing - Margins */
-    --margin-header-top: 20px;
-    --margin-about-top: 6px;
-    --margin-bio-top: 20px;
-    --margin-links-top: 20px;
-    --margin-links-right: 118px;
-    --margin-bio-image-container-left: 100px;
-    --margin-bio-image-top: 25px;
-    --margin-h2-bottom: 30px;
-    --margin-detail-title: 10px;
-    --margin-detail-category: 15px;
-    --margin-detail-description: 30px;
-    --margin-detail-images: 20px;
-    --margin-detail-image: 20px;
-    --margin-work-item-collapsed: 15px;
+    --margin-header-top: 1.25rem;
+    --margin-about-top: 0.375rem;
+    --margin-bio-top: 1.25rem;
+    --margin-links-top: 1.25rem;
+    --margin-links-right: 7.375rem;
+    --margin-bio-image-container-left: 6.25rem;
+    --margin-bio-image-top: 1.5625rem;
+    --margin-h2-bottom: 1.875rem;
+    --margin-detail-title: 0.625rem;
+    --margin-detail-category: 0.9375rem;
+    --margin-detail-description: 1.875rem;
+    --margin-detail-images: 1.25rem;
+    --margin-detail-image: 1.25rem;
+    --margin-work-item-collapsed: 0.9375rem;
 
     /* Spacing - Padding */
-    --padding-header: 40px;
-    --padding-about: 40px;
-    --padding-detail-view: 80px;
-    --padding-center-full: 40px;
-    --padding-work-info: 8px;
-    --padding-button: 10px 20px;
-    --padding-diamond-top: 7px;
+    --padding-header: 2.5rem;
+    --padding-about: 2.5rem;
+    --padding-detail-view: 5rem;
+    --padding-center-full: 2.5rem;
+    --padding-work-info: 0.5rem;
+    --padding-button: 0.625rem 1.25rem;
+    --padding-diamond-top: 0.4375rem;
 
     /* Spacing - Gaps */
-    --gap-portfolio-items: 20px;
-    --gap-header-center: 0px;
+    --gap-portfolio-items: 1.25rem;
+    --gap-header-center: 0rem;
 
     /* Spacing - Misc */
-    --spacing-column-top: 40px;
-    --spacing-column-bottom: 80px;
-    --spacing-diamond-margin: 2px;
+    --spacing-column-top: 2.5rem;
+    --spacing-column-bottom: 5rem;
+    --spacing-diamond-margin: 0.125rem;
 
     /* Transitions */
     --transition-duration: 0.6s;
@@ -107,11 +107,11 @@
     --animation-marquee-duration: 15s;
 
     /* Borders */
-    --border-width: 1px;
+    --border-width: 0.0625rem;
     --border-style: solid;
 
     /* Other */
-    --scroll-threshold: 10px;
-    --message-container-width: 0px;
-    --message-container-width-expanded: 150px;
+    --scroll-threshold: 0.625rem;
+    --message-container-width: 0rem;
+    --message-container-width-expanded: 9.375rem;
 }

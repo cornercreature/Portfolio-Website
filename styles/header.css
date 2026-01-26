@@ -27,7 +27,7 @@ a {
 
 .header-center {
     position: absolute;
-    top: 30px;
+    top: 1.875rem;
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
@@ -62,7 +62,7 @@ body:has(.portfolio-main.expanded) .message-container {
     font-family: var(--font-icon);
     font-size: var(--font-size-icon);
     position: relative;
-    top: -4px;
+    top: -0.25rem;
 }
 
 .shu {
@@ -79,7 +79,7 @@ body:has(.portfolio-main.expanded) .message-container {
     font-family: var(--font-display);
     font-size: var(--font-size-base);
     text-decoration: none;
-    gap:35px;
+    gap: 2.1875rem;
 }
 
 .nav-button {
@@ -101,8 +101,8 @@ body:has(.portfolio-main.expanded) .message-container {
 .nav-icon {
     font-family: var(--font-icon);
     font-size: var(--font-size-icon);
-    margin-right: 3px;
+    margin-right: 0.1875rem;
     position: relative;
-    top: 2px;
+    top: 0.125rem;
     display: none;
 }

@@ -1,7 +1,7 @@
 /* Detail View Styling */
 
 .detail-description {
-    margin-top:30px;
+    margin-top: 1.875rem;
     display: flex;
     justify-content: space-between;
     flex-direction: row;
@@ -22,7 +22,7 @@
 }
 .left-info {
     display: inline-flex;
-    gap: 80px;
+    gap: 5rem;
 }
 
 .right-info {
@@ -35,11 +35,11 @@
 .description-unit {
     font-size: var(--font-size-body);
     line-height: var(--line-height-body);
-    max-width: 400px;
+    max-width: 25rem;
 }
 
 .right-info .description-unit {
-    max-width: 600px;
+    max-width: 37.5rem;
 }
 .detail-category {
     font-size: var(--font-size-body);
@@ -54,7 +54,7 @@
 
 .collaborators, .year, .for, .deliverables {
     display: block;
-    margin-bottom: 12px;
+    margin-bottom: 0.75rem;
 }
 
 .detail-images {

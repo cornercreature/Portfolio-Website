@@ -16,7 +16,7 @@ function createVimeoEmbed(vimeoId, title) {
     container.style.position = 'relative';
 
     const iframe = document.createElement('iframe');
-    iframe.src = `https://player.vimeo.com/video/${vimeoId}?badge=0&autopause=0&player_id=0&app_id=58479`;
+    iframe.src = `https://player.vimeo.com/video/${vimeoId}?badge=0&autopause=0&player_id=0&app_id=58479&controls=0&autoplay=1&muted=1&loop=1`;
     iframe.frameBorder = '0';
     iframe.allow = 'autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share';
     iframe.referrerPolicy = 'strict-origin-when-cross-origin';
@@ -90,7 +90,7 @@ export function createDetailImage(workData, mediaSrc = '', imageIndex = 0) {
     if (mediaSrc) {
         if (isVideo) {
             media.src = mediaSrc;
-            media.controls = true;
+            media.controls = false;
             media.loop = true;
             media.muted = true;
             media.playsInline = true;
@@ -118,10 +118,19 @@ export function createDetailImage(workData, mediaSrc = '', imageIndex = 0) {
 export function populateDetailView(workData) {
     document.querySelector('.detail-title').textContent = workData.title;
     document.querySelector('.detail-category').textContent = workData.category;
-    document.querySelector('.year').textContent = workData.year;
-    document.querySelector('.collaborators').textContent = workData.collaborators;
-    document.querySelector('.for').textContent = workData.for;
-    document.querySelector('.deliverables').textContent = workData.deliverables;
+
+    const fields = ['year', 'collaborators', 'for', 'deliverables'];
+    fields.forEach(field => {
+        const el = document.querySelector(`.${field}`);
+        if (workData[field]) {
+            el.textContent = workData[field];
+            el.style.display = 'block';
+        } else {
+            el.textContent = '';
+            el.style.display = 'none';
+        }
+    });
+
     document.querySelector('.detail-text').innerHTML = workData.description.replace(/\n/g, '<br>');
 
     const detailImagesContainer = document.querySelector('.detail-images');

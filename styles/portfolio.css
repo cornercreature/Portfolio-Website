@@ -31,12 +31,17 @@ h2 {
     display: flex;
     flex-direction: column;
     gap: var(--gap-portfolio-items);
-    transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                margin-top var(--transition-duration) var(--transition-easing);
     overflow-y: auto;
     overflow-x: hidden;
     box-sizing: border-box;
     z-index: 2;
     background-color: var(--color-bg);
+}
+
+.about-section.collapsed ~ .portfolio-main .portfolio-column {
+    margin-top: 0;
 }
 
 .portfolio-column-left {
@@ -90,7 +95,8 @@ h2 {
 }
 
 .portfolio-main.expanded .portfolio-detail {
-    width: 100%;
+    margin-top: 0.3rem;
+    width: 96%;
     padding: 0 var(--padding-center-full);
     opacity: 1;
 }

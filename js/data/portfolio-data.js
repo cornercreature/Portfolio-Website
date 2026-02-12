@@ -14,6 +14,7 @@ export const portfolioWorks = [
         thumbnailSrc: "assets/YourInternet/cover.png",
         hoverSrc: "assets/YourInternet/video.mp4",
         heroImageSrc: "",
+        images: ["assets/YourInternet/YIposters.png"],
         description: "Speculative design and promotional material for an underground, algorithmless social media curation platform. Inspired by 2000's and 90's internet aesthetics, Your Internet calls upon our obsession with nostalgia, play, and exclusivity to encourage the revival of leisurely slow web navigation, and the re-embrace of friend-network-based online interaction",
         position: "left",
         aspectRatio: "landscape"

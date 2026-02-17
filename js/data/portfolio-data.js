@@ -131,7 +131,7 @@ export const portfolioWorks = [
         collaborators: "",
         for:"TYPE I with Min Hee Lee",
         deliverables:"Custom Type, Specimen Book",
-        thumbnailSrc: "",
+        thumbnailSrc: "assets/Wombat/photo 3.png",
         heroImageSrc: "",
         description: "An interactive sound visualization that explores the boundary between meaningful signal and random noise. Users can manipulate audio parameters to create unique visual compositions.",
         position: "right",

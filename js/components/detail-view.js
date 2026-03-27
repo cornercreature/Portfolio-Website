@@ -154,6 +154,7 @@ export function populateDetailView(workData) {
                 // Create a flex container for the group
                 const flexGroup = document.createElement('div');
                 flexGroup.style.display = 'inline-flex';
+                flexGroup.style.alignItems = 'flex-start';
                 flexGroup.style.gap = '10px';
                 flexGroup.style.width = '100%';
                 flexGroup.style.maxWidth = '100%';
@@ -170,10 +171,13 @@ export function populateDetailView(workData) {
                         element = createIframeEmbed(mediaItem.iframeUrl, workData.title, mediaItem.aspectRatio);
                     } else {
                         element = createDetailImage(workData, mediaItem, imageIndex);
+                        element.style.minHeight = 'unset';
+                        element.style.height = 'auto';
                     }
 
-                    element.style.flex = '1';
+                    element.style.flex = '1 1 0';
                     element.style.minWidth = '0';
+                    element.style.width = '100%';
                     flexGroup.appendChild(element);
                 });
 

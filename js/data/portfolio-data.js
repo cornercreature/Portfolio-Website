@@ -115,7 +115,7 @@ export const portfolioWorks = [
         hoverSrc: "assets/TVC/fullvideo.mp4",
         heroImageSrc: "assets/TVC/openboek.png",
         images:[
-            "assets/TVC/whole.png",
+            "assets/TVC/grid.jpg",
             ["assets/TVC/cover.png",
             "assets/TVC/innerbookdetail.png"],
             "assets/TVC/1.0.png",
@@ -132,6 +132,7 @@ export const portfolioWorks = [
             "assets/TVC/letter.png",],
             "assets/TVC/letter inner.png",
             "assets/TVC/end.png",
+            "assets/TVC/whole.png",
             "assets/TVC/fullvideo.mp4",
         ],
         description: "A translation of Lana Lin's short film, Taiwan Video Club, into artbook form. The film documents a first-generation immigrant's experience sharing home-recorded tapes of taiwanese dramas as she navigates homesickness, cultural identity, and nostalgia",

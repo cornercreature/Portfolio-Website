@@ -12,6 +12,7 @@ import { PLACEHOLDER_COLORS, ASPECT_RATIO_HEIGHTS } from '../config/constants.js
  */
 function createVimeoEmbed(vimeoId, title) {
     const container = document.createElement('div');
+    container.className = 'detail-image';
     container.style.padding = '62.55% 0 0 0';
     container.style.position = 'relative';
 
@@ -40,6 +41,7 @@ function createVimeoEmbed(vimeoId, title) {
  */
 function createIframeEmbed(url, title, aspectRatio = '16:9') {
     const container = document.createElement('div');
+    container.className = 'detail-image';
     container.style.position = 'relative';
 
     // Calculate padding based on aspect ratio

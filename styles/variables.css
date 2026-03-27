@@ -114,4 +114,15 @@
     --scroll-threshold: 0.625rem;
     --message-container-width: 0rem;
     --message-container-width-expanded: 9.375rem;
+
+    /* Mobile Typography — 2px smaller than base */
+    --font-size-base-mobile: 1rem;
+    --font-size-small-mobile: 0.75rem;
+    --font-size-medium-mobile: 1.125rem;
+    --font-size-large-mobile: 1.375rem;
+    --font-size-title-mobile: 1.875rem;
+    --font-size-body-mobile: 0.75rem;
+    --font-size-h2-mobile: 1.125rem;
+    --font-size-h2-collapsed-mobile: 0.625rem;
+    --font-size-icon-mobile: 1rem;
 }

@@ -41,7 +41,30 @@ function createHeader() {
             <a href="about.html"><span class="nav-icon">,</span>About</a>
             <a href="shelves.html"><span class="nav-icon">,</span>The Shelves</a>
         </nav>
+        <button class="mobile-menu-toggle" aria-label="Open menu">☰</button>
     `;
+
+    // Mobile slide-in menu (appended to body so it overlays everything)
+    const mobileMenu = document.createElement('div');
+    mobileMenu.className = 'mobile-menu';
+    mobileMenu.innerHTML = `
+        <button class="mobile-menu-close" aria-label="Close menu">✕</button>
+        <nav class="mobile-menu-nav">
+            <a href="main.html">Portfolio</a>
+            <a href="about.html">About</a>
+            <a href="shelves.html">The Shelves</a>
+        </nav>
+    `;
+    document.body.appendChild(mobileMenu);
+
+    // Toggle menu open/close
+    header.querySelector('.mobile-menu-toggle').addEventListener('click', () => {
+        mobileMenu.classList.add('open');
+    });
+
+    mobileMenu.querySelector('.mobile-menu-close').addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+    });
 
     return header;
 }

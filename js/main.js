@@ -7,7 +7,7 @@ import { populateGallery } from './components/gallery.js';
 import { setupSwipeGestures } from './interactions/swipe-gestures.js';
 import { setupHeaderNavigation } from './interactions/header-navigation.js';
 import { setupMarquee } from './components/marquee.js';
-import { restoreFromUrl } from './views/transitions.js';
+import { restoreFromUrl, collapseWork } from './views/transitions.js';
 import { setupAboutCollapse } from './interactions/about-collapse.js';
 
 /**
@@ -21,6 +21,12 @@ function initPortfolio() {
     setupAboutCollapse(); // Collapse about section on scroll
     setupMarquee();
     restoreFromUrl(); // Restore detail view from URL if present
+
+    // Mobile back button
+    const mobileBack = document.getElementById('mobileBack');
+    if (mobileBack) {
+        mobileBack.addEventListener('click', collapseWork);
+    }
 }
 
 // Run initialization when DOM is ready

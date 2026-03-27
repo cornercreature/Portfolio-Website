@@ -191,3 +191,83 @@ h2 {
 .portfolio-main.expanded .work-info {
     padding-right: 0.625rem;
 }
+
+/* ── Mobile Back Button (hidden on desktop) ── */
+.mobile-back-button {
+    display: none;
+}
+
+/* ── Mobile Layout ── */
+@media (max-width: 768px) {
+
+    .portfolio-main {
+        flex-direction: column;
+        overflow-y: auto;
+        overflow-x: hidden;
+        height: auto;
+    }
+
+    .portfolio-column {
+        position: relative;
+        width: 100% !important;
+        height: auto;
+        overflow-y: visible;
+        top: auto;
+        left: auto;
+        right: auto;
+        align-items: center;
+    }
+
+    .portfolio-column-right {
+        order: 1;
+    }
+
+    .portfolio-column-left {
+        order: 2;
+    }
+
+    .work-item-left,
+    .work-item-right {
+        width: 90%;
+    }
+
+    /* Slide-up detail view */
+    .portfolio-detail {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100% !important;
+        height: 100%;
+        transform: translateY(100%);
+        opacity: 1;
+        padding: 1.5rem;
+        z-index: 10;
+        background-color: var(--color-bg);
+        overflow-y: auto;
+        transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .portfolio-main.expanded .portfolio-detail {
+        transform: translateY(0);
+        width: 100% !important;
+        padding: 1.5rem;
+        margin-top: 0;
+    }
+
+    .portfolio-main.expanded .portfolio-column-left,
+    .portfolio-main.expanded .portfolio-column-right {
+        width: 100% !important;
+    }
+
+    /* Back button */
+    .mobile-back-button {
+        display: block;
+        background: none;
+        border: none;
+        font-family: var(--font-primary);
+        font-size: var(--font-size-base);
+        cursor: pointer;
+        padding: 0;
+        margin-bottom: 1.5rem;
+    }
+}

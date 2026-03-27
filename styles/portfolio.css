@@ -138,15 +138,6 @@ h2 {
     box-sizing: border-box;
 }
 
-/* Left-specific thumbnails */
-.work-thumbnail-left {
-    /* Add custom styles for left thumbnails here */
-}
-
-/* Right-specific thumbnails */
-.work-thumbnail-right {
-    /* Add custom styles for right thumbnails here */
-}
 
 .portfolio-main.expanded .work-item-left {
     width: var(--width-work-item-collapsed);
@@ -202,8 +193,7 @@ h2 {
 
     .portfolio-main {
         flex-direction: column;
-        overflow-y: auto;
-        overflow-x: hidden;
+        overflow: visible;
         height: auto;
     }
 
@@ -212,10 +202,12 @@ h2 {
         width: 100% !important;
         height: auto;
         overflow-y: visible;
+        overflow-x: hidden;
         top: auto;
         left: auto;
         right: auto;
         align-items: center;
+        padding-bottom: 0;
     }
 
     .portfolio-column-right {

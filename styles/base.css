@@ -32,3 +32,11 @@ body {
     width: 100%;
     box-sizing: border-box;
 }
+
+@media (max-width: 768px) {
+    body {
+        height: auto;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+}

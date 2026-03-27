@@ -153,7 +153,7 @@ export const portfolioWorks = [
     },
     {
         id: 8,
-        title: "SEEING & SITES",
+        title: "SITES & SEEING",
         category: "Poster Series",
         year: "Fall 2025",
         collaborators: "",
@@ -166,7 +166,7 @@ export const portfolioWorks = [
             "assets/Siteseeing/dismal.jpg",
             "assets/Siteseeing/seeingdetail.jpg",
         ],
-        description: "An interactive sound visualization that explores the boundary between meaningful signal and random noise. Users can manipulate audio parameters to create unique visual compositions.",
+        description: "SITES & SEEING is a series of two posters I made when tasked with creating posters about a collection from two different angles. I collected public instances of pareidolia – objects that seem to have faces . One poster delivers an emotion-based map imagining a secret fantasy world the faced-objects have come from, while the other poster is a more editorially minded catalogue of the authorial voice’s recent sightings of things with faces.",
         position: "right",
         aspectRatio: "landscape"
     }

@@ -61,6 +61,12 @@
     margin-bottom: var(--margin-detail-images);
 }
 
+.detail-text-box {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-body);
+    line-height: var(--line-height-body);
+}
+
 .detail-main-image {
     width: 100%;
     margin-left: 0;

@@ -185,7 +185,7 @@ export function populateDetailView(workData) {
 
                 detailImagesContainer.appendChild(flexGroup);
             } else {
-                // Single item - check if it's a Vimeo object, iframe object, or string
+                // Single item - check if it's a Vimeo object, iframe object, text box, or string
                 imageIndex++;
                 let element;
 
@@ -193,6 +193,10 @@ export function populateDetailView(workData) {
                     element = createVimeoEmbed(item.vimeoId, workData.title);
                 } else if (typeof item === 'object' && item.iframeUrl) {
                     element = createIframeEmbed(item.iframeUrl, workData.title, item.aspectRatio);
+                } else if (typeof item === 'object' && item.text) {
+                    element = document.createElement('div');
+                    element.className = 'detail-image detail-text-box';
+                    element.innerHTML = item.text.replace(/\n/g, '<br>');
                 } else {
                     element = createDetailImage(workData, item, imageIndex);
                 }

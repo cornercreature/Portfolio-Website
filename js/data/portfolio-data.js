@@ -72,7 +72,7 @@ export const portfolioWorks = [
         aspectRatio: "landscape"
     },
     {
-        id: 4,
+        id: 6,
         title: "HAPPY RISD NEW YEAR",
         category: "Motion",
         year: "MADE 2025 Winter",
@@ -124,7 +124,7 @@ export const portfolioWorks = [
         aspectRatio: "landscape"
     },
     {
-        id: 6,
+        id: 4,
         title: "8N ADVISORY & STUDIO 8N",
         category: "Web, Identity",
         year: "MADE WINTER 2025",
@@ -148,7 +148,7 @@ export const portfolioWorks = [
         deliverables:"Motion Graphics",
         thumbnailSrc: "assets/Complicated/Complicated FF.mp4",
         heroImageSrc: "assets/Complicated/Complicated FF.mp4",
-        description: "I was tasked to create a motion graphic representing the concept of interesting as theorized by Sienne Ngai in her essay, Our Aesthetic Categories: Zany, Cute, Interesting. I chose to focus on the thought of interesting as this vague sense of complexity, where people use the term when there's more to be said, but they're unable to articulate just what.",
+        description: "I was tasked to create a motion graphic representing the concept of interesting as theorized by Sienne Ngai in her essay, \"Our Aesthetic Categories: Zany, Cute, Interesting\". I chose to focus on the thought of interesting as this vague sense of complexity, where people use the term when there's more to be said, but they're unable to articulate just what.",
         position: "left",
         aspectRatio: "landscape"
     },
@@ -156,7 +156,7 @@ export const portfolioWorks = [
         id: 8,
         title: "SITES & SEEING",
         category: "Poster Series",
-        year: "Fall 2025",
+        year: "MADE Fall 2025",
         collaborators: "",
         for:"FOR DS III with Paul Soulellis",
         deliverables:"Two 24x36 inch Posters",
@@ -168,8 +168,27 @@ export const portfolioWorks = [
             "assets/Siteseeing/dismal.jpg",
             "assets/Siteseeing/seeingdetail.jpg",
         ],
-        description: "SITES & SEEING is a series of two posters I made when tasked with creating posters about a collection from two different angles. I collected public instances of pareidolia – objects that seem to have faces . One poster delivers an emotion-based map imagining a secret fantasy world the faced-objects have come from, while the other poster is a more editorially minded catalogue of the authorial voice’s recent sightings of things with faces.",
+        description: "SITES & SEEING is a series of two posters I made when tasked with creating posters about a collection from two different angles. I collected public instances of pareidolia – objects that seem to have faces. One poster delivers an emotion-based map imagining a secret fantasy world the faced-objects have come from, while the other poster is a more editorially minded catalogue of the authorial voice’s recent sightings of things with faces.",
         position: "right",
         aspectRatio: "landscape"
-    }
+    },
+    {
+        id: 9,
+        title: "{      }",
+        category: "Zine",
+        year: "MADE Spring 2025",
+        collaborators: "",
+        for:"FOR DS II with Minkyoung Kim",
+        deliverables:"8x6.5 inch Zine",
+        thumbnailSrc: "assets/UU/thumbnail.jpg",
+        hoverSrc: "assets/UU/hover.jpg",
+        heroImageSrc: "assets/UU/hover.jpg",
+        images:[
+            "assets/UU/pagegallery.jpg",
+            "assets/UU/snowambiance.jpg",
+        ],
+        description: "{		} is a single-article zine of Llewellyn Vaughan-Lee’s article for Emergence Magazine, \“Unborn and Undying.\” The introspective tone and existential theme of the article is mirrored in the space and quiet of the typesetting.ITES & SEEING is a series of two posters I made when tasked with creating posters about a collection from two different angles. I collected public instances of pareidolia – objects that seem to have faces. One poster delivers an emotion-based map imagining a secret fantasy world the faced-objects have come from, while the other poster is a more editorially minded catalogue of the authorial voice’s recent sightings of things with faces.",
+        position: "right",
+        aspectRatio: "landscape"
+    },
 ];

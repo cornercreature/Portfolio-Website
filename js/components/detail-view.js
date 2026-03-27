@@ -16,7 +16,7 @@ function createVimeoEmbed(vimeoId, title) {
     container.style.position = 'relative';
 
     const iframe = document.createElement('iframe');
-    iframe.src = `https://player.vimeo.com/video/${vimeoId}?badge=0&autopause=0&player_id=0&app_id=58479&controls=0&autoplay=1&muted=1&loop=1`;
+    iframe.src = `https://player.vimeo.com/video/${vimeoId}?badge=0&autopause=0&player_id=0&app_id=58479&controls=0&autoplay=1&muted=1&loop=1&quality=1080p`;
     iframe.frameBorder = '0';
     iframe.allow = 'autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share';
     iframe.referrerPolicy = 'strict-origin-when-cross-origin';

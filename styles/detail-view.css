@@ -91,3 +91,18 @@
 .close-detail:hover {
     background-color: var(--color-button-hover);
 }
+
+@media (max-width: 768px) {
+    .detail-description {
+        flex-direction: column;
+    }
+
+    .unitL {
+        width: 100%;
+    }
+
+    .left-info {
+        flex-direction: column;
+        gap: 0;
+    }
+}

@@ -35,6 +35,16 @@ a {
     gap: var(--gap-header-center);
 }
 
+@media (max-width: 768px) {
+    .header-center {
+        display: none;
+    }
+
+    .site-header {
+        padding: 0 5%;
+    }
+}
+
 .message-container {
     width: var(--message-container-width);
     overflow: hidden;
@@ -42,6 +52,12 @@ a {
     white-space: nowrap;
     font-family: var(--font-primary);
     font-size: var(--font-size-base);
+}
+
+@media (max-width: 768px) {
+    .message-container {
+        display: none;
+    }
 }
 
 body:has(.portfolio-main.expanded) .message-container {

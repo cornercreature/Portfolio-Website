@@ -24,8 +24,26 @@ export function createWorkThumbnail(workData) {
     thumbnail.style.aspectRatio = '4 / 3';
     thumbnail.style.width = '100%';
 
-    // Add thumbnail image or placeholder color
-    if (workData.thumbnailSrc) {
+    // Add thumbnail image, video, or placeholder color
+    const isThumbnailVideo = workData.thumbnailSrc && workData.thumbnailSrc.match(/\.(mp4|webm|mov)$/i);
+
+    if (isThumbnailVideo) {
+        thumbnail.style.position = 'relative';
+        thumbnail.style.overflow = 'hidden';
+        const thumbVideo = document.createElement('video');
+        thumbVideo.src = workData.thumbnailSrc;
+        thumbVideo.autoplay = true;
+        thumbVideo.muted = true;
+        thumbVideo.loop = true;
+        thumbVideo.playsInline = true;
+        thumbVideo.style.width = '100%';
+        thumbVideo.style.height = '100%';
+        thumbVideo.style.objectFit = 'cover';
+        thumbVideo.style.position = 'absolute';
+        thumbVideo.style.top = '0';
+        thumbVideo.style.left = '0';
+        thumbnail.appendChild(thumbVideo);
+    } else if (workData.thumbnailSrc) {
         thumbnail.style.backgroundImage = `url('${workData.thumbnailSrc}')`;
         thumbnail.style.backgroundSize = 'cover';
         thumbnail.style.backgroundPosition = 'center';
@@ -34,8 +52,8 @@ export function createWorkThumbnail(workData) {
         thumbnail.style.backgroundColor = PLACEHOLDER_COLORS[workData.id % PLACEHOLDER_COLORS.length];
     }
 
-    // Add hover media (image or video) if provided
-    if (workData.hoverSrc) {
+    // Add hover media (image or video) if provided — desktop only
+    if (workData.hoverSrc && window.matchMedia('(hover: hover)').matches) {
         const isVideo = workData.hoverSrc.match(/\.(mp4|webm|mov)$/i);
         const hoverMedia = document.createElement(isVideo ? 'video' : 'img');
 
@@ -61,7 +79,7 @@ export function createWorkThumbnail(workData) {
         // Show hover media on mouse enter
         workItem.addEventListener('mouseenter', () => {
             hoverMedia.style.opacity = '1';
-            if (isVideo) {
+            if (hoverMedia instanceof HTMLVideoElement) {
                 hoverMedia.play();
             }
         });
@@ -69,7 +87,7 @@ export function createWorkThumbnail(workData) {
         // Hide hover media on mouse leave
         workItem.addEventListener('mouseleave', () => {
             hoverMedia.style.opacity = '0';
-            if (isVideo) {
+            if (hoverMedia instanceof HTMLVideoElement) {
                 hoverMedia.pause();
                 hoverMedia.currentTime = 0;
             }

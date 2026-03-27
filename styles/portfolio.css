@@ -223,6 +223,13 @@ h2 {
         width: 90%;
     }
 
+    .work-thumbnail {
+        width: 100%;
+        height: 55vw;
+        aspect-ratio: unset;
+        min-height: unset;
+    }
+
     /* Slide-up detail view */
     .portfolio-detail {
         position: fixed;

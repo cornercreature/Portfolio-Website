@@ -67,4 +67,9 @@
     height: 5rem;
 }
 
+#about .bio-paragraph {
+    width: 100%;
+    max-width: var(--width-bio-max);
+}
+
 

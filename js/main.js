@@ -22,10 +22,15 @@ function initPortfolio() {
     setupMarquee();
     restoreFromUrl(); // Restore detail view from URL if present
 
-    // Mobile back button
+    // Mobile back buttons
     const mobileBack = document.getElementById('mobileBack');
     if (mobileBack) {
         mobileBack.addEventListener('click', collapseWork);
+    }
+
+    const mobileBackBottom = document.getElementById('mobileBackBottom');
+    if (mobileBackBottom) {
+        mobileBackBottom.addEventListener('click', collapseWork);
     }
 }
 

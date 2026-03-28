@@ -97,7 +97,7 @@ h2 {
 .portfolio-main.expanded .portfolio-detail {
     margin-top: 0.3rem;
     width: 96%;
-    padding: 0 var(--padding-center-full);
+    padding: 0 var(--padding-header);
     opacity: 1;
 }
 

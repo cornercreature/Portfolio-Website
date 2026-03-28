@@ -32,10 +32,10 @@ export function createWorkThumbnail(workData) {
         thumbnail.style.overflow = 'hidden';
         const thumbVideo = document.createElement('video');
         thumbVideo.src = workData.thumbnailSrc;
-        thumbVideo.autoplay = true;
         thumbVideo.muted = true;
         thumbVideo.loop = true;
-        thumbVideo.playsInline = true;
+        thumbVideo.setAttribute('autoplay', '');
+        thumbVideo.setAttribute('playsinline', '');
         thumbVideo.style.width = '100%';
         thumbVideo.style.height = '100%';
         thumbVideo.style.objectFit = 'cover';

@@ -200,7 +200,7 @@ export const portfolioWorks = [
     },
     {
         id: 9,
-        title: "{      }",
+        title: "{{igap}{igap}{igap}}",
         category: "Zine",
         year: "MADE Spring 2025",
         collaborators: "",
@@ -213,7 +213,7 @@ export const portfolioWorks = [
             "assets/UU/pagegallery.jpg",
             "assets/UU/snowambiance.jpg",
         ],
-        description: "{		} is a single-article zine of Llewellyn Vaughan-Lee’s article for Emergence Magazine, \“Unborn and Undying.\” The introspective tone and existential theme of the article is mirrored in the space and quiet of the typesetting.ITES & SEEING is a series of two posters I made when tasked with creating posters about a collection from two different angles. I collected public instances of pareidolia – objects that seem to have faces. One poster delivers an emotion-based map imagining a secret fantasy world the faced-objects have come from, while the other poster is a more editorially minded catalogue of the authorial voice’s recent sightings of things with faces.",
+        description: "{ {igap}{igap}{igap} } is a single-article zine of Llewellyn Vaughan-Lee’s article for Emergence Magazine, \“Unborn and Undying.\” The introspective tone and existential theme of the article is mirrored in the space and quiet of the typesetting.ITES & SEEING is a series of two posters I made when tasked with creating posters about a collection from two different angles. I collected public instances of pareidolia – objects that seem to have faces. One poster delivers an emotion-based map imagining a secret fantasy world the faced-objects have come from, while the other poster is a more editorially minded catalogue of the authorial voice’s recent sightings of things with faces.",
         position: "right",
         aspectRatio: "landscape"
     },

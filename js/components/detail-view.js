@@ -95,8 +95,8 @@ export function createDetailImage(workData, mediaSrc = '', imageIndex = 0) {
             media.controls = false;
             media.loop = true;
             media.muted = true;
-            media.playsInline = true;
-            media.autoplay = true;
+            media.setAttribute('playsinline', '');
+            media.setAttribute('autoplay', '');
             media.preload = 'auto'; // Load full video
             media.style.width = '100%';
             media.style.objectFit = 'contain';
@@ -118,7 +118,8 @@ export function createDetailImage(workData, mediaSrc = '', imageIndex = 0) {
  * @param {Object} workData - The work data object to display
  */
 export function populateDetailView(workData) {
-    document.querySelector('.detail-title').textContent = workData.title;
+    document.querySelector('.detail-title').innerHTML = workData.title
+        .replace(/\{igap\}/g, '<span style="display:inline-block; width:1rem"></span>');
     document.querySelector('.detail-category').textContent = workData.category;
 
     const fields = ['year', 'collaborators', 'for', 'deliverables'];
@@ -133,7 +134,10 @@ export function populateDetailView(workData) {
         }
     });
 
-    document.querySelector('.detail-text').innerHTML = workData.description.replace(/\n/g, '<br>');
+    document.querySelector('.detail-text').innerHTML = workData.description
+        .replace(/\n/g, '<br>')
+        .replace(/\{gap\}/g, '<span style="display:block; margin-top:1rem"></span>')
+        .replace(/\{igap\}/g, '<span style="display:inline-block; width:1rem"></span>');
 
     const detailImagesContainer = document.querySelector('.detail-images');
     detailImagesContainer.innerHTML = '';

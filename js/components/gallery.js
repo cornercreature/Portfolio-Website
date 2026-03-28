@@ -100,7 +100,7 @@ export function createWorkThumbnail(workData) {
 
     const title = document.createElement('h2');
     title.className = 'work-title';
-    title.textContent = workData.title;
+    title.innerHTML = workData.title.replace(/\{igap\}/g, '<span style="display:inline-block; width:1rem"></span>');
 
     const category = document.createElement('h2');
     category.className = 'work-category';

@@ -105,4 +105,11 @@
         flex-direction: column;
         gap: 0;
     }
+
+    .detail-image,
+    .detail-main-image {
+        min-height: unset !important;
+        height: auto !important;
+        width: 100%;
+    }
 }

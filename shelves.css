@@ -11,8 +11,8 @@
 }
 
 *{
-    margin:5px 10px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
 }
 
 html {
@@ -136,3 +136,15 @@ a {
     top: 2px;
     display: none;
 }
+
+.shelves-content {
+    padding: var(--spacing-column-top) var(--padding-header);
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+    .shelves-content {
+        padding: 0 5%;
+    }
+}
+

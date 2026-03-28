@@ -30,6 +30,32 @@
     .about-section {
         display: none;
     }
+
+    /* About page — show and stack on mobile */
+    #about.about-section {
+        display: flex;
+        flex-direction: column;
+        min-height: unset;
+        padding: 0 5%;
+    }
+
+    #about .about-bio {
+        height: auto;
+        max-width: 100%;
+        margin-top: 1rem;
+    }
+
+    #about .bio-paragraph {
+        width: 100%;
+        font-size: var(--font-size-body-mobile);
+        line-height: var(--line-height-base);
+    }
+
+    #about .about-links {
+        margin-top: 1.5rem;
+        margin-right: 0;
+        font-size: var(--font-size-body-mobile);
+    }
 }
 
 .greeting {

@@ -2,7 +2,7 @@
 // DETAIL VIEW MANAGEMENT
 // ============================================================================
 
-import { PLACEHOLDER_COLORS, ASPECT_RATIO_HEIGHTS } from '../config/constants.js';
+import { ASPECT_RATIO_HEIGHTS } from '../config/constants.js';
 
 /**
  * Creates a Vimeo embed container
@@ -87,8 +87,7 @@ export function createDetailImage(workData, mediaSrc = '', imageIndex = 0) {
     media.className = imageIndex === 0 ? 'detail-image detail-main-image' : 'detail-image';
 
     // Set placeholder color and height (dynamic values that can't be in CSS)
-    const colorIndex = (workData.id + imageIndex) % PLACEHOLDER_COLORS.length;
-    media.style.backgroundColor = PLACEHOLDER_COLORS[colorIndex];
+    media.style.backgroundColor = '#ffffff';
 
     const aspectConfig = ASPECT_RATIO_HEIGHTS[workData.aspectRatio] || ASPECT_RATIO_HEIGHTS.landscape;
     media.style.minHeight = imageIndex === 0 ? aspectConfig.detail : ASPECT_RATIO_HEIGHTS.landscape.detail;

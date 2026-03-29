@@ -70,7 +70,7 @@ export const portfolioWorks = [
             "assets/grounded/multihandout.png",
             {vimeoId: "1153215490"},
         ], // Array of images - strings for single items, arrays for inline-flex groups
-        description: "GROUNDING is a Providence, Rhode Island based simulation of human interaction of nature. Based off of our experiences on a walk on a trail in Blackstone Park Conservancy, we included data that both shows the beauty of being in nature, as well as the powerful effect human activity can have on nature. We hope that through this experience, you realize the weight of your presence in nature, as well as the responsibility in preserving. \n \n Wondering what you can do? Leave no trace and take nothing but pictures!",
+        description: "GROUNDING is a Providence, Rhode Island based simulation of human interaction of nature. Based off of our experiences on a walk on a trail in Blackstone Park Conservancy, we included data that both shows the beauty of being in nature, as well as the powerful effect human activity can have on nature. We hope that through this experience, you realize the weight of your presence in nature, as well as the responsibility in preserving. \n \n Wondering what you can do? Leave no trace and take nothing but pictures! \n \n In this project, I was responsible for the design and development of the main page, the Lost Green Spaces page, and worked collaboratively on the overall identity, takeaway keychain and data treatment.",
         position: "left",
         aspectRatio: "landscape"
     },
@@ -183,6 +183,43 @@ export const portfolioWorks = [
         ],
         description: "8N ADVISORY & STUDIO 8N are the two halves of my client’s practice which he wanted connected yet separate identities for. 8N ADVISORY is a gallery initiative helps early-career artists gain visibility, place work with collectors, and access exhibition opportunities. In this project, I was primarily responsible creating an identity and website for this initiative that was approchable yet elevated, and would center represented artists and their work.",
         position: "right",
+        aspectRatio: "landscape"
+    },
+    {
+        id: 10,
+        title: "HOPE & ANCHOR",
+        category: "Identity",
+        year: "MADE Spring 2025",
+        collaborators: "",
+        for:"FOR Color and Surface with Emily Rye",
+        deliverables:"Brand Identity, Logo, Brand application proposals",
+        thumbnailSrc: "assets/HA/billboard white.png",
+        hoverSrc: "assets/HA/HAcover.mp4",
+        heroImageSrc:"assets/HA/billboard white.png",
+        images:[
+            [{text:"This is the primary wordmark for the brand, and is only to be used sparingly in headers or other similar situations where Hope and Anchor should be expressed as a brand, like on storefront windows or round signs."},
+            "assets/HA/logo.png",
+            {text:"As the brand was made in the 19th century, a less precise, hand-drawn logo was made."},
+            "assets/HA/logo.png",],
+            {text:"a selection of detailed considerations from the brand guidelines."},
+            [
+            "assets/HA/color.jpg",
+            "assets/HA/logo.jpg",
+            "assets/HA/pattern.jpg",
+            "assets/HA/complement.jpg",
+            ],
+            "assets/HA/tags.png",
+            [
+            "assets/HA/white.png","assets/HA/dark.png",
+            ],
+            [
+                "assets/HA/web.jpg",
+                "assets/HA/envelope.jpg",
+            ],
+            "assets/HA/storefront.png",
+        ],
+        description: "I was tasked to create a brand identity and guidelines for a fictional new-england based heritage clothing brand that is rooted in naval and marine-related style. Intended for a preppier demographic, I draw largely on polished and clean aesthetics, as well as thoughts for what hospitality and quality feel like experience throughout the brand",
+        position: "left",
         aspectRatio: "landscape"
     },
     {

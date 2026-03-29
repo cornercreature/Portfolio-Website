@@ -38,6 +38,13 @@ a {
 /* Mobile menu — hidden on desktop */
 .mobile-menu-toggle {
     display: none;
+    color: var(--color-text);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-primary);
+    -webkit-appearance: none;
+    appearance: none;
 }
 
 .mobile-menu {

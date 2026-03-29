@@ -142,6 +142,13 @@ a {
     box-sizing: border-box;
 }
 
+.titleshelf,
+.shelf {
+    width: 100%;
+    padding: 0 var(--padding-header);
+    box-sizing: border-box;
+}
+
 @media (max-width: 768px) {
     .shelves-content {
         padding: 0 5%;

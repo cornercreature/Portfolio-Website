@@ -27,29 +27,31 @@ export function setupAboutCollapse() {
     const rightColumn = document.querySelector('.portfolio-column-right');
     const aboutSection = document.querySelector('.about-section');
 
-    // Only set up if portfolio columns and about section exist
     if (!leftColumn || !rightColumn || !aboutSection) return;
 
-    /**
-     * Checks scroll position and toggles about section visibility
-     */
-    function handleScroll() {
-        const leftScrollTop = leftColumn.scrollTop;
-        const rightScrollTop = rightColumn.scrollTop;
+    const isMobile = () => window.matchMedia('(max-width: 768px)').matches;
 
-        // If either column is scrolled down, collapse about section
-        if (leftScrollTop > 0 || rightScrollTop > 0) {
-            aboutSection.classList.add('collapsed');
+    function handleScroll() {
+        if (isMobile()) {
+            if (window.scrollY > 0) {
+                aboutSection.classList.add('collapsed');
+            } else {
+                aboutSection.classList.remove('collapsed');
+            }
         } else {
-            // Both columns at top - show about section
-            aboutSection.classList.remove('collapsed');
+            const leftScrollTop = leftColumn.scrollTop;
+            const rightScrollTop = rightColumn.scrollTop;
+            if (leftScrollTop > 0 || rightScrollTop > 0) {
+                aboutSection.classList.add('collapsed');
+            } else {
+                aboutSection.classList.remove('collapsed');
+            }
         }
     }
 
-    // Throttle scroll events to fire at most every 16ms (~60fps)
     const throttledHandleScroll = throttle(handleScroll, 16);
 
-    // Listen to both columns
     leftColumn.addEventListener('scroll', throttledHandleScroll);
     rightColumn.addEventListener('scroll', throttledHandleScroll);
+    window.addEventListener('scroll', throttledHandleScroll);
 }

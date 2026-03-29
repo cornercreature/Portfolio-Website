@@ -52,9 +52,15 @@ export function expandWork(workId) {
 export function collapseWork() {
     const portfolioMain = document.querySelector('.portfolio-main');
 
-    // Show about section
+    // Show about section only if columns are scrolled to top
     const aboutSection = document.querySelector('.about-section');
-    if (aboutSection) {
+    const leftColumn = document.querySelector('.portfolio-column-left');
+    const rightColumn = document.querySelector('.portfolio-column-right');
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    const shouldShow = isMobile
+        ? window.scrollY === 0
+        : (leftColumn?.scrollTop === 0 || rightColumn?.scrollTop === 0);
+    if (aboutSection && shouldShow) {
         aboutSection.classList.remove('collapsed');
     }
 

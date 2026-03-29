@@ -31,10 +31,12 @@ export function setupAboutCollapse() {
 
     const isMobile = () => window.matchMedia('(max-width: 768px)').matches;
 
+    const portfolioMain = document.querySelector('.portfolio-main');
+
     function handleColumnScroll(column) {
         if (column.scrollTop > 0) {
             aboutSection.classList.add('collapsed');
-        } else {
+        } else if (!portfolioMain?.classList.contains('expanded')) {
             aboutSection.classList.remove('collapsed');
         }
     }
@@ -42,7 +44,7 @@ export function setupAboutCollapse() {
     function handleWindowScroll() {
         if (window.scrollY > 0) {
             aboutSection.classList.add('collapsed');
-        } else {
+        } else if (!portfolioMain?.classList.contains('expanded')) {
             aboutSection.classList.remove('collapsed');
         }
     }

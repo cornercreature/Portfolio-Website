@@ -31,27 +31,27 @@ export function setupAboutCollapse() {
 
     const isMobile = () => window.matchMedia('(max-width: 768px)').matches;
 
-    function handleScroll() {
-        if (isMobile()) {
-            if (window.scrollY > 0) {
-                aboutSection.classList.add('collapsed');
-            } else {
-                aboutSection.classList.remove('collapsed');
-            }
+    function handleColumnScroll(column) {
+        if (column.scrollTop > 0) {
+            aboutSection.classList.add('collapsed');
         } else {
-            const leftScrollTop = leftColumn.scrollTop;
-            const rightScrollTop = rightColumn.scrollTop;
-            if (leftScrollTop > 0 || rightScrollTop > 0) {
-                aboutSection.classList.add('collapsed');
-            } else {
-                aboutSection.classList.remove('collapsed');
-            }
+            aboutSection.classList.remove('collapsed');
         }
     }
 
-    const throttledHandleScroll = throttle(handleScroll, 16);
+    function handleWindowScroll() {
+        if (window.scrollY > 0) {
+            aboutSection.classList.add('collapsed');
+        } else {
+            aboutSection.classList.remove('collapsed');
+        }
+    }
 
-    leftColumn.addEventListener('scroll', throttledHandleScroll);
-    rightColumn.addEventListener('scroll', throttledHandleScroll);
-    window.addEventListener('scroll', throttledHandleScroll);
+    const throttledLeft = throttle(() => handleColumnScroll(leftColumn), 16);
+    const throttledRight = throttle(() => handleColumnScroll(rightColumn), 16);
+    const throttledWindow = throttle(handleWindowScroll, 16);
+
+    leftColumn.addEventListener('scroll', throttledLeft);
+    rightColumn.addEventListener('scroll', throttledRight);
+    window.addEventListener('scroll', throttledWindow);
 }

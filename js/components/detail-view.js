@@ -165,7 +165,8 @@ export function populateDetailView(workData) {
                 // Create a flex container for the group
                 const flexGroup = document.createElement('div');
                 flexGroup.style.display = 'inline-flex';
-                flexGroup.style.alignItems = 'center';
+                const allText = item.every(m => typeof m === 'object' && m.text);
+                flexGroup.style.alignItems = allText ? 'flex-start' : 'center';
                 flexGroup.style.gap = '10px';
                 flexGroup.style.width = '100%';
                 flexGroup.style.maxWidth = '100%';

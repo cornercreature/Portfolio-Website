@@ -129,6 +129,10 @@ export const portfolioWorks = [
         hoverSrc: "assets/TVC/fullvideo.mp4",
         heroImageSrc: "assets/TVC/openboek.png",
         images:[
+            [
+                {text:"All the film’s dialogue was narrated by a first generation immigrant whose english bears a heavy chinese accent. As typesetting her words directly could result in her accent being reduced simply to poor grammar, I designed a system featuring custom subscript and other spacing features that mirrors her particular intonations. I was then able to capture her narrative voice on paper in such a way that acknowledges its full poetic weight."},
+                {text:"A key was made to explain the typographic system, and is hid in the book's eclectic, scrappy cover."},
+            ],
             "assets/TVC/grid.jpg",
             ["assets/TVC/cover.png",
             "assets/TVC/innerbookdetail.png"],
@@ -145,6 +149,7 @@ export const portfolioWorks = [
             "assets/TVC/love.png",
             "assets/TVC/letter.png",],
             "assets/TVC/letter inner.png",
+            "assets/TVC/postcard.png",
             "assets/TVC/end.png",
             "assets/TVC/whole.png",
             "assets/TVC/fullvideo.mp4",

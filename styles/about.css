@@ -73,7 +73,7 @@
 
 .about-links {
     margin-top: var(--margin-links-top);
-    margin-right: 6.4rem;
+    margin-right: 6.8rem; /* Adjusted to align with the right edge of the bio paragraph, is 6.4 for abt */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;

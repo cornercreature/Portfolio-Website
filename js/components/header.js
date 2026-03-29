@@ -39,7 +39,7 @@ function createHeader() {
         <nav class="header-nav" aria-label="Main navigation">
             <a href="main.html"><span class="nav-icon">,</span>Portfolio</a>
             <a href="about.html"><span class="nav-icon">,</span>About</a>
-            <a href="shelves.html"><span class="nav-icon">,</span>The Shelves</a>
+            <a href="shelves.html" style="visibility:hidden;width:0;overflow:hidden;"><span class="nav-icon">,</span>The Shelves</a>
         </nav>
         <button class="mobile-menu-toggle" aria-label="Open menu">☰</button>
     `;
@@ -52,7 +52,7 @@ function createHeader() {
         <nav class="mobile-menu-nav">
             <a href="main.html">Portfolio</a>
             <a href="about.html">About</a>
-            <a href="shelves.html">The Shelves</a>
+            <a href="shelves.html" style="visibility:hidden;width:0;overflow:hidden;">The Shelves</a>
         </nav>
     `;
     document.body.appendChild(mobileMenu);

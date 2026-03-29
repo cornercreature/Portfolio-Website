@@ -2,8 +2,7 @@
 
 
 .about-section {
-    margin-top: var(--margin-about-top);
-    padding: 0 var(--padding-about);
+    padding: var(--margin-about-top) var(--padding-about) 0;
     min-height: 6.875rem;
     display: inline-flex;
     flex-direction: row;
@@ -13,17 +12,15 @@
     overflow: visible;
     transition: height var(--transition-duration) var(--transition-easing),
                 opacity var(--transition-duration) var(--transition-easing),
-                margin var(--transition-duration) var(--transition-easing);
+                padding var(--transition-duration) var(--transition-easing);
 }
 
 .about-section.collapsed {
     height: 0;
+    min-height: 0;
     opacity: 0;
-    margin-top: 0;
-    margin-bottom: 0;
     padding-top: 0;
     padding-bottom: 0;
-    min-height: 1.3rem;
 }
 
 @media (max-width: 768px) {

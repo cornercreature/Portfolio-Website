@@ -32,6 +32,11 @@ function initPortfolio() {
     if (mobileBackBottom) {
         mobileBackBottom.addEventListener('click', collapseWork);
     }
+
+    const detailBackBottom = document.getElementById('detailBackBottom');
+    if (detailBackBottom) {
+        detailBackBottom.addEventListener('click', collapseWork);
+    }
 }
 
 // Run initialization when DOM is ready

@@ -15,22 +15,36 @@ export const portfolioWorks = [
         hoverSrc: "assets/YourInternet/video.mp4",
         heroImageSrc: "assets/YourInternet/computers.jpg",
         images: [
+            {text: "To fully flesh out the brand and campaign identity, a world manual (brand guideline) was created. See the entire manual at the bottom of the page!"
+                },
             "assets/YourInternet/guideline.jpg",
             "assets/YourInternet/logotypedeet.jpg",
-            "assets/YourInternet/miimii.mp4",
+            [
+                {text: "Cryptic promotional messaging leads social media users to a link in the bio of YOUR INTERNET’s social media page, the only way to access YOUR INTERNET."
+                },
+                {text: "Promotional messaging is split into two categories, “Captivate” (left) and “Connect” (right). The former draws viewer interest in something beyond the social media scroll, while the latter is a call to action for users to find something more: YOUR INTERNET."
+                },
+            ],
             "assets/YourInternet/messaging.jpg",
-            "assets/YourInternet/allux.jpg",
+            {text: "Motion graphics with nostalgic internet influences to attract people scrolling short-form content."
+                },
             ["assets/YourInternet/CFYI.mp4", "assets/YourInternet/CFYW.mp4"],
-            "assets/YourInternet/portal.jpg",
-            "assets/YourInternet/miimii.mp4",
-            "assets/YourInternet/flow.jpg",
+            { text:"Posters to promote the platform in physical spaces, and to be shared on social media as well. \n The posters are designed to be visually captivating and intriguing, with cryptic messaging that encourages viewers to seek out more information about YOUR INTERNET."},
+            "assets/YourInternet/yiPosterhd.png",
+            {text: "Upon clicking on the link in the bio, users are taken to a portal/tutorial page where they are taught how to search through the web by hand in a gamified manner."},
             [
                 {vimeoId: "1177801697"},
-                "assets/YourInternet/portalsequence.png",
+            "assets/YourInternet/portalsequence.png",
             ],
+            {text: "Miimii is a mascot made for the portal and larger identity of Your Internet. She is designed to emote in four ways."},
+
+            "assets/YourInternet/miimii.mp4",
+            {text:"Upon completing the portal tutorial, users are taken to the main platform of Your Internet. \n Here, they are able to create collections of links across the internet that they can share with friends by sending them a link."},
+            "assets/YourInternet/allux.jpg",
+            "assets/YourInternet/flow.jpg",
             "assets/YourInternet/YI use mockup.png",
-                {vimeoId: "1177801881"},
-            "assets/YourInternet/yiPosterhd.png",
+            {vimeoId: "1177801881"},
+            {text: "Here is a look at the world manual. Scroll horizontally to go forward. Visit the actual site <a href='https://yourinternetworldmanual.vercel.app' target='_blank'>here</a>"},
             {iframeUrl: "https://yourinternetworldmanual.vercel.app", aspectRatio: "3:2"},
         ],
         description: "Speculative design and promotional material for an underground, algorithmless social media curation platform. Inspired by 2000's and 90's internet aesthetics, Your Internet calls upon our obsession with nostalgia, play, and exclusivity to encourage the revival of leisurely slow web navigation, and the re-embrace of friend-network-based online interaction",

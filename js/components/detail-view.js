@@ -10,15 +10,20 @@ import { PLACEHOLDER_COLORS, ASPECT_RATIO_HEIGHTS } from '../config/constants.js
  * @param {string} title - The video title
  * @returns {HTMLElement} The Vimeo embed container
  */
-function createVimeoEmbed(vimeoId, title) {
+function createVimeoEmbed(vimeoId, title, aspectRatio = '16:9') {
+    const [w, h] = aspectRatio.split(':').map(Number);
     const container = document.createElement('div');
     container.className = 'detail-image';
-    container.style.padding = '62.55% 0 0 0';
     container.style.position = 'relative';
+    container.style.width = '100%';
+    container.style.maxWidth = `calc(80vh * ${w} / ${h})`;
+    container.style.aspectRatio = `${w} / ${h}`;
+    container.style.marginLeft = 'auto';
+    container.style.marginRight = 'auto';
 
     const iframe = document.createElement('iframe');
     iframe.src = `https://player.vimeo.com/video/${vimeoId}?badge=0&autopause=0&player_id=0&app_id=58479&controls=0&autoplay=1&muted=1&loop=1&quality=1080p`;
-    iframe.frameBorder = '0';
+    iframe.style.border = 'none';
     iframe.allow = 'autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share';
     iframe.referrerPolicy = 'strict-origin-when-cross-origin';
     iframe.style.position = 'absolute';
@@ -51,7 +56,7 @@ function createIframeEmbed(url, title, aspectRatio = '16:9') {
 
     const iframe = document.createElement('iframe');
     iframe.src = url;
-    iframe.frameBorder = '0';
+    iframe.style.border = 'none';
     iframe.allow = 'autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share';
     iframe.referrerPolicy = 'strict-origin-when-cross-origin';
     iframe.style.position = 'absolute';
@@ -160,7 +165,7 @@ export function populateDetailView(workData) {
                 // Create a flex container for the group
                 const flexGroup = document.createElement('div');
                 flexGroup.style.display = 'inline-flex';
-                flexGroup.style.alignItems = 'flex-start';
+                flexGroup.style.alignItems = 'center';
                 flexGroup.style.gap = '10px';
                 flexGroup.style.width = '100%';
                 flexGroup.style.maxWidth = '100%';
@@ -170,11 +175,15 @@ export function populateDetailView(workData) {
                     imageIndex++;
                     let element;
 
-                    // Check if it's a Vimeo object, iframe object, or regular media
+                    // Check if it's a Vimeo object, iframe object, text box, or regular media
                     if (typeof mediaItem === 'object' && mediaItem.vimeoId) {
-                        element = createVimeoEmbed(mediaItem.vimeoId, workData.title);
+                        element = createVimeoEmbed(mediaItem.vimeoId, workData.title, mediaItem.aspectRatio || '16:9');
                     } else if (typeof mediaItem === 'object' && mediaItem.iframeUrl) {
                         element = createIframeEmbed(mediaItem.iframeUrl, workData.title, mediaItem.aspectRatio);
+                    } else if (typeof mediaItem === 'object' && mediaItem.text) {
+                        element = document.createElement('div');
+                        element.className = 'detail-image detail-text-box';
+                        element.innerHTML = mediaItem.text.replace(/\n/g, '<br>');
                     } else {
                         element = createDetailImage(workData, mediaItem, imageIndex);
                         element.style.minHeight = 'unset';
@@ -194,7 +203,7 @@ export function populateDetailView(workData) {
                 let element;
 
                 if (typeof item === 'object' && item.vimeoId) {
-                    element = createVimeoEmbed(item.vimeoId, workData.title);
+                    element = createVimeoEmbed(item.vimeoId, workData.title, item.aspectRatio || '16:9');
                 } else if (typeof item === 'object' && item.iframeUrl) {
                     element = createIframeEmbed(item.iframeUrl, workData.title, item.aspectRatio);
                 } else if (typeof item === 'object' && item.text) {

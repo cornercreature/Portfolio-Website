@@ -197,10 +197,11 @@ export const portfolioWorks = [
         hoverSrc: "assets/HA/HAcover.mp4",
         heroImageSrc:"assets/HA/billboard white.png",
         images:[
-            [{text:"This is the primary wordmark for the brand, and is only to be used sparingly in headers or other similar situations where Hope and Anchor should be expressed as a brand, like on storefront windows or round signs."},
-            "assets/HA/logo.png",
+            [
+            {text:"This is the primary wordmark for the brand, and is only to be used sparingly in headers or other similar situations where Hope and Anchor should be expressed as a brand, like on storefront windows or round signs."},
             {text:"As the brand was made in the 19th century, a less precise, hand-drawn logo was made."},
-            "assets/HA/logo.png",],
+            ],
+            "assets/HA/logo.png",
             {text:"a selection of detailed considerations from the brand guidelines."},
             [
             "assets/HA/color.jpg",

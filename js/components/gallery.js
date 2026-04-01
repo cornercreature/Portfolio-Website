@@ -112,6 +112,10 @@ export function createWorkThumbnail(workData) {
     workItem.appendChild(thumbnail);
     workItem.appendChild(workInfo);
 
+    if (workData.mobileOrder !== undefined && window.matchMedia('(max-width: 768px)').matches) {
+        workItem.style.order = workData.mobileOrder;
+    }
+
     // Add click event listener
     workItem.addEventListener('click', () => expandWork(workData.id));
 
@@ -132,10 +136,13 @@ export function populateGallery() {
     leftColumn.innerHTML = '';
     rightColumn.innerHTML = '';
 
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+
     // Distribute works to columns
     portfolioWorks.forEach(work => {
         const thumbnail = createWorkThumbnail(work);
-        const targetColumn = work.position === 'left' ? leftColumn : rightColumn;
+        const effectivePosition = isMobile && work.mobilePosition ? work.mobilePosition : work.position;
+        const targetColumn = effectivePosition === 'left' ? leftColumn : rightColumn;
         targetColumn.appendChild(thumbnail);
     });
 }

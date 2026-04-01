@@ -66,7 +66,8 @@ export const portfolioWorks = [
         ],
         description: "A digital greeting card made for RISD to use on their official social media and communication 🎁 Inspired by opening doors and small wonders, we hope this design foreshadows all the special moments to greet us as the year unfolds 🎊✨The illustrations here are inspired by things and ideas starting with the same letters as the ones making up the words, “Happy RISD New Year”. See if you can match them up! 🎈🪄",
         position: "left",
-        aspectRatio: "landscape"
+        aspectRatio: "landscape",
+        mobilePosition: 2,
     },
     {
         id: 4,
@@ -104,6 +105,7 @@ export const portfolioWorks = [
         for:"FOR Rhode Island School of Design",
         deliverables:"DELIVERABLES Swissbound Yearbook",
         thumbnailSrc: "assets/YB25/one.jpg",
+        mobilePosition: "left",
         hoverSrc: "assets/YB25/two.jpg",
         heroImageSrc: "assets/YB25/three.jpg",
         images: [
@@ -118,7 +120,8 @@ export const portfolioWorks = [
         ],
         description: "The 2025 yearbook is a celebration of what we carry with us and the moments we hold close. Each student page is personalized — decorated and curated like a proud, well-loved fridge door. We dedicate this yearbook as a keepsake for the graduating class of 2025. What’s yours? 💭✨ \n \n Edition of 400, printed and bound by Meridian Printing in East Greenwich, RI. Typeset in Autos Grotesk by our very own Andrew Liu and Herbik generously provided by Counter Forms.",
         position: "right",
-        aspectRatio: "landscape"
+        aspectRatio: "landscape",
+        mobilePosition: 3,
     },
     {
         id: 2,

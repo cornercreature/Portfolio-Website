@@ -225,6 +225,10 @@ h2 {
         order: 2;
     }
 
+    .portfolio-column-right {
+        margin-bottom: 1.25rem;
+    }
+
     .work-item-left,
     .work-item-right {
         width: 90%;
@@ -263,6 +267,16 @@ h2 {
     .portfolio-main.expanded .portfolio-column-left,
     .portfolio-main.expanded .portfolio-column-right {
         width: 100% !important;
+    }
+
+    .work-info {
+        height: 1.875rem;
+        padding: 0.4rem 1rem 0rem 0.3rem;
+    }
+
+    .work-title,
+    .work-category {
+        font-size: 0.8rem;
     }
 
     /* Back button */

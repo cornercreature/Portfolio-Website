@@ -223,6 +223,7 @@ h2 {
 
     .portfolio-column-left {
         order: 2;
+        margin-top: 1.25rem;
     }
 
     .portfolio-column-right {

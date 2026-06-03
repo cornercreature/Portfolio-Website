@@ -69,6 +69,28 @@ export const portfolioWorks = [
         aspectRatio: "landscape",
         mobilePosition: 2,
     },
+       {
+        id: 10,
+        title: "Beijingnese Library",
+        category: "Product",
+        year: "ONGOING",
+        for:"Personal Project",
+        deliverables:"Web Application, Identity, Print Material",
+        thumbnailSrc: "assets/bjhk/cover.mp4",
+        hoverSrc: "assets/bjhk/hk7.jpg",
+        heroImageSrc: "assets/bjhk/hk.jpg",
+        images:[
+            "assets/bjhk/hk2.jpg",
+            "assets/bjhk/hk3.jpg",
+            "assets/bjhk/hk4.jpg",
+            "assets/bjhk/hk5.jpg",
+            "assets/bjhk/hk6.jpg",
+            "assets/bjhk/hk7.jpg",
+        ],
+        description: "Beijingnese Library is a conceptual product design project that integrates traditional library systems and modern digital interfaces for a living library of Beijing Hua, Beijing's local dialect. With functionality that focuses on user input (on new words, term examples) from visitors, the design aims at a collaborative, community-based approach to preserving local dialect. A direct-to print function for each term, or example sentence along with a customizable postcard template seamlessly blends physical and virtual spaces, offering users an immersive experience uses digital technologies to rebridge/revive Beijing Hua in real, analog space.",
+        position: "left",
+        aspectRatio: "landscape"
+    },
     {
         id: 4,
         title: "8N ADVISORY & STUDIO 8N",
